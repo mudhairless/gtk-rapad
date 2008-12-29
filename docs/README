@@ -1,6 +1,6 @@
 
 
-Move an example file into this foler and issue this command line:
+Move an example file into the project root directory and issue this command:
 
     ./bin/compile file.bas
     
