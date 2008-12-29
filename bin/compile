@@ -1,0 +1,3 @@
+#!/bin/sh
+
+fbc -p bin -i inc -w all $1

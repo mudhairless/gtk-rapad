@@ -1,0 +1,3 @@
+namespace GtkRapad
+
+end namespace

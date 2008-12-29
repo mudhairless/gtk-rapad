@@ -1,0 +1,7 @@
+
+
+Move an example file into this foler and issue this command line:
+
+    ./bin/compile file.bas
+    
+This will invoke the compiler using the appropriate flags.

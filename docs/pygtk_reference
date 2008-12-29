@@ -1,0 +1,188 @@
+below is a reference of the pygtk class, which my library will be modeled
+after.
+
+
+gtk.AboutDialog — popup window displaying information about an application (new in PyGTK 2.6)
+gtk.AccelGroup — a group of accelerators for a Window hierarchy
+gtk.AccelLabel — a label which displays accelerator info to the right of the text
+gtk.AccelMap — Loadable keyboard accelerator specifications (new in PyGTK 2.10)
+gtk.Accessible — accessibility support for widgets.
+gtk.Action — an action which can be triggered by a menu or toolbar item (new in PyGTK 2.4)
+gtk.ActionGroup — a group of actions (new in PyGTK 2.4)
+gtk.Adjustment — an object representing an adjustable bounded value
+gtk.Alignment — a widget that controls the alignment and size of its child
+gtk.Arrow — produces an arrow pointing in one of the four cardinal directions.
+gtk.AspectFrame — A frame that constrains its child to a particular aspect ratio.
+gtk.Assistant — a widget used to guide users through multi-step operations (new in PyGTK 2.10)
+gtk.Bin — an abstract base class defining a container with just one child.
+gtk.Border — an object containing data for a border (new in PyGTK 2.4)
+gtk.Box — an abstract base class for box containers
+gtk.Button — A pushbutton widget that issues a signal when clicked.
+gtk.Builder — Build an interface from an XML UI definition.
+gtk.Buildable — Interface for objects that can be built by GtkBuilder.
+gtk.ButtonBox — the base class for widgets that contain multiple buttons
+gtk.Calendar — a widget that displays a calendar and allows the user to select a date.
+gtk.CellEditable — an interface for editing a TreeView cell
+gtk.CellLayout — an interface for packing cells
+gtk.CellRenderer — a base class for objects that render on a gtk.gdk.Drawable
+gtk.CellRendererAccel — an object that renders a keyboard accelerator in a cell (new in PyGTK 2.10)
+gtk.CellRendererCombo — an object that renders a gtk.ComboBoxEntry into a gtk.TreeView cell (new in PyGTK 2.6)
+gtk.CellRendererPixbuf — an object that renders a pixbuf into a gtk.TreeView cell
+gtk.CellRendererProgress — an object that renders numbers as progress bars in a gtk.TreeView (new in PyGTK 2.6)
+gtk.CellRendererSpin — an object that renders a spin button in a cell (new in PyGTK 2.10)
+gtk.CellRendererText — an object that renders text into a gtk.TreeView cell
+gtk.CellRendererToggle — an object that renders a toggle button into a TreeView cell
+gtk.CellView — a widget displaying a single row of a gtk.TreeModel (new in PyGTK 2.6).
+gtk.CheckButton — a toggle button widget styled as a checkbox and label
+gtk.CheckMenuItem — a menu item with a check box.
+gtk.Clipboard — an object to store data to and retrieve data from (new in PyGTK 2.2)
+gtk.ColorButton — a button to launch a color selection dialog (new in PyGTK 2.4)
+gtk.ColorSelection — a widget used to select a color.
+gtk.ColorSelectionDialog — a standard dialog for selecting a color.
+gtk.Combo — a text entry field with a dropdown list.
+gtk.ComboBox — a widget used to choose from a list of items (new in PyGTK 2.4)
+gtk.ComboBoxEntry — a text entry field with a dropdown list (new in PyGTK 2.4)
+gtk.Container — a base class for widgets that contain other widgets
+gtk.Curve — allows direct editing of a curve.
+gtk.Dialog — popup windows for user information and action
+gtk.DrawingArea — a widget for custom user interface elements.
+gtk.Editable — an interface for text-editing widgets.
+gtk.Entry — a single line text entry field.
+gtk.EntryCompletion — completion functionality for gtk.Entry (new in PyGTK 2.4)
+gtk.EventBox — a widget used to catch events for widgets which do not have their own window.
+gtk.Expander — a container that can hide its child (new in PyGTK 2.4)
+gtk.FileChooser — an interface for choosing files used by gtk.FileChooserWidget and gtk.FileChooserDialog (new in PyGTK 2.4)
+gtk.FileChooserButton — a button to launch a gtk.FileChooserDialog (new in PyGTK 2.6)
+gtk.FileChooserDialog — a file chooser dialog, suitable for "File/Open" or "File/Save" commands(new in PyGTK 2.4)
+gtk.FileChooserWidget — a file chooser widget that can be embedded in other widgets(new in PyGTK 2.4)
+gtk.FileFilter — a filter for selecting a file subset (new in PyGTK 2.4)
+gtk.FileSelection — a dialog used to prompt the user for a file or directory name
+gtk.Fixed — a container which allows you to position widgets at fixed coordinates
+gtk.FontButton — a button to launch a font selection dialog (new in PyGTK 2.4)
+gtk.FontSelection — a widget for selecting fonts.
+gtk.FontSelectionDialog — a dialog for selecting fonts.
+gtk.Frame — a bin with a decorative frame and optional label.
+gtk.GammaCurve — subclass of gtk.Curve for editing gamma curves.
+gtk.GenericCellRenderer — a TreeView cell renderer that helps create cell renderers in Python
+gtk.GenericTreeModel — a TreeView model that helps create tree models in Python
+gtk.HandleBox — a widget for detachable window portions.
+gtk.HBox — a horizontal container box
+gtk.HButtonBox — a container for arranging buttons horizontally.
+gtk.HPaned — a container with two panes arranged horizontally.
+gtk.HRuler — a horizontal ruler.
+gtk.HScale — a horizontal slider widget for selecting a value from a range.
+gtk.HScrollbar — a horizontal scrollbar widget
+gtk.HSeparator — a horizontal separator.
+gtk.IconFactory — an object that manages a group of icon sets.
+gtk.IconInfo — object containing information about and icon in an icon theme (new in PyGTK 2.4)
+gtk.IconSet — contains a set of variants for an icon
+gtk.IconSource — a source for icon variants
+gtk.IconTheme — look up icons by name and size (new in PyGTK 2.4)
+gtk.IconView — a widget which displays a list of icons in a grid (new in PyGTK 2.6)
+gtk.Image — A widget displaying an image
+gtk.ImageMenuItem — a menuitem that displays an image with an accel label
+gtk.IMContext — an abstract base class defining a generic input method interface
+gtk.IMContextSimple — an input method context object that supports "simple" input methods
+gtk.IMMulticontext — an input method context object that manages the use of multiple input method contexts for a widget
+gtk.InputDialog — a dialog for configuring devices for the XInput extension.
+gtk.Invisible — internally-used widget which is not displayed.
+gtk.Item — abstract base class for gtk.MenuItem
+gtk.ItemFactory — creates menus, menubars and option menus from a data description.
+gtk.Label — a widget that displays a limited amount of read-only text
+gtk.Layout — infinite scrollable area containing child widgets and custom drawing
+gtk.LinkButton — a button bound to a URL (new in PyGTK 2.10)
+gtk.ListStore — a list model to use with a gtk.TreeView
+gtk.Menu — a drop down menu widget.
+gtk.MenuBar — a widget that displays gtk.MenuItem widgets horizontally
+gtk.MenuItem — the widget used for an item in menus
+gtk.MenuShell — a base class for menu objects.
+gtk.MenuToolButton — A gtk.ToolItem containing a button with an additional dropdown menu (new in PyGTK 2.6)
+gtk.MessageDialog — a convenient message window
+gtk.Misc — a base class for widgets with alignments and padding.
+gtk.Notebook — a tabbed notebook container.
+gtk.Object — the base class of the PyGTK type hierarchy.
+gtk.OptionMenu — a widget used to provide a list of valid choices.
+gtk.PageSetup — an object that stores page setup information (new in PyGTK 2.10)
+gtk.Paned — a base class for widgets with two adjustable panes
+gtk.PaperSize — an object providing support for named paper sizes (new in PyGTK 2.10)
+gtk.Plug — A toplevel window for embedding into other processes.
+gtk.PrintContext — Encapsulates context for drawing pages (new in PyGTK 2.10)
+gtk.PrintOperation — a high-level printing API (new in PyGTK 2.10)
+gtk.PrintOperationPreview — an interface for printing preview (new in PyGTK 2.10)
+gtk.PrintSettings — Stores print settings (new in PyGTK 2.10)
+gtk.ProgressBar — a widget which indicates progress visually.
+gtk.RadioAction — an action that can be grouped so that only one can be active (new in PyGTK 2.4)
+gtk.RadioButton — a choice of one of multiple check buttons.
+gtk.RadioMenuItem — a choice from multiple check menu items.
+gtk.RadioToolButton — a toolbar item that contains a radio button (new in PyGTK 2.4)
+gtk.Range — a base class for widgets that allow a user to set a value in a range.
+gtk.RcStyle — an object holding resource styles
+gtk.RecentChooserDialog — Displays recently used files in a dialog (new in PyGTK 2.10)
+gtk.RecentChooserMenu — Displays recently used files in a menu (new in PyGTK 2.10)
+gtk.RecentChooserWidget — Displays recently used files (new in PyGTK 2.10)
+gtk.RecentChooser — an interface implemented by gtk.RecentChooserWidget, gtk.RecentChooserMenu and gtk.RecentChooserDialog (new in PyGTK 2.10)
+gtk.RecentFilter — A filter for selecting a subset of recently used files (new in PyGTK 2.10)
+gtk.RecentInfo — information found when looking up an entry of the recently used files list. (new in PyGTK 2.10)
+gtk.RecentManager — manages recently used files (new in PyGTK 2.10)
+gtk.Requisition — an object containing information about the desired space requirements of a widget.
+gtk.Ruler — a base class for horizontal or vertical rulers
+gtk.Scale — a base class for the scale widgets.
+gtk.ScaleButton — A button which pops up a scale. (new in PyGTK 2.12)
+gtk.Scrollbar — a base class for scrollbar widgets.
+gtk.ScrolledWindow — adds scrollbars to its child widget.
+gtk.SelectionData — an object that stores information about a selection
+gtk.Separator — a base class for visual separator widgets.
+gtk.SeparatorMenuItem — a separator used in menus.
+gtk.SeparatorToolItem — a toolbar item that separates groups of other toolbar items (new in PyGTK 2.4)
+gtk.Settings — an object that contains the global settings for the widgets on a gtk.gdk.Screen
+gtk.SizeGroup — an object that groups widgets so they request the same size
+gtk.Socket — a container for widgets from other processes.
+gtk.SpinButton — retrieve an integer or floating-point number from the user.
+gtk.Statusbar — report messages of minor importance to the user.
+gtk.StatusIcon — display an icon in the system tray (new in PyGTK 2.10)
+gtk.Style — an object that hold style information for widgets
+gtk.Table — layout widgets in a two-dimensional array
+gtk.TearoffMenuItem — a menu item used to tear off and reattach its menu.
+gtk.TextAttributes — an object containing the attributes set on some text
+gtk.TextBuffer — stores attributed text for display in a gtk.TextView
+gtk.TextChildAnchor — a location in a textbuffer for placing widgets
+gtk.TextIter — an object pointing at a location in a gtk.TextBuffer
+gtk.TextMark — a position in a textbuffer that is preserved across textbuffer modifications
+gtk.TextTag — an object used to apply attributes to text in a gtk.TextBuffer
+gtk.TextTagTable — A collection of gtk.TextTag objects that can be used together
+gtk.TextView — a widget that displays the contents of a gtk.TextBuffer
+gtk.ToggleAction — an action which can be toggled between two states (new in PyGTK 2.4)
+gtk.ToggleButton — a button that retains its state
+gtk.ToggleToolButton — A gtk.ToolItem containing a toggle button (new in PyGTK 2.4)
+gtk.Toolbar — a bar holding buttons and other widgets.
+gtk.ToolButton — a gtk.ToolItem subclass that displays buttons (new in PyGTK 2.4)
+gtk.ToolItem — the base class of widgets that can be added to gtk.Toolbar (new in PyGTK 2.4)
+gtk.Tooltip — Add tips to your widgets (new in PyGTK 2.12)
+gtk.Tooltips — add tips to your widgets.
+gtk.TreeDragDest — an interface that manages the data transfer for a destination of a gtk.TreeView drag and drop operation
+gtk.TreeDragSource — an interface that manages the source data transfer for a gtk.TreeView drag and drop operation
+gtk.TreeIter — An object that points at a path in a gtk.TreeModel.
+gtk.TreeModel — the tree interface used by gtk.TreeView
+gtk.TreeModelFilter — a gtk.TreeModel which hides parts of an underlying tree (new in PyGTK 2.4)
+gtk.TreeModelSort — a tree model that is a sorted version of a child gtk.TreeModel
+gtk.TreeModelRow — an object representing a row in a gtk.TreeModel
+gtk.TreeModelRowIter — an object for iterating over a set of gtk.TreeModelRow objects.
+gtk.TreeRowReference — an object maintaining a persistent reference to a gtk.TreeModel row (new in PyGTK 2.4)
+gtk.TreeSelection — the selection object for gtk.TreeView
+gtk.TreeSortable — an interface for sorting a gtk.TreeModel
+gtk.TreeStore — a model for tree widgets with columns
+gtk.TreeView — a widget for displaying both trees and lists.
+gtk.TreeViewColumn — a visible column in a gtk.TreeView widget
+gtk.UIManager — construct menus and toolbars from an XML description (new in PyGTK 2.4)
+gtk.VBox — a vertical container box
+gtk.VButtonBox — a container for arranging buttons vertically.
+gtk.VolumeButton — A button which pops up a volume control (new in PyGTK 2.12)
+gtk.VPaned — A container with two panes arranged vertically.
+gtk.VRuler — a vertical ruler.
+gtk.VScale — a vertical slider widget used to select a value from a range.
+gtk.VScrollbar — a vertical scrollbar
+gtk.VSeparator — a vertical separator.
+gtk.Viewport — a widget displaying a portion of a larger widget.
+gtk.Widget — the base class for all PyGTK widgets
+gtk.Window — a top-level window that holds one child widget.
+gtk.WindowGroup — a group of gtk.Window widgets

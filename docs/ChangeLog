@@ -1,0 +1,19 @@
+2008.12.29
+    
+    -   New name for the project, it will now be called GtkRAPAD which stands
+        for GTK Rapid Application Prototyping and Development.  With this
+        change a new repostiory has been created and all of the source files
+        have been updated to relect the name change
+        
+2008.12.27
+
+    -   Created the ChangeLog
+    -   Renamed TGtkMaster to TGtkApplication
+    -   Merged the CommonDialog files with the TGtkApplication object
+    -   Moved the CommonDialog files to their respective attic space
+
+    -   Renamed several of the methods in CommonDialog to more accuratly
+        refect their functionality
+
+    -   Updated the widget_factory to work with the modified TGtkApplication
+

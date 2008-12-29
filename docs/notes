@@ -1,0 +1,27 @@
+in my quest to create a vb clone i was wondering, what will need to happen
+during the project managment so that i can have more than one object with the
+same name globally.  i got to thinking, well VB does this by having obecjts
+belong to other objects.  since Im creating the windows in the global name
+space, how can i make an object 'belong' to a window, and how would i tell
+the difference?
+
+then it came to me, since the gtk library im writing is really to just
+wrap gtk around a simple 'oop' style api, i could simply include the gtk
+window pointer and all of the objects associated with that window as
+children of a new UDT, where the UDT name is the unique name of the
+'window'
+
+type frmMain
+	form as TGtkWindow
+	btnOK as TGtkButton
+
+	
+
+	declare sub btnOK_Click()
+	declare sub btnOK_MouseEnter()
+	declare sub btnOK_MouseLeave()
+end type
+
+sub frmMain.btnOK_Click()
+
+end sub

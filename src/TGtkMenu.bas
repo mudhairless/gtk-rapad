@@ -1,0 +1,20 @@
+#include once "gtkrapad/gtkrapad.bi"
+
+namespace GtkRapad
+
+    constructor TGtkMenu( )
+        id_ = gtk_menu_new()
+    end constructor
+
+    sub TGtkMenu.AddChild( byval _child_ as GtkWidget ptr )
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (id_), _child_)
+        gtk_widget_show( _child_ )
+
+    end sub
+
+    operator TGtkMenu.cast() as GtkWidget ptr
+        return id_
+    end operator
+
+end namespace
