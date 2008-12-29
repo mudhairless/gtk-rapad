@@ -1,7 +1,7 @@
 '
-'   treeview.bas
+'   listview.bas
 '
-'   Testing for the TreeView/ListBox widgets
+'   Testing the far from complete ListView object
 '
 
 #include once "gtkrapad/gtkrapad.bi"

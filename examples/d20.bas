@@ -1,9 +1,9 @@
 
 
 '
-'   radio_example.bas
+'   d20.bas
 '
-'   functional radio buttons, however they are still kind of clumsy.
+'   Nothing important
 '
 
 #include once "gtkrapad/gtkrapad.bi"

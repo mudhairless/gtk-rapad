@@ -1,5 +1,5 @@
 '
-'   example.bas
+'   widget_factory.bas
 '
 '   This is the test application I use to test and debug the library.
 '
