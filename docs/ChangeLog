@@ -1,3 +1,14 @@
+2008.12.31
+
+    -   Update TGtkButton.  This object now contains some code that I will
+        allow us to assign a custom property to the object pointed at by a 
+        given TGTkFoo class.  This is achieved by the g_object_set() method
+        and siblings.  At the moment the applicable use for a Name property so
+        that we can determine which UDT/GTKObject called a given callback
+        function.  At the moment the name property can be changed at will but
+        if its possible it will be set during initialization of a TGtkFoo
+        object and then made Read Only
+
 2008.12.29
     
     -   New name for the project, it will now be called GtkRAPAD which stands

@@ -31,7 +31,9 @@ end namespace
 '   FreeBASIC does not have a logical not operator, so this
 '   will have to do for now.
 '
+
 #define CNOT(x) (iif((x) = 0, 1, 0))
+'#define converttostring(x) std::string(#x)
 
 #ifndef NULL
 #define NULL 0
