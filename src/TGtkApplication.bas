@@ -4,36 +4,26 @@
 namespace GtkRapad
 
     constructor TGtkApplication
-        gtk_init(0, 0)
+        gtk_init( 0, 0 )
     end constructor
 
-
-    constructor TGtkApplication( byval argc as integer ptr, byval argv as byte ptr ptr ptr )
-        gtk_init(argc, argv)
+    constructor TGtkApplication( byval argc as integer pointer, byval argv as byte pointer pointer pointer )
+        gtk_init( argc, argv )
     end constructor
-
-
-    destructor TGtkApplication
-    end destructor
 
 
     sub TGtkApplication.Start( byval quitObj as GtkWidget Pointer )
-
-        'Once gtk_main is called, our program will lose focus (control) until
-        'gtk_main_quit() is called.
-
-        'Hook gtk_main_quit() so our program gains control after we destroy
-        'the main window (pointed to by quitObj).
+        'Once gtk_main() is called our application will enter a loop
+        'which does not end until gtk_main_quit() is invoked, thus we
+        'hook the gtk_main_quit() call to the closing of our "Main"
+        'object.  Then we start the gtk_main() function.
 
         g_signal_connect( GTK_OBJECT( quitObj ), "destroy", G_CALLBACK(@gtk_main_quit()), quitObj )
-
-        'Start the gtk main loop
         gtk_main()
     end sub
 
 
     sub TGtkApplication.Quit()
-        'Forces a gtk_main_quit() if needed.
         gtk_main_quit()
     end sub
 

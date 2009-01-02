@@ -18,9 +18,10 @@ namespace GtkRapad
         public:
             declare constructor()
             declare constructor( byval argc as integer ptr, byval argv as byte ptr ptr ptr )
-            declare destructor()
 
-            declare sub Start( byval quitObj as GtkWidget Pointer )
+            'declare destructor()
+
+            declare sub Start( byval quitObj as GtkWidget pointer )
             declare sub Quit()
 
             declare sub MessageBox( byref title as string = "Message", byref text as string = "" )

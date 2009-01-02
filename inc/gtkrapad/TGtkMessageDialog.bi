@@ -10,22 +10,25 @@ type TGtkMessageDialog
         declare constructor()
         declare destructor()
 
+        declare operator cast() as GtkWidget pointer
+
         declare sub Show()
 
-        declare function ID() as GtkWidget Pointer
-
-        declare sub SetTitle( byref newTitle as string )
-        declare function GetTitle() as string
-
-        declare sub SetText( byref newText as string )
         declare function GetText() as string
+        declare function GetTitle() as string
+        declare function GetName() as string
+
+        '---------------------------------------
+
+        declare sub SetName( byref newName as string )
+        declare sub SetText( byref newText as string )
+        declare sub SetTitle( byref newTitle as string )
 
     private:
-        id_ as GtkWidget Pointer    'pointer to this object
-
-        title_ as string            'title of the window
+        id_ as GtkWidget pointer    'pointer to this object
         text_ as string             'header of the window
-
+        title_ as string            'title of the window
+        objname_ as string
 end type
 
 

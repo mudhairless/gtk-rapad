@@ -6,11 +6,9 @@ namespace GtkRapad
         id_ = gtk_menu_new()
     end constructor
 
-    sub TGtkMenu.AddChild( byval _child_ as GtkWidget ptr )
-
-        gtk_menu_shell_append (GTK_MENU_SHELL (id_), _child_)
-        gtk_widget_show( _child_ )
-
+    sub TGtkMenu.AddChild( byval pGtkChild as GtkWidget ptr )
+        gtk_menu_shell_append (GTK_MENU_SHELL( id_ ), pGtkChild)
+        gtk_widget_show( pGtkChild )
     end sub
 
     operator TGtkMenu.cast() as GtkWidget ptr

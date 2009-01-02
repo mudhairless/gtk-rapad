@@ -1,17 +1,33 @@
 namespace GtkRapad
 
-type TGtkMenuBar
-    public:
-    declare constructor( )
+    type TGtkMenuBar
+        public:
+            declare constructor( )
 
-    declare sub AddMenu( byref name_ as string, byval _widget_ as GtkWidget ptr )
+            declare operator cast() as GtkWidget pointer
 
-    declare sub SetParent( byval _widget_ as GtkWidget ptr )
+            declare sub Associate( byval p as GtkWidget pointer )
+            declare sub Destroy()
+            declare sub Hide()
+            declare sub HideAll()
+            declare sub Show()
+            declare sub ShowAll()
 
-    private:
-    id_ as GtkWidget ptr
-    parent_ as GtkWidget ptr
+            declare function GetParent() as GtkWidget pointer
+            declare function GetName() as string
 
-end type
+            declare sub AddMenu( byref name_ as string, byval _widget_ as GtkWidget pointer )
+
+            '---------------------------------------
+
+            declare sub SetName( byref newName as string )
+            declare sub SetParent( byval p as GtkWidget pointer )
+
+        private:
+            id_ as GtkWidget pointer
+            parent_ as GtkWidget pointer    'pointer to our parent object
+            gtype_ as string                'GtkWidget type
+            objname_ as string
+    end type
 
 end namespace

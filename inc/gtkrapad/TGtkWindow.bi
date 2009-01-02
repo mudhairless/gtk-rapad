@@ -32,54 +32,52 @@ namespace GtkRapad
             declare constructor()
 
             declare operator cast() as GtkWidget pointer
-            declare sub Associate( byval p as GtkWidget pointer )
-            declare sub Show()
-            declare sub Hide()
-            declare sub ShowAll()
-            declare sub HideAll()
-            declare sub Destroy()
-            declare sub SetParent( byval p as GtkWidget Pointer )
-            declare function GetParent() as GtkWidget Pointer
-
-            '---------------------------------------
-
-            declare sub SetSize( byval width as integer, byval height as integer )
-
-            declare sub SetTitle( byref newTitle as string )
-            declare function GetTitle() as string
 
             declare function ActivateFocus() as gboolean
-
-            declare sub SetPosition( byref position as GtkWindowPosition )
-            declare sub SetFocus( byval wid as GtkWidget Pointer )
-
-            declare sub SetFullScreen( byval b as gboolean )
-            declare sub SetKeepAbove( byval b as gboolean )
-            declare sub SetMaximized( byval b as gboolean )
-            declare sub SetMinimized( byval b as gboolean )
-            declare sub SetResizable( byval b as gboolean )
-            declare sub SetSticky( byval b as gboolean )
+            declare sub Associate( byval p as GtkWidget pointer )
+            declare sub Destroy()
+            declare sub Hide()
+            declare sub HideAll()
+            declare sub Show()
+            declare sub ShowAll()
 
             declare function GetFullScreen() as gboolean
             declare function GetKeepAbove() as gboolean
             declare function GetMaximized() as gboolean
             declare function GetMinimized() as gboolean
+            declare function GetName() as string
+            declare function GetParent() as GtkWidget pointer
             declare function GetResizable() as gboolean
             declare function GetSticky() as gboolean
+            declare function GetTitle() as string
+
+            '---------------------------------------
+
+            declare sub SetFocus( byval wid as GtkWidget pointer )
+            declare sub SetFullScreen( byval b as gboolean )
+            declare sub SetKeepAbove( byval b as gboolean )
+            declare sub SetMaximized( byval b as gboolean )
+            declare sub SetMinimized( byval b as gboolean )
+            declare sub SetName( byref newName as string )
+            declare sub SetParent( byval p as GtkWidget pointer )
+            declare sub SetPosition( byref position as GtkWindowPosition )
+            declare sub SetResizable( byval b as gboolean )
+            declare sub SetSize( byval width as integer, byval height as integer )
+            declare sub SetSticky( byval b as gboolean )
+            declare sub SetTitle( byref newTitle as string )
 
         private:
-            id_ as GtkWidget Pointer        'pointer to this object
-            parent_ as GtkWidget pointer    'pointer to our parent object
-            gtype_ as string                'GtkWidget type
-
-            title_ as string                'title of the window
-
             fullscreen_ as gboolean
+            gtype_ as string                'GtkWidget type
+            id_ as GtkWidget pointer        'pointer to this object
             keepabove_ as gboolean
             maximize_ as gboolean
             minimized_ as gboolean
+            objname_ as string
+            parent_ as GtkWidget pointer    'pointer to our parent object
             resizable_ as gboolean
             sticky_ as gboolean
+            title_ as string                'title of the window
     end type
 
 end namespace
