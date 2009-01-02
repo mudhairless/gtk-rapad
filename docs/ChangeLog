@@ -1,3 +1,19 @@
+2009.01.02
+
+    -   Created svn-cleanup.sh which will automatically remove any .svn
+        folders in the project tree.  Occasionally RapidSVN will lock the
+        project, but will not allow me to unlock it no matter what I do.  The
+        only solution I found was to delete all of the svn information,
+        rename the current source, download the existing repo, merge the
+        current source, and then commit the changes.  Its a pain in my ass.
+        
+    -   Corrected some typing errors in the ChangeLog
+    
+    -   Updated many of the header files so that they contain some missing
+        declarations.  Most of the matching source files need code to match.
+        This is part of the propagation of the new "Name" property and for
+        consistency
+    
 2008.12.31
 
     -   Update TGtkButton.  This object now contains some code that I will
@@ -11,9 +27,9 @@
 
 2008.12.29
     
-    -   New name for the project, it will now be called GtkRAPAD which stands
+    -   New name for the project, it will now be called GtkRapad which stands
         for GTK Rapid Application Prototyping and Development.  With this
-        change a new repostiory has been created and all of the source files
+        change a new repository has been created and all of the source files
         have been updated to relect the name change
         
 2008.12.27
@@ -23,8 +39,8 @@
     -   Merged the CommonDialog files with the TGtkApplication object
     -   Moved the CommonDialog files to their respective attic space
 
-    -   Renamed several of the methods in CommonDialog to more accuratly
-        refect their functionality
+    -   Renamed several of the methods in CommonDialog to more accurately
+        reflect their functionality
 
     -   Updated the widget_factory to work with the modified TGtkApplication
 
