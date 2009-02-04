@@ -8,7 +8,7 @@ namespace GtkRapad
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
         objname_ = str( (gtype_ & "-" & id_) )
 
-        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
@@ -18,7 +18,7 @@ namespace GtkRapad
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
         objname_ = str( (gtype_ & "-" & id_) )
 
-        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 

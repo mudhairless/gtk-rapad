@@ -10,7 +10,7 @@ type TGtkFormSpace
 end type
 
 dim shared GtkApp                   as TGtkApplication
-dim shared GtkFormSpace(1 To 64)    as TGtkFormSpace
+dim shared GtkFormSpace(1 to 64)    as TGtkFormSpace
 
 dim shared frmMain                  as TGtkWindow
 
@@ -41,48 +41,41 @@ Sub tbToolbar_Button2_OnClick( ByVal Obj As GtkObject Pointer, ByVal user_data A
     Print "Event tbToolbar_Button2_OnClick() Raised"
 End Sub
 
-Function FindFreeGtkFormSpace() As ubyte
-    Dim I As uByte
+function fx() as integer
+    dim i as integer
 
-    For I = 1 to 64
-        If ( GtkFormSpace( I ).Active = 0 ) Then
-            Return I
-        End If
-    Next I
+    for i = 1 to 64
+        if GtkFormSpace(i).Active = 0 then return i
+    next i
+end function
 
-    'zero is returned if there are no more form spaces
-    Return 0
-End Function
+sub FormDestroy cdecl( byval objp as any pointer )
+    dim f as TGtkWindow
+    dim x as integer
 
-'sub FormDestroy( obj as gtkwidget pointer )
-sub FormDestroy cdecl( byval obj as any pointer )
-    'dim i as ubyte
-    dim f as tgtkwindow
+    f.associate( objp )
 
-    f.associate( obj )
-
-    print "FormDestroy() Called on " & f.getname()
-
-    gtk_widget_destroy( obj )
+    for x = 1 to 64
+        if GtkFormSpace(x).Form.GetName() = f.GetName() then
+            'erase GtkFormSpace(x)
+            exit for
+        end if
+    next x
 end sub
 
 Sub FromCreate( Title as String )
-    Dim I as uByte
-    Dim F As TGtkWindow
+    dim x as integer
 
-    I = FindFreeGtkFormSpace()
-    If ( I = 0 ) Then
-        Return
-    End If
+    x = fx()
 
-    with GtkFormSpace( I )
+    with GtkFormSpace(x)
+        .Active = 1
+
         .Form.SetDestroyCallback( @FormDestroy() )
-        .Form.SetName( Title + str( I ) )
+        .Form.SetName( Title + str( x ) )
         .Form.SetTitle( .Form.GetName() )
         .Form.Show()
     end with
-
-    GtkFormSpace(I).Active = 1
 End Sub
 
 Sub Main()

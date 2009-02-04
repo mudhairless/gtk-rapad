@@ -15,7 +15,7 @@ namespace GtkRapad
         gtk_widget_set_size_request ( GTK_WIDGET( id_ ), 100, 100 )
         'gtk_widget_set_uposition( id_, 200, 100 )
 
-        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
 
         g_signal_connect( GTK_OBJECT( id_ ), "destroy", G_CALLBACK(@gtk_widget_destroy()), id_ )
