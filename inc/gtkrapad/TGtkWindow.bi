@@ -53,6 +53,7 @@ namespace GtkRapad
 
             '---------------------------------------
 
+            declare sub SetDestroyCallback( byval aMethod as gtkGenericCallback )
             declare sub SetFocus( byval wid as GtkWidget pointer )
             declare sub SetFullScreen( byval b as gboolean )
             declare sub SetKeepAbove( byval b as gboolean )

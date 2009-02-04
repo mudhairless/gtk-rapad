@@ -6,12 +6,20 @@ namespace GtkRapad
         id_ = gtk_radio_button_new_with_mnemonic( 0, "")
         gtype_ = GetGtkWidgetType( id_ )
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
+        objname_ = str( (gtype_ & "-" & id_) )
+
+        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     constructor TGtkRadioButton( byref label as string )
         id_ = gtk_radio_button_new_with_mnemonic( 0, label)
         gtype_ = GetGtkWidgetType( id_ )
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
+        objname_ = str( (gtype_ & "-" & id_) )
+
+        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     operator TGtkRadioButton.cast() as GtkWidget Pointer
@@ -48,6 +56,21 @@ namespace GtkRapad
     sub TGtkRadioButton.Destroy()
         gtk_widget_destroy( GTK_WIDGET( id_ ) )
     end sub
+
+    sub TGtkRadioButton.SetName( byref newName as string )
+        objname_ = newName
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+    end sub
+
+    function TGtkRadioButton.GetName() as string
+        dim p as string pointer
+        dim s as string
+
+        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
+        s = *p
+
+        return s
+    end function
 
     sub TGtkRadioButton.SetParent( byval p as GtkWidget Pointer )
         parent_ = p

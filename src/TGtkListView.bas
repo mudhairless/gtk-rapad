@@ -6,6 +6,10 @@ namespace GtkRapad
         model_ = gtk_list_store_new(N_COL, G_TYPE_STRING)
         id_ = gtk_tree_view_new_with_model( model_ )
         gtype_ = GetGtkWidgetType( id_ )
+        objname_ = str( (gtype_ & "-" & id_) )
+
+        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     operator TGtkListView.cast() as GtkWidget Pointer
@@ -56,6 +60,21 @@ namespace GtkRapad
     sub TGtkListView.Destroy()
         gtk_widget_destroy( GTK_WIDGET( id_ ) )
     end sub
+
+    sub TGtkListView.SetName( byref newName as string )
+        objname_ = newName
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+    end sub
+
+    function TGtkListView.GetName() as string
+        dim p as string pointer
+        dim s as string
+
+        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
+        s = *p
+
+        return s
+    end function
 
     sub TGtkListView.SetParent( byval p as GtkWidget Pointer )
         parent_ = p

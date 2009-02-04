@@ -25,6 +25,7 @@ namespace GtkRapad
             id_ as GtkWidget Pointer        'pointer to this object
             parent_ as GtkWidget pointer    'pointer to our parent object
             gtype_ as string                'GtkWidget type
+            objname_ as string              'object name
     end type
 
 end namespace

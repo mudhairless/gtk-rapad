@@ -8,12 +8,11 @@ namespace GtkRapad
     end constructor
 
     destructor TGtkMessageDialog
-
     end destructor
 
     sub TGtkMessageDialog.Show()
-        gtk_dialog_run(GTK_DIALOG(id_))
-        gtk_widget_destroy(GTK_WIDGET(id_))
+        gtk_dialog_run(GTK_DIALOG( id_ ))
+        gtk_widget_destroy(GTK_WIDGET( id_ ))
     end sub
 
     sub TGtkMessageDialog.SetTitle( byref nwTitle as string )

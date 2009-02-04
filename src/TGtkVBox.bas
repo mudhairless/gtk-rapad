@@ -5,11 +5,19 @@ namespace GtkRapad
     constructor TGtkVBox( )
         id_ = gtk_vbox_new( 0, 0 )
         gtype_ = GetGtkWidgetType( id_ )
+        objname_ = str( (gtype_ & "-" & id_) )
+
+        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     constructor TGtkVBox( byval homog as gboolean, byval spacing_ as integer )
         id_ = gtk_vbox_new( homog, spacing_ )
         gtype_ = GetGtkWidgetType( id_ )
+        objname_ = str( (gtype_ & "-" & id_) )
+
+        g_object_set( G_OBJECT( id_ ), "rapad.name" )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     operator TGtkVBox.cast() as GtkWidget Pointer
@@ -46,6 +54,21 @@ namespace GtkRapad
     sub TGtkVBox.Destroy()
         gtk_widget_destroy( GTK_WIDGET( id_ ) )
     end sub
+
+    sub TGtkVBox.SetName( byref newName as string )
+        objname_ = newName
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+    end sub
+
+    function TGtkVBox.GetName() as string
+        dim p as string pointer
+        dim s as string
+
+        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
+        s = *p
+
+        return s
+    end function
 
     sub TGtkVBox.SetParent( byval p as GtkWidget Pointer )
         parent_ = p
