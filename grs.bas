@@ -1,4 +1,6 @@
-
+'
+'   Concept testing
+'
 
 #include once "gtkrapad/gtkrapad.bi"
 
@@ -19,29 +21,31 @@ dim shared hPanel                   as TGtkHBox
 dim shared tbToolbar_Button1        as TGtkButton
 dim shared tbToolbar_Button2        as TGtkButton
 
-Declare Sub InitApp()
+declare sub InitApp()
 
-Declare Sub FromCreate( Title as String )
-Declare Sub FromDestroy( byval obj as GtkWidget pointer )
+declare sub FromCreate cdecl ( byval title as string )
+declare sub FromDestroy cdecl ( byval obj as any pointer )
 
-Declare Sub tbToolbar_Button1_OnClick( ByVal Obj As GtkObject Pointer, ByVal user_data As GPointer )
-Declare Sub tbToolbar_Button2_OnClick( ByVal Obj As GtkObject Pointer, ByVal user_data As GPointer )
+declare sub ButtonCreate()
 
-Declare Function FindFreeGtkFormSpace() As uByte
+declare sub tbToolbar_Button1_OnClick cdecl ( byval objp as any pointer )
+declare sub tbToolbar_Button2_OnClick cdecl ( byval objp as any pointer )
+
+declare function fx() as ubyte
 
 
 ' ----- '
 
 
-Sub tbToolbar_Button1_OnClick( ByVal Obj As GtkObject Pointer, ByVal user_data As GPointer )
+sub tbToolbar_Button1_OnClick cdecl ( byval objp as any pointer )
     FromCreate( "Form" )
-End Sub
+end sub
 
-Sub tbToolbar_Button2_OnClick( ByVal Obj As GtkObject Pointer, ByVal user_data As GPointer )
+sub tbToolbar_Button2_OnClick cdecl ( byval objp as any pointer )
     Print "Event tbToolbar_Button2_OnClick() Raised"
-End Sub
+end sub
 
-function fx() as integer
+function fx() as ubyte
     dim i as integer
 
     for i = 1 to 64
@@ -49,22 +53,23 @@ function fx() as integer
     next i
 end function
 
-sub FormDestroy cdecl( byval objp as any pointer )
+sub FormDestroy cdecl ( byval objp as any pointer )
     dim f as TGtkWindow
+    dim b as TGtkFormSpace
     dim x as integer
 
     f.associate( objp )
 
     for x = 1 to 64
-        if GtkFormSpace(x).Form.GetName() = f.GetName() then
-            'erase GtkFormSpace(x)
-            exit for
+        if lcase(GtkFormSpace(x).Form.GetName()) = lcase(f.GetName()) then
+            GtkFormSpace(x) = b 're-initialize (erase) this space
+            return
         end if
     next x
 end sub
 
-Sub FromCreate( Title as String )
-    dim x as integer
+sub FromCreate cdecl ( byval Title as string )
+    dim x as ubyte
 
     x = fx()
 
@@ -76,33 +81,33 @@ Sub FromCreate( Title as String )
         .Form.SetTitle( .Form.GetName() )
         .Form.Show()
     end with
-End Sub
+end sub
 
-Sub Main()
+sub Main()
 
     with frmMain
         .SetTitle( "Scribe" )
-        .SetSize( 480, 20 )
+        .SetSize( 480, 10 )
         .SetName( "frmMain" )
     end with
 
     hPanel.SetParent( frmMain )
 
     with tbToolbar_Button1
-        .SetCaption( "Form" )
+        .SetCaption( "Create Form" )
         .SetMouseClick( @tbToolbar_Button1_OnClick() )
         .SetParent( hPanel )
     end with
 
     with tbToolbar_Button2
-        .SetCaption( "Button" )
+        .SetCaption( "(future) Create Button" )
         .SetMouseClick( @tbToolbar_Button2_OnClick() )
         .SetParent( hPanel )
     end with
 
     frmMain.ShowAll()
     GtkApp.Start( frmMain )
-End Sub
+end sub
 
 
 Main()

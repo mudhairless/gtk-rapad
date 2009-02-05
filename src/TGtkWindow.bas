@@ -9,10 +9,12 @@ namespace GtkRapad
         objname_ = str( (gtype_ & "-" & id_) )
 
         gtk_window_set_title( GTK_WINDOW( id_ ), "window" )
-        gtk_window_set_default_size( GTK_WINDOW( id_ ), 480, 240 )
         gtk_window_set_destroy_with_parent( GTK_WINDOW( id_ ), true)
 
-        gtk_widget_set_size_request ( GTK_WIDGET( id_ ), 100, 100 )
+        gtk_window_resize( GTK_WINDOW( id_ ), 320, 240 )
+
+        'gtk_window_set_default_size( GTK_WINDOW( id_ ), 480, 240 )
+        'gtk_widget_set_size_request ( GTK_WIDGET( id_ ), 100, 100 )
         'gtk_widget_set_uposition( id_, 200, 100 )
 
 
@@ -179,7 +181,8 @@ namespace GtkRapad
     end function
 
     sub TGtkWindow.SetSize( byval width_ as integer, byval height_ as integer )
-        gtk_window_set_default_size( GTK_WINDOW( id_ ), width_, height_ )
+        'gtk_window_set_default_size( GTK_WINDOW( id_ ), width_, height_ )
+        gtk_window_resize( GTK_WINDOW( id_ ), width_, height_ )
     end sub
 
 end namespace
