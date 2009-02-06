@@ -1,11 +1,19 @@
 2009.02.05
 
+    -   Created ToDo list to try and keep myself on track
+    
     -   Created a concept file to test some new features I am planning
 
     -   Update the TGtkWindow object to use gtk_window_resize() to set
         the initial size of a window, and for the SetSize() function.
         I was using some other size functions in error and the results were
         less than desirable
+
+    -   Created TGdkScreen which just has some simple functions to get
+        the size information of the screen, but will be expanded on later
+
+    -   Added SetDestroyCallback() to the TGtkWindow object which allows us
+        to change the function called when the window is destroyed   
 
 2009.02.03
 

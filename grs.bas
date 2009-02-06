@@ -21,12 +21,16 @@ dim shared hPanel                   as TGtkHBox
 dim shared tbToolbar_Button1        as TGtkButton
 dim shared tbToolbar_Button2        as TGtkButton
 
-declare sub InitApp()
+dim shared GScreen                  as TGdkScreen
+
+
+' ----- '
+
+
+declare sub Main()
 
 declare sub FromCreate cdecl ( byval title as string )
 declare sub FromDestroy cdecl ( byval obj as any pointer )
-
-declare sub ButtonCreate()
 
 declare sub tbToolbar_Button1_OnClick cdecl ( byval objp as any pointer )
 declare sub tbToolbar_Button2_OnClick cdecl ( byval objp as any pointer )
@@ -86,9 +90,12 @@ end sub
 sub Main()
 
     with frmMain
-        .SetTitle( "Scribe" )
-        .SetSize( 480, 10 )
+        .SetKeepAbove( true )
         .SetName( "frmMain" )
+        .SetTitle( "Scribe" )
+
+        .Move( 0, 0 )
+        .SetSize( GScreen.GetWidth(), 32 )
     end with
 
     hPanel.SetParent( frmMain )

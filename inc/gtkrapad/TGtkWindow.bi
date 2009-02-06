@@ -38,6 +38,7 @@ namespace GtkRapad
             declare sub Destroy()
             declare sub Hide()
             declare sub HideAll()
+            declare sub Move( byval x_ as integer, byval y_ as integer )
             declare sub Show()
             declare sub ShowAll()
 
@@ -67,6 +68,17 @@ namespace GtkRapad
             declare sub SetSticky( byval b as gboolean )
             declare sub SetTitle( byref newTitle as string )
 
+            declare sub SetX( byref x_ as integer )
+            declare sub SetY( byref y_ as integer )
+            declare sub SetHeight( byref h_ as integer )
+            declare sub SetWidth( byref w_ as integer )
+
+            declare function GetX() as integer
+            declare function GetY() as integer
+            declare function GetHeight() as integer
+            declare function GetWidth() as integer
+
+
         private:
             fullscreen_ as gboolean
             gtype_ as string                'GtkWidget type
@@ -76,7 +88,11 @@ namespace GtkRapad
             minimized_ as gboolean
             objname_ as string
             parent_ as GtkWidget pointer    'pointer to our parent object
+            posx_ as integer                'x position
+            posy_ as integer                'y position
             resizable_ as gboolean
+            sizeh_ as integer
+            sizew_ as integer
             sticky_ as gboolean
             title_ as string                'title of the window
     end type

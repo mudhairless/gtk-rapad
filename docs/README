@@ -1,7 +1,0 @@
-
-
-Move an example file into the project root directory and issue this command:
-
-    ./bin/compile file.bas
-    
-This will invoke the compiler using the appropriate flags.

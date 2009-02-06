@@ -1,0 +1,21 @@
+
+widgets i need
+
+    with these items I could develop a very basic concept app similar to
+    the vb ide
+
+    * list widget (list, column, tree)
+    * text edit widget (possibly scintilla, GtkTextBuffer/View)
+    * text display widget (rtf, html, other?)
+    * resizeable container (think vb's resize reticle)
+
+work in progress
+
+    * TGtkWindow:
+    
+        Set/GetX()
+        Set/GetY()
+        Set/GetHeight()
+        Set/GetWidth()
+        
+    

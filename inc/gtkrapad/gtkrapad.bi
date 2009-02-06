@@ -64,4 +64,6 @@ end namespace
 '#include once "gtkrapad/TGtkListViewColumn.bi"
 '#include once "gtkrapad/TGtkTreeView.bi"
 
+#include once "gtkrapad/TGdkScreen.bi"
+
 #inclib "gtkrapad"
