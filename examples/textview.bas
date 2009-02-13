@@ -18,13 +18,12 @@ dim shared txtTextView as TGtkTextView
 dim shared btnOk as TGtkButton
 
 'Prototyping each function of our application
-declare sub Main()
 
+declare sub Main()
 declare sub btnOk_Click cdecl ( byval __ as any pointer )
 
-'------------+------------+------------+------------+------------+----------'
-'   End the General Declarations ( if you speak Visual Basic )
-'------------+------------+------------+------------+------------+----------'
+' ---------------------
+
 
 sub Main()
 
@@ -47,10 +46,15 @@ sub Main()
     GtkApp.Start( frmMain )
 end sub
 
+
 sub btnOk_Click cdecl( byval __ as any pointer )
+    dim x as string
 
-    print txtTextView.GetText()
+    x = GtkApp.SelectFont()
 
+    txtTextView.Test( x )
 end sub
+
+
 
 Main()
