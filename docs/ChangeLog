@@ -1,7 +1,12 @@
+2009.02.12
+
+    -   Started work on a simple TextView widget for the most basic text
+        editing abilities and created a simple demo for it
+
 2009.02.05
 
     -   Created ToDo list to try and keep myself on track
-    
+
     -   Created a concept file to test some new features I am planning
 
     -   Update the TGtkWindow object to use gtk_window_resize() to set
@@ -13,7 +18,7 @@
         the size information of the screen, but will be expanded on later
 
     -   Added SetDestroyCallback() to the TGtkWindow object which allows us
-        to change the function called when the window is destroyed   
+        to change the function called when the window is destroyed
 
 2009.02.03
 

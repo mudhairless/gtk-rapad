@@ -12,10 +12,12 @@ widgets i need
 work in progress
 
     * TGtkWindow:
-    
-        Set/GetX()
-        Set/GetY()
-        Set/GetHeight()
-        Set/GetWidth()
-        
-    
+
+        * Set/GetX()
+        * Set/GetY()
+        * Set/GetHeight()
+        * Set/GetWidth()
+
+    * TGtkTextView:
+
+        * This widget should have a set of scrollbars by default

@@ -30,7 +30,6 @@ namespace GtkRapad
 
         public:
             declare constructor()
-
             declare operator cast() as GtkWidget pointer
 
             declare function ActivateFocus() as gboolean

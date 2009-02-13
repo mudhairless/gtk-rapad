@@ -58,6 +58,7 @@ end namespace
 #include once "gtkrapad/TGtkMenuItem.bi"
 #include once "gtkrapad/TGtkCheckBox.bi"
 #include once "gtkrapad/TGtkRadioButton.bi"
+#include once "gtkrapad/TGtkTextView.bi"
 
 #include once "gtkrapad/TGtkListView.bi"
 '#include once "gtkrapad/TGtkListStore.bi"
