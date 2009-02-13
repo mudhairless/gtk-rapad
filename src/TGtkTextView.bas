@@ -1,4 +1,14 @@
-
+'
+'   TGtkTextView.bas
+'
+'   Code for a simple text display widget.
+'
+'   Formatted text will be able to be added in the form of flags that
+'   can be toggled on or off.
+'
+'   If a flag, such as bold or underline, is toggled on when text is
+'   inserted that it will be applied with that formatting
+'
 
 
 #include once "gtkrapad/gtkrapad.bi"
@@ -9,6 +19,9 @@ namespace GtkRapad
         texttagtable_ = gtk_text_tag_table_new()
         textbuffer_ = gtk_text_buffer_new( texttagtable_ )
         id_ = gtk_text_view_new_with_buffer( textbuffer_ )
+        scrollwindow_ = gtk_scrolled_window_new( null, null )
+
+        gtk_container_add( GTK_CONTAINER( scrollwindow_ ), GTK_WIDGET(id_) )
     end constructor
 
     operator TGtkTextView.cast() as GtkWidget Pointer
@@ -63,7 +76,7 @@ namespace GtkRapad
 
     sub TGtkTextView.SetParent( byval p as GtkWidget Pointer )
         parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
+        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET( scrollwindow_ ) )
     end sub
 
     function TGtkTextView.GetParent() as GtkWidget Pointer
@@ -81,5 +94,28 @@ namespace GtkRapad
 
         return *(gtk_text_buffer_get_text( textbuffer_, @text_s, @text_e, false ))
     end function
+
+
+    sub TGtkTextView.Test( byval font_ as string )
+
+        '(GtkTextBuffer *buffer,
+         'GtkTextTag *tag,
+         'const GtkTextIter *start,
+         'const GtkTextIter *end);
+
+        'PANGO_STYLE_NORMAL,
+        'PANGO_STYLE_OBLIQUE,
+        'PANGO_STYLE_ITALIC
+
+        'dim as GtkTextTag pointer tt
+        'dim as GtkTextIter text_s, text_e
+
+        'gtk_text_buffer_get_bounds( textbuffer_, @text_s, @text_e)
+
+        'tt = gtk_text_buffer_create_tag( textbuffer_, null, "font", font_ )
+
+        'gtk_text_buffer_apply_tag( textbuffer_, tt, @text_s, @text_e )
+    end sub
+
 
 end namespace

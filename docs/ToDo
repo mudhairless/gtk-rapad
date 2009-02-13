@@ -20,4 +20,4 @@ work in progress
 
     * TGtkTextView:
 
-        * This widget should have a set of scrollbars by default
+        * this widget will need to support style and formatting
