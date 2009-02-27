@@ -1,9 +1,14 @@
 2009.02.26
 
+    -   The issue with SetFont has been resolved.  The problem was that
+        my code was changing only text in the buffer, and not the text
+        of the widget.  The trick was to use gtk_widget_modify_font()
+
     -   The TGtkTextView object now has a SetFont() method that will
         change the font of the entire buffer.  However, there is a flaw
         where new text inserted at the end of the TextView does not have
         the same font
+
 
 2009.02.12
 

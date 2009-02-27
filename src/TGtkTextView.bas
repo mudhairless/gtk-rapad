@@ -105,15 +105,23 @@ namespace GtkRapad
     end function
 
 
+    'sub TGtkTextView.SetFont( byval font_ as string )
+
+        ''This function will change the font of all the text in the buffer
+        ''wasnt setting the font of the actual widget.
+
+        'dim as GtkTextTag pointer ntt
+        'dim as GtkTextIter text_s, text_e
+
+        'gtk_text_buffer_get_bounds( textbuffer_, @text_s, @text_e)
+
+        'ntt = gtk_text_buffer_create_tag( textbuffer_, null, "font", @font_, null )
+
+        'gtk_text_buffer_apply_tag( textbuffer_, ntt, @text_s, @text_e )
+    'end sub
+
     sub TGtkTextView.SetFont( byval font_ as string )
-        dim as GtkTextTag pointer ntt
-        dim as GtkTextIter text_s, text_e
-
-        gtk_text_buffer_get_bounds( textbuffer_, @text_s, @text_e)
-
-        ntt = gtk_text_buffer_create_tag( textbuffer_, null, "font", @font_, null )
-
-        gtk_text_buffer_apply_tag( textbuffer_, ntt, @text_s, @text_e )
+        gtk_widget_modify_font( GTK_WIDGET( id_ ), pango_font_description_from_string( font_ ) )
     end sub
 
 end namespace
