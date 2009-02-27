@@ -174,7 +174,13 @@ namespace GtkRapad
 
     end function
 
+    sub TGtkApplication.SetName( byref nname_ as string )
+        appname_ = nname_
+    end sub
 
+    function TGtkApplication.GetName() as string
+        return appname_
+    end function
 
     'Global Functions
 

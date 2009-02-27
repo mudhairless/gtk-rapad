@@ -41,9 +41,11 @@ declare sub mnuMainFileExit_Click cdecl( byval __ as any pointer)
 
 sub Main()
 
+    GtkApp.SetName( "FreeED" )
+
     frmMain.SetKeepAbove( false )
     frmMain.SetSize( 400, 100 )
-    frmMain.SetTitle( "edit :: []")
+    frmMain.SetTitle( GtkApp.GetName() & " :: []")
 
     mnuMainFileNew.SetLabel( "_New" )
     mnuMainFileOpen.SetLabel( "_Open ..." )
@@ -68,7 +70,7 @@ sub Main()
     mnuMenuBar.AddMenu( "_File", mnuMainFile )
 
     txtTextView.SetParent( vPanel )
-    txtTextView.SetText("Please type something here...")
+    txtTextView.SetText("")
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
@@ -96,7 +98,7 @@ end sub
 
 sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
     G_FILENAME = GtkApp.FileOpen()
-    frmMain.SetTitle( "edit :: [" & G_FILENAME & "]" )
+    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
 end sub
 
 sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
