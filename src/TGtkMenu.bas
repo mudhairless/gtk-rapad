@@ -5,12 +5,14 @@ namespace GtkRapad
     constructor TGtkMenu( )
         id_ = gtk_menu_new()
         objname_ = str( (gtype_ & "-" & id_) )
-
-
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
-    sub TGtkMenu.AddChild( byval pGtkChild as GtkWidget ptr )
+    operator TGtkMenu.cast() as GtkWidget Pointer
+        return id_
+    end operator
+
+    sub TGtkMenu.AddChild( byval pGtkChild as GtkWidget pointer )
         gtk_menu_shell_append (GTK_MENU_SHELL( id_ ), pGtkChild)
         gtk_widget_show( pGtkChild )
     end sub
@@ -29,9 +31,5 @@ namespace GtkRapad
 
         return s
     end function
-
-    operator TGtkMenu.cast() as GtkWidget ptr
-        return id_
-    end operator
 
 end namespace

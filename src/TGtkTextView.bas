@@ -121,7 +121,9 @@ namespace GtkRapad
     'end sub
 
     sub TGtkTextView.SetFont( byval font_ as string )
-        gtk_widget_modify_font( GTK_WIDGET( id_ ), pango_font_description_from_string( font_ ) )
+        if (not (font_ = "" )) then
+            gtk_widget_modify_font( GTK_WIDGET( id_ ), pango_font_description_from_string( font_ ) )
+        end if
     end sub
 
 end namespace

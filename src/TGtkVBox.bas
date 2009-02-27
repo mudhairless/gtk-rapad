@@ -6,8 +6,6 @@ namespace GtkRapad
         id_ = gtk_vbox_new( 0, 0 )
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
-
-
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
@@ -15,8 +13,6 @@ namespace GtkRapad
         id_ = gtk_vbox_new( homog, spacing_ )
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
-
-
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 

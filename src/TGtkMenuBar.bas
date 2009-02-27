@@ -5,13 +5,15 @@ namespace GtkRapad
     constructor TGtkMenuBar( )
         id_ = gtk_menu_bar_new()
         objname_ = str( (gtype_ & "-" & id_) )
-
-
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
+    operator TGtkMenuBar.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     sub TGtkMenuBar.AddMenu( byref name_ as string, byval _widget_ as GtkWidget ptr )
-        var _item_ = gtk_menu_item_new_with_mnemonic(name_)
+        var _item_ = gtk_menu_item_new_with_mnemonic( name_ )
 
         gtk_widget_show (_item_)
         gtk_menu_item_set_submenu (GTK_MENU_ITEM (_item_), _widget_)
