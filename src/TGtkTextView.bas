@@ -15,13 +15,22 @@
 
 namespace GtkRapad
 
+    'function TGtkTextView_CallbackTest cdecl() as GtkGenericCallback
+    '    print "TGtkTextView_CallbackTest cdecl()"
+    'end function
+
     constructor TGtkTextView
         texttagtable_ = gtk_text_tag_table_new()
         textbuffer_ = gtk_text_buffer_new( texttagtable_ )
         id_ = gtk_text_view_new_with_buffer( textbuffer_ )
         scrollwindow_ = gtk_scrolled_window_new( null, null )
 
-        gtk_container_add( GTK_CONTAINER( scrollwindow_ ), GTK_WIDGET(id_) )
+        gtk_container_add( GTK_CONTAINER( scrollwindow_ ), GTK_WIDGET( id_ ) )
+
+        'we're going to connect to this signal and see if we make the
+        'text view change the font on text as its inserted.
+
+        'g_signal_connect( GTK_OBJECT( id_ ), "insert-at-cursor", G_CALLBACK( TGtkTextView_CallbackTest ), null )
     end constructor
 
     operator TGtkTextView.cast() as GtkWidget Pointer
@@ -96,26 +105,15 @@ namespace GtkRapad
     end function
 
 
-    sub TGtkTextView.Test( byval font_ as string )
+    sub TGtkTextView.SetFont( byval font_ as string )
+        dim as GtkTextTag pointer ntt
+        dim as GtkTextIter text_s, text_e
 
-        '(GtkTextBuffer *buffer,
-         'GtkTextTag *tag,
-         'const GtkTextIter *start,
-         'const GtkTextIter *end);
+        gtk_text_buffer_get_bounds( textbuffer_, @text_s, @text_e)
 
-        'PANGO_STYLE_NORMAL,
-        'PANGO_STYLE_OBLIQUE,
-        'PANGO_STYLE_ITALIC
+        ntt = gtk_text_buffer_create_tag( textbuffer_, null, "font", @font_, null )
 
-        'dim as GtkTextTag pointer tt
-        'dim as GtkTextIter text_s, text_e
-
-        'gtk_text_buffer_get_bounds( textbuffer_, @text_s, @text_e)
-
-        'tt = gtk_text_buffer_create_tag( textbuffer_, null, "font", font_ )
-
-        'gtk_text_buffer_apply_tag( textbuffer_, tt, @text_s, @text_e )
+        gtk_text_buffer_apply_tag( textbuffer_, ntt, @text_s, @text_e )
     end sub
-
 
 end namespace

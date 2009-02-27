@@ -26,7 +26,7 @@ namespace GtkRapad
 
             declare sub MessageBox( byref title as string = "Message", byref text as string = "" )
 
-            declare function FileLoad( _
+            declare function FileOpen( _
                     byref title_ as string = "Choose a file", _
                     byref dir_start as string = "" _
                     ) as string

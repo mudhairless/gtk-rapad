@@ -36,7 +36,7 @@ sub Main()
     txtTextView.SetParent( vPanel )
     txtTextView.SetText("Please type something here...")
 
-    btnOk.SetCaption( "Print Text" )
+    btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
     btnOk.SetName( "btnOk" )
     btnOk.SetParent( vPanel )
@@ -52,7 +52,9 @@ sub btnOk_Click cdecl( byval __ as any pointer )
 
     x = GtkApp.SelectFont()
 
-    txtTextView.Test( x )
+    print x
+
+    txtTextView.SetFont( x )
 end sub
 
 

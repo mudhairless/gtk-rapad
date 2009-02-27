@@ -1,3 +1,10 @@
+2009.02.26
+
+    -   The TGtkTextView object now has a SetFont() method that will
+        change the font of the entire buffer.  However, there is a flaw
+        where new text inserted at the end of the TextView does not have
+        the same font
+
 2009.02.12
 
     -   Started work on a simple TGtkTextView widget for the most basic

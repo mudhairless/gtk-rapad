@@ -41,7 +41,7 @@ namespace GtkRapad
     end sub
 
 
-    function TGtkApplication.FileLoad( byref title_ as string = "Choose a file", byref dir_start as string = "" ) as string
+    function TGtkApplication.FileOpen( byref title_ as string = "Choose a file", byref dir_start as string = "" ) as string
 
         var dialog = gtk_file_chooser_dialog_new (title_, _
                       NULL, _

@@ -8,9 +8,13 @@
 
 namespace GtkRapad
 
+
+
     type TGtkTextView
 
         public:
+            inserttextcallback_ as GtkGenericCallback
+
             declare constructor()
             declare operator cast() as GtkWidget pointer
 
@@ -31,8 +35,7 @@ namespace GtkRapad
             declare sub SetText( byval text_ as string )
             declare sub SetName( byref newName as string )
             declare sub SetParent( byval p as GtkWidget pointer )
-
-            declare sub Test( byval font_ as string )
+            declare sub SetFont( byval font_ as string )
 
         private:
             gtype_ as string                            'GtkWidget type
@@ -43,7 +46,6 @@ namespace GtkRapad
             textbuffer_ as  GtkTextBuffer pointer       'our text buffer
             texttagtable_ as GtkTextTagTable pointer    '?
             scrollwindow_ as GtkWidget pointer          'This object is the default container for this class
-
     end type
 
 end namespace
