@@ -5,7 +5,7 @@
 '   This function, unlike most, does return its id_ when referenced
 '   but rather retuns the scrolled window which contains it.
 '   If you must reference the actual buffer in an external function
-'   you should use the Buffer() accessor.
+'   you should use the View() accessor.
 
 
 namespace GtkRapad
@@ -20,7 +20,7 @@ namespace GtkRapad
             declare constructor()
             declare operator cast() as GtkWidget pointer
 
-            declare function Buffer() as GtkWidget Pointer
+            declare function TextView() as GtkWidget Pointer
 
             declare sub Associate( byval p as GtkWidget pointer )
             declare sub Destroy()

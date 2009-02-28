@@ -1,3 +1,11 @@
+2009.02.28
+
+    -   TGtkApplication:  New SetName() and GetName() functions
+
+    -   TGtkTextView:  Changed the cast() operator to return the
+        scrolled window wiget, rather than the pointer of the textview
+        widget itself
+
 2009.02.26
 
     -   The issue with SetFont has been resolved.  The problem was that

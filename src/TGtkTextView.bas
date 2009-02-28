@@ -4,7 +4,7 @@
 '   This function, unlike most, does return its id_ when referenced
 '   but rather retuns the scrolled window which contains it.
 '   If you must reference the actual buffer in an external function
-'   you should use the Buffer() accessor.
+'   you should use the View() accessor.
 
 
 #include once "gtkrapad/gtkrapad.bi"
@@ -33,7 +33,7 @@ namespace GtkRapad
         return scrollwindow_
     end operator
 
-    function TGtkTextView.Buffer() as GtkWidget Pointer
+    function TGtkTextView.TextView() as GtkWidget Pointer
         return id_
     end function
 
