@@ -1,10 +1,15 @@
 2009.02.28
 
-    -   TGtkApplication:  New SetName() and GetName() functions
+    -   TGtkVBox:  New AddChild() and AddChildEnd() which will both
+        pack children into the container.  This is preferable to calling
+        SetParent() of a would be child widget.  The GtkHBox will also
+        be updated
 
     -   TGtkTextView:  Changed the cast() operator to return the
-        scrolled window wiget, rather than the pointer of the textview
-        widget itself
+        scrolled window widget container.  You can access the pointer to
+        the textview object via the TextView() accessor
+
+    -   TGtkApplication:  New SetName() and GetName() functions
 
 2009.02.26
 
