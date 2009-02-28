@@ -1,7 +1,7 @@
 '
-'   textview.bas
+'   rED.bas
 '
-'   I simple textview demo
+'   I simple text editor, like notepad
 '
 
 #include once "gtkrapad/gtkrapad.bi"
