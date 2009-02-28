@@ -8,8 +8,8 @@ namespace GtkRapad
 
             declare operator cast() as GtkWidget pointer
 
-            declare sub AppendChild( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
-            declare sub AppendChildEnd( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
+            declare sub AddChild( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
+            declare sub AddChildEnd( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
 
             declare sub Associate( byval p as GtkWidget pointer )
             declare sub Destroy()

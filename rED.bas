@@ -10,22 +10,23 @@ using GtkRapad
 
 'Global object variables
 
-dim shared GtkApp           as TGtkApplication
+dim shared GtkApp               as TGtkApplication
 
-dim shared frmMain          as TGtkWindow
-dim shared vPanel           as TGtkVBox
-dim shared txtTextView      as TGtkTextView
-dim shared btnOk            as TGtkButton
+dim shared frmMain              as TGtkWindow
+dim shared vPanel               as TGtkVBox
+dim shared txtTextView          as TGtkTextView
+dim shared btnOk                as TGtkButton
 
-dim shared mnuMenuBar       as TGtkMenuBar
-dim shared mnuMenuBox       as TGtkVBox
-dim shared mnuMainFile      as TGtkMenu
-dim shared mnuMainFileNew   as TGtkMenuItem
-dim shared mnuMainFileOpen  as TGtkMenuItem
-dim shared mnuMainFileSave  as TGtkMenuItem
-dim shared mnuMainFileExit  as TGtkMenuItem
+dim shared mnuMenuBar           as TGtkMenuBar
+dim shared mnuMenuBox           as TGtkVBox
+dim shared mnuMainFile          as TGtkMenu
+dim shared mnuMainFileNew       as TGtkMenuItem
+dim shared mnuMainFileOpen      as TGtkMenuItem
+dim shared mnuMainFileSave      as TGtkMenuItem
+dim shared mnuMainFileSaveAs    as TGtkMenuItem
+dim shared mnuMainFileExit      as TGtkMenuItem
 
-dim shared G_FILENAME       as string
+dim shared G_FILENAME           as string
 
 'Prototyping each function of our application
 
@@ -33,17 +34,19 @@ declare sub Main()
 declare sub btnOk_Click cdecl ( byval __ as any pointer )
 
 declare function ReadFile( byval file_ as string ) as string
+declare sub WriteFile( byval file_ as string, byval data_ as string )
 
 declare sub mnuMainFileNew_Click cdecl( byval __ as any pointer)
 declare sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
 declare sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
+declare sub mnuMainFileSaveAs_Click cdecl( byval __ as any pointer)
 declare sub mnuMainFileExit_Click cdecl( byval __ as any pointer)
 
 '--------------------------------------------------------------------
 
 sub Main()
 
-    GtkApp.SetName( "FreeED" )
+    GtkApp.SetName( "rED" )
 
     frmMain.SetKeepAbove( false )
     frmMain.SetSize( 400, 100 )
@@ -51,39 +54,36 @@ sub Main()
 
     mnuMainFileNew.SetLabel( "_New" )
     mnuMainFileOpen.SetLabel( "_Open ..." )
-    mnuMainFileSave.SetLabel( "_Save ..." )
+    mnuMainFileSave.SetLabel( "_Save" )
+    mnuMainFileSaveAs.SetLabel( "Save _As ..." )
     mnuMainFileExit.SetLabel( "E_xit" )
 
     mnuMainFileNew.Activate( @mnuMainFileNew_Click(), 0 )
     mnuMainFileOpen.Activate( @mnuMainFileOpen_Click(), 0 )
     mnuMainFileSave.Activate( @mnuMainFileSave_Click(), 0 )
+    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click(), 0 )
     mnuMainFileExit.Activate( @mnuMainFileExit_Click(), 0 )
 
     mnuMainFile.AddChild( mnuMainFileNew )
     mnuMainFile.AddChild( mnuMainFileOpen )
     mnuMainFile.AddChild( mnuMainFileSave )
+    mnuMainFile.AddChild( mnuMainFileSaveAs )
     mnuMainFile.AddChild( mnuMainFileExit )
 
     vPanel.SetParent( frmMain )
 
-    vPanel.AppendChild( mnuMenuBox, false, false, 0 )
-    vPanel.AppendChild( txtTextView, true, true, 0 )
-    vPanel.AppendChild( btnOk, false, false, 0 )
-
-    'mnuMenuBox.SetParent( vPanel )
+    vPanel.AddChild( mnuMenuBox, false, false, 0 )
+    vPanel.AddChild( txtTextView, true, true, 0 )
+    vPanel.AddChild( btnOk, false, false, 0 )
 
     mnuMenuBar.SetParent( mnuMenuBox )
-
     mnuMenuBar.AddMenu( "_File", mnuMainFile )
 
-    'txtTextView.SetParent( vPanel )
     txtTextView.SetText("")
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
     btnOk.SetName( "btnOk" )
-
-    'btnOk.SetParent( vPanel )
 
     frmMain.ShowAll()
 
@@ -99,25 +99,50 @@ sub btnOk_Click cdecl( byval __ as any pointer )
     txtTextView.SetFont( x )
 end sub
 
+
 sub mnuMainFileNew_Click cdecl( byval __ as any pointer)
     G_FILENAME = "newfile"
     txtTextView.SetText( "" )
 end sub
 
+
 sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
-    dim f as string
+    dim fn as string
 
-    f = GtkApp.FileOpen()
+    fn = GtkApp.FileOpen()
 
-    if ( not ( f = "" ) ) then
-        G_FILENAME = f
-        frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+    if ( not ( fn = "" ) ) then
+        G_FILENAME = fn
         txtTextView.SetText( ReadFile( G_FILENAME ) )
+    end if
+
+    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+end sub
+
+
+sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
+    if (G_FILENAME = "") then
+        mnuMainFileSaveAs_Click( 0 )
+    else
+        WriteFile( G_FILENAME, txtTextView.GetText() )
+    end if
+
+    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+end sub
+
+
+sub mnuMainFileSaveAs_Click cdecl( byval __ as any pointer)
+    dim fn as string
+
+    fn = GtkApp.FileSave( , , G_FILENAME )
+
+    if ( not ( fn = "" ) ) then
+        G_FILENAME = fn
+        frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+        mnuMainFileSave_Click( 0 )
     end if
 end sub
 
-sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
-end sub
 
 sub mnuMainFileExit_Click cdecl( byval __ as any pointer)
     GtkApp.Quit()
@@ -140,6 +165,17 @@ function ReadFile( byval file_ as string ) as string
 
     return r
 end function
+
+
+sub WriteFile( byval file_ as string, byval data_ as string )
+    dim f as integer
+
+    f = freefile()
+
+    open file_ for output as #f
+        print #f, data_
+    close #f
+end sub
 
 
 Main()
