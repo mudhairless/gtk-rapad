@@ -1,23 +1,5 @@
 
-widgets i need
+Basically we need everything in the gallery working the way you would expect it to
 
-    with these items I could develop a very basic concept app similar to
-    the vb ide
 
-    * list widget (list, column, tree)
-    * text edit widget (possibly scintilla, GtkTextBuffer/View)
-    * text display widget (rtf, html, other?)
-    * resizeable container (think vb's resize reticle)
-
-work in progress
-
-    * TGtkWindow:
-
-        * Set/GetX()
-        * Set/GetY()
-        * Set/GetHeight()
-        * Set/GetWidth()
-
-    * TGtkTextView:
-
-        * this widget will need to support style and formatting
+http://library.gnome.org/devel/gtk/stable/ch02.html

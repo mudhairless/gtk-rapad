@@ -7,6 +7,7 @@ namespace GtkRapad
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        gtk_box_set_homogeneous( GTK_BOX( id_ ), false)
     end constructor
 
     constructor TGtkVBox( byval homog as gboolean, byval spacing_ as integer )
@@ -14,6 +15,7 @@ namespace GtkRapad
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        gtk_box_set_homogeneous( GTK_BOX( id_ ), false)
     end constructor
 
     operator TGtkVBox.cast() as GtkWidget Pointer
@@ -74,6 +76,15 @@ namespace GtkRapad
     function TGtkVBox.GetParent() as GtkWidget Pointer
         return parent_
     end function
+
+    sub TGtkVBox.AppendChild( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
+        gtk_box_pack_start( GTK_BOX( id_ ), child_, expand_, fill_, pad_ )
+    end sub
+
+    sub TGtkVBox.AppendChildEnd( byval child_ as GtkWidget pointer, byval expand_ as gboolean, byval fill_ as gboolean, byval pad_ as integer)
+        gtk_box_pack_end( GTK_BOX( id_ ), child_, expand_, fill_, pad_ )
+    end sub
+
 
     '-----------------------------------------------
 

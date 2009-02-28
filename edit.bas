@@ -32,6 +32,8 @@ dim shared G_FILENAME       as string
 declare sub Main()
 declare sub btnOk_Click cdecl ( byval __ as any pointer )
 
+declare function ReadFile( byval file_ as string ) as string
+
 declare sub mnuMainFileNew_Click cdecl( byval __ as any pointer)
 declare sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
 declare sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
@@ -64,18 +66,24 @@ sub Main()
 
     vPanel.SetParent( frmMain )
 
-    mnuMenuBox.SetParent( vPanel )
+    vPanel.AppendChild( mnuMenuBox, false, false, 0 )
+    vPanel.AppendChild( txtTextView, true, true, 0 )
+    vPanel.AppendChild( btnOk, false, false, 0 )
+
+    'mnuMenuBox.SetParent( vPanel )
+
     mnuMenuBar.SetParent( mnuMenuBox )
 
     mnuMenuBar.AddMenu( "_File", mnuMainFile )
 
-    txtTextView.SetParent( vPanel )
+    'txtTextView.SetParent( vPanel )
     txtTextView.SetText("")
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
     btnOk.SetName( "btnOk" )
-    btnOk.SetParent( vPanel )
+
+    'btnOk.SetParent( vPanel )
 
     frmMain.ShowAll()
 
@@ -97,8 +105,15 @@ sub mnuMainFileNew_Click cdecl( byval __ as any pointer)
 end sub
 
 sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
-    G_FILENAME = GtkApp.FileOpen()
-    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+    dim f as string
+
+    f = GtkApp.FileOpen()
+
+    if ( not ( f = "" ) ) then
+        G_FILENAME = f
+        frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+        txtTextView.SetText( ReadFile( G_FILENAME ) )
+    end if
 end sub
 
 sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
@@ -107,6 +122,24 @@ end sub
 sub mnuMainFileExit_Click cdecl( byval __ as any pointer)
     GtkApp.Quit()
 end sub
+
+
+function ReadFile( byval file_ as string ) as string
+    dim f as integer
+    dim r as string
+    dim s as string
+
+    f = freefile()
+
+    open file_ for input as #f
+        do
+            line input #f, s
+            r = r & s & !"\n"
+        loop until eof(f)
+    close #1
+
+    return r
+end function
 
 
 Main()

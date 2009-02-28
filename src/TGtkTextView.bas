@@ -1,14 +1,10 @@
 '
 '   TGtkTextView.bas
 '
-'   Code for a simple text display widget.
-'
-'   Formatted text will be able to be added in the form of flags that
-'   can be toggled on or off.
-'
-'   If a flag, such as bold or underline, is toggled on when text is
-'   inserted that it will be applied with that formatting
-'
+'   This function, unlike most, does return its id_ when referenced
+'   but rather retuns the scrolled window which contains it.
+'   If you must reference the actual buffer in an external function
+'   you should use the Buffer() accessor.
 
 
 #include once "gtkrapad/gtkrapad.bi"
@@ -34,8 +30,12 @@ namespace GtkRapad
     end constructor
 
     operator TGtkTextView.cast() as GtkWidget Pointer
-        return id_
+        return scrollwindow_
     end operator
+
+    function TGtkTextView.Buffer() as GtkWidget Pointer
+        return id_
+    end function
 
     sub TGtkTextView.Associate( byval p as GtkWidget pointer )
         'Will assign a new pointer for this class to reference so long

@@ -1,9 +1,11 @@
 '
 '   TGtkTextView.bi
 '
-'   A simple textbox object, which we can build on later.  It is in
-'   need of scroll bars.
-'
+
+'   This function, unlike most, does return its id_ when referenced
+'   but rather retuns the scrolled window which contains it.
+'   If you must reference the actual buffer in an external function
+'   you should use the Buffer() accessor.
 
 
 namespace GtkRapad
@@ -17,6 +19,8 @@ namespace GtkRapad
 
             declare constructor()
             declare operator cast() as GtkWidget pointer
+
+            declare function Buffer() as GtkWidget Pointer
 
             declare sub Associate( byval p as GtkWidget pointer )
             declare sub Destroy()
