@@ -183,7 +183,6 @@ namespace GtkRapad
     end function
 
     'Global Functions
-
     sub RuntimeError( byref error_ as string )
         print "Runtime Error: " & error_
     end sub

@@ -58,11 +58,11 @@ sub Main()
     mnuMainFileSaveAs.SetLabel( "Save _As ..." )
     mnuMainFileExit.SetLabel( "E_xit" )
 
-    mnuMainFileNew.Activate( @mnuMainFileNew_Click() )
-    mnuMainFileOpen.Activate( @mnuMainFileOpen_Click() )
-    mnuMainFileSave.Activate( @mnuMainFileSave_Click() )
-    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click() )
-    mnuMainFileExit.Activate( @mnuMainFileExit_Click() )
+    mnuMainFileNew.Activate( @mnuMainFileNew_Click(), 0 )
+    mnuMainFileOpen.Activate( @mnuMainFileOpen_Click(), 0 )
+    mnuMainFileSave.Activate( @mnuMainFileSave_Click(), 0 )
+    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click(), 0 )
+    mnuMainFileExit.Activate( @mnuMainFileExit_Click(), 0 )
 
     mnuMainFile.AddChild( mnuMainFileNew )
     mnuMainFile.AddChild( mnuMainFileOpen )
@@ -77,10 +77,7 @@ sub Main()
     vPanel.AddChild( btnOk, false, false, 0 )
 
     mnuMenuBar.SetParent( mnuMenuBox )
-
     mnuMenuBar.AddMenu( "_File", mnuMainFile )
-
-    mnuMenuBar.AddMenuX( "mnuTest", "_Test" )
 
     txtTextView.SetText("")
 

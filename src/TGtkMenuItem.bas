@@ -9,6 +9,10 @@ namespace GtkRapad
     end constructor
 
     constructor TGtkMenuItem()
+        'do set the id here, i appears it may only be possible to get
+        'the label of a menu item when its created, this class can be
+        'initialized w/o a label.
+
         objname_ = str( (gtype_ & "-" & id_) )
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
@@ -42,8 +46,8 @@ namespace GtkRapad
         gtk_menu_item_set_submenu( GTK_MENU_ITEM(id_), _child_ )
     end sub
 
-    sub TGtkMenuItem.Activate( byval aMethod as GtkGenericCallback, byval x as any pointer = 0 )
-        g_signal_connect( GTK_OBJECT( id_ ), "activate", G_CALLBACK( aMethod ), x )
+    sub TGtkMenuItem.Activate( byval aMethod as GtkGenericCallback )
+        g_signal_connect( GTK_OBJECT( id_ ), "activate", G_CALLBACK( aMethod ), 0 )
     end sub
 
 end namespace

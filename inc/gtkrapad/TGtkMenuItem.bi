@@ -17,7 +17,7 @@ namespace GtkRapad
             declare function GetParent() as GtkWidget pointer
             declare function GetName() as string
 
-            declare sub Activate( byval aMethod as gtkGenericCallback, byval x as any pointer = 0 )
+            declare sub Activate( byval aMethod as gtkGenericCallback )
 
             '---------------------------------------
 
