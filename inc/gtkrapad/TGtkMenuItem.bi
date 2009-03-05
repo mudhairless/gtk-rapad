@@ -1,3 +1,5 @@
+
+
 namespace GtkRapad
 
     type TGtkMenuItem
@@ -14,10 +16,10 @@ namespace GtkRapad
             declare sub Show()
             declare sub ShowAll()
 
-            declare function GetParent() as GtkWidget pointer
-            declare function GetName() as string
+            'declare function GetParent() as GtkWidget pointer
+            'declare function GetName() as string
 
-            declare sub Activate( byval aMethod as gtkGenericCallback )
+            declare sub Activate( byval aMethod as GtkGenericCallback )
 
             '---------------------------------------
 

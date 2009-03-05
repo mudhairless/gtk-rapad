@@ -2,8 +2,58 @@
 
 namespace GtkRapad
 
-    function LocateParentMenuByKey( byval key_ as string ) as GtkWidget pointer
-        return null
+    dim shared mnu_key(31) as string
+    dim shared mnu_item(31) as GtkWidget pointer
+
+    function mnu_freeindex() as integer
+        dim i as integer
+
+        for i = 0 to 31
+            if (mnu_key(i) = "") then return i
+        next i
+
+        return -1
+    end function
+
+    sub mnu_del_by_key( byval k_ as string)
+        dim i as integer
+
+        for i = 0 to 31
+            if (mnu_key(i) = k_) then
+                mnu_key(i) = ""
+            end if
+        next i
+    end sub
+
+    sub mnu_del_by_ptr( byval m_ as GtkWidget pointer)
+        dim i as integer
+
+        for i = 0 to 31
+            if (mnu_item(i) = m_) then
+                mnu_key(i) = ""
+            end if
+        next i
+    end sub
+
+    sub mnu_add( byval k_ as string, byval m_ as GtkWidget pointer)
+        dim i as integer
+
+        i = mnu_freeindex()
+
+        if (i > -1) then
+            mnu_key(i) = k_
+            mnu_item(i) = m_
+        end if
+    end sub
+
+    function mnu_get_ptr_by_key( byval k_ as string ) as GtkWidget pointer
+        dim i as integer
+
+        for i = 0 to 31
+            if (mnu_key(i) = k_) then
+                return mnu_item(i)
+            end if
+        next i
     end function
 
     constructor TGtkMenuBar( )
@@ -16,34 +66,41 @@ namespace GtkRapad
         return id_
     end operator
 
-    sub TGtkMenuBar.AddSubMenu( byref parentkey_ as string, byref key_ as string, byref label_ as string, byval aMethod as GtkGenericCallback )
+    sub TGtkMenuBar.AddMenuMain( byref key_ as string, byval label_ as string )
+        var item_ = gtk_menu_item_new_with_mnemonic( label_ )
+
+        mnu_add( key_, item_ )
+
+        'gtk_menu_item_set_submenu( GTK_MENU_ITEM( _item_ ), _widget_)
+        gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), item_)
+        gtk_widget_show ( item_ )
+    end sub
+
+    sub TGtkMenuBar.AddMenuSub( byref pkey_ as string, byref key_ as string, byref label_ as string, byval aMethod as GtkGenericCallback )
+        dim p_ as GtkWidget pointer
         dim subitem_ as TGtkMenuItem
 
-        subitem_.SetName( key_ )
-        subitem_.SetLabel( label_ )
-        subitem_.Activate( aMethod )
+        p_ = mnu_get_ptr_by_key( pkey_ )
 
-        gtk_widget_show ( subitem_ )
-        gtk_menu_bar_append( GTK_MENU_BAR( id_ ), subitem_)
+        print p_
+
+        if (p_ > 0) then
+            subitem_.SetName( key_ )
+            subitem_.SetLabel( label_ )
+            subitem_.Activate( aMethod )
+
+            gtk_widget_show ( subitem_ )
+            gtk_menu_shell_append(GTK_MENU_SHELL( p_ ), subitem_ )
+        end if
     end sub
 
-    sub TGtkMenuBar.AddMenuX( byref key_ as string, byref label_ as string )
-        dim item_ as TGtkMenuItem
+    'sub TGtkMenuBar.AddMenu( byref name_ as string, byval _widget_ as GtkWidget pointer )
+        'var _item_ = gtk_menu_item_new_with_mnemonic( name_ )
 
-        item_.SetName( key_ )
-        item_.SetLabel( label_ )
-
-        gtk_widget_show ( item_ )
-        gtk_menu_bar_append( GTK_MENU_BAR( id_ ), item_)
-    end sub
-
-    sub TGtkMenuBar.AddMenu( byref name_ as string, byval _widget_ as GtkWidget pointer )
-        var _item_ = gtk_menu_item_new_with_mnemonic( name_ )
-
-        gtk_widget_show ( _item_ )
-        gtk_menu_item_set_submenu( GTK_MENU_ITEM( _item_ ), _widget_)
-        gtk_menu_bar_append( GTK_MENU_BAR( id_ ), _item_)
-    end sub
+        'gtk_widget_show ( _item_ )
+        'gtk_menu_item_set_submenu( GTK_MENU_ITEM( _item_ ), _widget_)
+        'gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), _item_)
+    'end sub
 
     sub TGtkMenuBar.SetName( byref newName as string )
         objname_ = newName
