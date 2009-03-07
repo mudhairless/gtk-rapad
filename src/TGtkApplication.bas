@@ -184,7 +184,7 @@ namespace GtkRapad
 
     'Global Functions
     sub RuntimeError( byref error_ as string )
-        print "Runtime Error: " & error_
+        print "GtkRapad Runtime Error: " & error_
     end sub
 
     function GetGtkWidgetType( byval wid as GtkWidget pointer ) as string

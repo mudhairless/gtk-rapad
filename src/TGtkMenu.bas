@@ -12,6 +12,17 @@ namespace GtkRapad
         return id_
     end operator
 
+    sub TGtkMenu.Associate( byval p as GtkWidget pointer )
+        'Will assign a new pointer for this class to reference so long
+        'as the pointer type is appropriate for this class.
+
+        if ( GetGtkWidgetType( p ) = gtype_ ) then
+            id_ = p
+        else
+            RuntimeError( "Associate() failed - pointer type mismatch" )
+        end if
+    end sub
+
     sub TGtkMenu.AddChild( byval pGtkChild as GtkWidget pointer )
         gtk_menu_shell_append (GTK_MENU_SHELL( id_ ), pGtkChild)
         gtk_widget_show( pGtkChild )

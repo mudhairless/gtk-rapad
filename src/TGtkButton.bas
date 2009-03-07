@@ -6,9 +6,7 @@ namespace GtkRapad
     constructor TGtkButton
         id_ = gtk_button_new_with_label( "" )
         gtype_ = GetGtkWidgetType( id_ )
-
         objname_ = str( (gtype_ & "-" & id_) )
-
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 

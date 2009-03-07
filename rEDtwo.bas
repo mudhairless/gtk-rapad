@@ -17,14 +17,7 @@ dim shared vPanel               as TGtkVBox
 dim shared txtTextView          as TGtkTextView
 dim shared btnOk                as TGtkButton
 
-dim shared mnuMenuBox           as TGtkVBox
-dim shared mnuMenuBar           as TGtkMenuBar
-dim shared mnuMainFile          as TGtkMenu
-dim shared mnuMainFileNew       as TGtkMenuItem
-dim shared mnuMainFileOpen      as TGtkMenuItem
-dim shared mnuMainFileSave      as TGtkMenuItem
-dim shared mnuMainFileSaveAs    as TGtkMenuItem
-dim shared mnuMainFileExit      as TGtkMenuItem
+dim shared mnuRapadBar          as TGtkRapadBar
 
 dim shared G_FILENAME           as string
 
@@ -52,42 +45,15 @@ sub Main()
     frmMain.SetSize( 500, 500 )
     frmMain.SetTitle( GtkApp.GetName() & " :: []")
 
-    mnuMainFileNew.SetLabel( "_New" )
-    mnuMainFileOpen.SetLabel( "_Open ..." )
-    mnuMainFileSave.SetLabel( "_Save" )
-    mnuMainFileSaveAs.SetLabel( "Save _As ..." )
-    mnuMainFileExit.SetLabel( "E_xit" )
-
-    mnuMainFileNew.Activate( @mnuMainFileNew_Click() )
-    mnuMainFileOpen.Activate( @mnuMainFileOpen_Click() )
-    mnuMainFileSave.Activate( @mnuMainFileSave_Click() )
-    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click() )
-    mnuMainFileExit.Activate( @mnuMainFileExit_Click() )
-
-    mnuMainFile.AddChild( mnuMainFileNew )
-    mnuMainFile.AddChild( mnuMainFileOpen )
-    mnuMainFile.AddChild( mnuMainFileSave )
-    mnuMainFile.AddChild( mnuMainFileSaveAs )
-    mnuMainFile.AddChild( mnuMainFileExit )
-
     vPanel.SetParent( frmMain )
 
-    vPanel.AddChild( mnuMenuBox, false, false, 0 )
+    vPanel.AddChild( mnuRapadBar, false, false, 0 )
     vPanel.AddChild( txtTextView, true, true, 0 )
     vPanel.AddChild( btnOk, false, false, 0 )
 
-    mnuMenuBar.SetParent( mnuMenuBox )
+    mnuRapadBar.CreateMenu( "mnuFile", "_File" )
 
-    mnuMenuBar.AddMenu( "_File", mnuMainFile )
-
-    'with mnuMenuBar
-    '    .AddMenuMain( "mnuFile", "_File" )
-    '    .AddMenuItem( "mnuFile", "mnuFileNew", "_New", @mnuMainFileNew_Click() )
-    'end with
-
-    print mnuMenuBar.GetName()
-    'print mnuMenuFile.GetName()
-    'print mnuMenuFileNew.GetName()
+    print mnuRapadBar.GetName()
 
     txtTextView.SetText("")
 

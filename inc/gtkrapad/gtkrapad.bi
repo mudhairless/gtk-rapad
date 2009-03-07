@@ -42,7 +42,8 @@ end namespace
 'Special
 #include once "gtkrapad/TGtkApplication.bi"
 #include once "gtkrapad/TGtkWindow.bi"
-'#include once "gtkrapad/CommonDialogs.bi"
+#include once "gtkrapad/TGdkScreen.bi"
+#include once "gtkrapad/TGtkRapadBar.bi"
 
 'Containers
 #include once "gtkrapad/TGtkFixed.bi"
@@ -59,12 +60,7 @@ end namespace
 #include once "gtkrapad/TGtkCheckBox.bi"
 #include once "gtkrapad/TGtkRadioButton.bi"
 #include once "gtkrapad/TGtkTextView.bi"
-
 #include once "gtkrapad/TGtkListView.bi"
-'#include once "gtkrapad/TGtkListStore.bi"
-'#include once "gtkrapad/TGtkListViewColumn.bi"
-'#include once "gtkrapad/TGtkTreeView.bi"
 
-#include once "gtkrapad/TGdkScreen.bi"
 
 #inclib "gtkrapad"

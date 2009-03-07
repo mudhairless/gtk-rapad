@@ -4,18 +4,30 @@ namespace GtkRapad
 
     constructor TGtkMenuItem( byref _label_ as string )
         id_ = gtk_menu_item_new_with_mnemonic( _label_ )
+        gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
-    constructor TGtkMenuItem()
-        'do set the id here, i appears it may only be possible to get
-        'the label of a menu item when its created, this class can be
-        'initialized w/o a label.
+    'constructor TGtkMenuItem()
+        ''do set the id here, i appears it may only be possible to get
+        ''the label of a menu item when its created, this class can be
+        ''initialized w/o a label.
 
-        objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end constructor
+        'objname_ = str( (gtype_ & "-" & id_) )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+    'end constructor
+
+    sub TGtkMenuItem.Associate( byval p as GtkWidget pointer )
+        'Will assign a new pointer for this class to reference so long
+        'as the pointer type is appropriate for this class.
+
+        if ( GetGtkWidgetType( p ) = gtype_ ) then
+            id_ = p
+        else
+            RuntimeError( "Associate() failed - pointer type mismatch" )
+        end if
+    end sub
 
     operator TGtkMenuItem.cast() as GtkWidget ptr
         return id_
@@ -36,14 +48,8 @@ namespace GtkRapad
         return s
     end function
 
-    sub TGtkMenuItem.SetLabel( byref _label_ as string )
-        if (id_ = 0) then
-            id_ = gtk_menu_item_new_with_mnemonic( _label_ )
-        end if
-    end sub
-
-    sub TGtkMenuItem.SetSubMenu( byval _child_ as GtkWidget pointer )
-        gtk_menu_item_set_submenu( GTK_MENU_ITEM(id_), _child_ )
+    sub TGtkMenuItem.SetSubMenu( byval cwid_ as GtkWidget pointer )
+        gtk_menu_item_set_submenu( GTK_MENU_ITEM( id_ ), cwid_ )
     end sub
 
     sub TGtkMenuItem.Activate( byval aMethod as GtkGenericCallback )
