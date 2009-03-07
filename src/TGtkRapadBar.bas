@@ -5,25 +5,6 @@ namespace GtkRapad
     dim shared __rapadbar_main_menu_name() as string
     dim shared __rapadbar_main_menu_item() as TGtkMenuItem
 
-    ''sub create_menu_association( byval name_ as string, byval item_ as TGtkMenuItem )
-    'sub create_menu_association( byval name_ as string, byval item_ as GtkWidget pointer )
-
-        'dim x as integer
-        'dim xitem as TGtkMenuItem = TGtkMenuItem()
-
-        'xitem.associate( item_ )
-
-        'x = ubound( __rapadbar_main_menu_item ) + 1
-
-        'redim preserve __rapadbar_main_menu_name(x) as string
-        'redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
-
-        '__rapadbar_main_menu_name(x) = name_
-        '__rapadbar_main_menu_item(x) = xitem
-    'end sub
-
-'----------------------------------------------------------------------
-
     constructor TGtkRapadBar
         id_ = gtk_menu_bar_new()
         gtype_ = GetGtkWidgetType( id_ )
