@@ -4,6 +4,7 @@ namespace GtkRapad
 
     dim shared __rapadbar_main_menu_name() as string
     dim shared __rapadbar_main_menu_item() as TGtkMenuItem
+    dim shared __rapadbar_main_menu_cont() as TGtkMenu
 
     constructor TGtkRapadBar
         id_ = gtk_menu_bar_new()
@@ -21,42 +22,66 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
+            g_free( p )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )
         end if
     end sub
 
-    'sub CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
-    sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byval item_ as GtkWidget pointer )
+    function TGtkRapadBar.GetMenuAssociationIndex( byval name_ as string ) as integer
+        dim x as integer
 
-        'dim x as integer
-        'dim xitem as TGtkMenuItem = TGtkMenuItem()
+        if (ubound( __rapadbar_main_menu_name ) = 1) then
+            return 1
+        else
 
-        'xitem.associate( item_ )
+            for x = 1 to ubound( __rapadbar_main_menu_name )
+                if ( __rapadbar_main_menu_name(x) = name_ ) then
+                    return x
+                end if
+            next x
 
-        'x = ubound( __rapadbar_main_menu_item ) + 1
+        end if
+    end function
 
-        'redim preserve __rapadbar_main_menu_name(x) as string
-        'redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
+    sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
+        dim x as integer
 
-        '__rapadbar_main_menu_name(x) = name_
-        '__rapadbar_main_menu_item(x) = xitem
+        x = ubound( __rapadbar_main_menu_item ) + 1
+
+        redim preserve __rapadbar_main_menu_name(x) as string
+        redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
+        redim preserve __rapadbar_main_menu_cont(x) as TGtkMenu
+
+        __rapadbar_main_menu_name(x) = name_
+        __rapadbar_main_menu_item(x) = item_
+
+        print "x: "; __rapadbar_main_menu_item(x).GetName()
     end sub
 
-    sub TGtkRapadBar.AddChild( byval cwid_ as GtkWidget pointer )
+    sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
         gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
-        gtk_widget_show( GTK_WIDGET( cwid_ ) )
+        gtk_widget_show( cwid_ )
     end sub
 
     sub TGTkRapadBar.CreateMenu( byval name_ as string, byval label_ as string )
-        dim mnumain_ as TGTkMenuItem = TGtkMenuItem( label_ )
+        dim mnumain_ as TGtkMenuItem = TGtkMenuItem( label_ )
 
         mnumain_.SetName( name_ )
 
         AddChild( mnumain_ )
-        'CreateMenuAssociation( name_, mnumain_ )
+        CreateMenuAssociation( name_, mnumain_ )
     end sub
+
+    sub TGTkRapadBar.CreateMenuChild( byval parent_ as string, byval name_ as string, byval label_ as string, byval aMethod as GtkGenericCallback )
+        dim x as integer
+
+        for x = 0 to ubound( __rapadbar_main_menu_item )
+            print x & ": " & __rapadbar_main_menu_item(x).GetName()
+        next x
+    end sub
+
 
     sub TGtkRapadBar.Show()
         gtk_widget_show( GTK_WIDGET( id_ ) )

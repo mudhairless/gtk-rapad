@@ -2,7 +2,7 @@
 
 namespace GtkRapad
 
-    constructor TGtkMenu( )
+    constructor TGtkMenu()
         id_ = gtk_menu_new()
         objname_ = str( (gtype_ & "-" & id_) )
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
@@ -17,6 +17,7 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
+            g_free( id_ )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )

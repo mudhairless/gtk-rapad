@@ -10,9 +10,14 @@ namespace GtkRapad
 
             declare sub Associate( byval p as GtkWidget pointer )
 
-            declare sub AddChild( byval cwid_ as GtkWidget pointer )
+            'declare sub AddChild( byval cwid_ as GtkWidget pointer )
+            declare sub AddChild( byval cwid_ as TGtkMenuItem )
+
             declare sub CreateMenu( byval name_ as string, byval label_ as string )
-            declare sub CreateMenuAssociation( byval name_ as string, byval item_ as GtkWidget pointer )
+            declare sub CreateMenuChild( byval parent_ as string, byval name_ as string, byval label_ as string, byval aMethod as GtkGenericCallback )
+            declare sub CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
+
+            declare function GetMenuAssociationIndex( byval name_ as string ) as integer
 
             declare sub Show()
             declare sub Hide()
@@ -33,8 +38,6 @@ namespace GtkRapad
             parent_ as GtkWidget pointer    'pointer to our parent object
             gtype_ as string                'GtkWidget type
             objname_ as string              'name of our object
-
-
     end type
 
 end namespace

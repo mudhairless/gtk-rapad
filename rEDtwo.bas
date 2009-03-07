@@ -52,6 +52,7 @@ sub Main()
     vPanel.AddChild( btnOk, false, false, 0 )
 
     mnuRapadBar.CreateMenu( "mnuFile", "_File" )
+    mnuRapadBar.CreateMenuChild( "mnuFile", "mnuFileNew", "_New", null )
 
     print mnuRapadBar.GetName()
 

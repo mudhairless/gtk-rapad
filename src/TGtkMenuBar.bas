@@ -2,60 +2,6 @@
 
 namespace GtkRapad
 
-    dim shared mnu_key(31) as string
-    dim shared mnu_item(31) as GtkWidget pointer
-
-    function mnu_freeindex() as integer
-        dim i as integer
-
-        for i = 0 to 31
-            if (mnu_key(i) = "") then return i
-        next i
-
-        return -1
-    end function
-
-    sub mnu_del_by_key( byval k_ as string )
-        dim i as integer
-
-        for i = 0 to 31
-            if (mnu_key(i) = k_) then
-                mnu_key(i) = ""
-            end if
-        next i
-    end sub
-
-    sub mnu_del_by_ptr( byval m_ as GtkWidget pointer )
-        dim i as integer
-
-        for i = 0 to 31
-            if (mnu_item(i) = m_) then
-                mnu_key(i) = ""
-            end if
-        next i
-    end sub
-
-    sub mnu_add( byval k_ as string, byval m_ as GtkWidget pointer )
-        dim i as integer
-
-        i = mnu_freeindex()
-
-        if (i > -1) then
-            mnu_key(i) = k_
-            mnu_item(i) = m_
-        end if
-    end sub
-
-    function mnu_get_ptr_by_key( byval k_ as string ) as GtkWidget pointer
-        dim i as integer
-
-        for i = 0 to 31
-            if (mnu_key(i) = k_) then
-                return mnu_item(i)
-            end if
-        next i
-    end function
-
     constructor TGtkMenuBar( )
         id_ = gtk_menu_bar_new()
         gtype_ = GetGtkWidgetType( id_ )
@@ -72,38 +18,12 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
+            g_free( id_ )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )
         end if
     end sub
-
-    '------------------------------------------------------------------
-
-    sub TGtkMenuBar.AddMenuMain( byref key_ as string, byval label_ as string )
-        var item_ = gtk_menu_item_new_with_mnemonic( label_ )
-
-        mnu_add( key_, item_ )
-
-        gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), item_)
-        gtk_widget_show ( item_ )
-    end sub
-
-    sub TGtkMenuBar.AddMenuItem( byref pkey_ as string, byref key_ as string, byref label_ as string, byval aMethod as GtkGenericCallback )
-        dim p_ as any pointer
-        dim mi as TGtkMenuBar
-
-        p_ = mnu_get_ptr_by_key( pkey_ )
-
-        print p_
-
-        if (p_ > 0) then
-            mi.Associate( p_ )
-            print mi.getname()
-        end if
-    end sub
-
-    '------------------------------------------------------------------
 
     sub TGtkMenuBar.AddMenu( byref name_ as string, byval _widget_ as GtkWidget pointer )
         var _item_ = gtk_menu_item_new_with_mnemonic( name_ )

@@ -9,20 +9,21 @@ namespace GtkRapad
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
-    'constructor TGtkMenuItem()
-        ''do set the id here, i appears it may only be possible to get
-        ''the label of a menu item when its created, this class can be
-        ''initialized w/o a label.
+    constructor TGtkMenuItem()
+        'you should never create an instance of this class w/o the
+        'lable unless you plan to use its Associate() method
 
-        'objname_ = str( (gtype_ & "-" & id_) )
-        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    'end constructor
+        id_ = gtk_menu_item_new_with_mnemonic( "" )
+        objname_ = str( (gtype_ & "-" & id_) )
+        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+    end constructor
 
     sub TGtkMenuItem.Associate( byval p as GtkWidget pointer )
         'Will assign a new pointer for this class to reference so long
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
+            g_free( id_ )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )
