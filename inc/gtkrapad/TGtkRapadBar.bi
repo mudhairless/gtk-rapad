@@ -34,6 +34,7 @@ namespace GtkRapad
             gtype_ as string                'GtkWidget type
             objname_ as string              'name of our object
 
+
     end type
 
 end namespace

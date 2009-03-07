@@ -49,18 +49,18 @@ namespace GtkRapad
     'sub CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
     sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byval item_ as GtkWidget pointer )
 
-        dim x as integer
-        dim xitem as TGtkMenuItem = TGtkMenuItem()
+        'dim x as integer
+        'dim xitem as TGtkMenuItem = TGtkMenuItem()
 
-        xitem.associate( item_ )
+        'xitem.associate( item_ )
 
-        x = ubound( __rapadbar_main_menu_item ) + 1
+        'x = ubound( __rapadbar_main_menu_item ) + 1
 
-        redim preserve __rapadbar_main_menu_name(x) as string
-        redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
+        'redim preserve __rapadbar_main_menu_name(x) as string
+        'redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
 
-        __rapadbar_main_menu_name(x) = name_
-        __rapadbar_main_menu_item(x) = xitem
+        '__rapadbar_main_menu_name(x) = name_
+        '__rapadbar_main_menu_item(x) = xitem
     end sub
 
     sub TGtkRapadBar.AddChild( byval cwid_ as GtkWidget pointer )
@@ -74,7 +74,7 @@ namespace GtkRapad
         mnumain_.SetName( name_ )
 
         AddChild( mnumain_ )
-        CreateMenuAssociation( name_, mnumain_ )
+        'CreateMenuAssociation( name_, mnumain_ )
     end sub
 
     sub TGtkRapadBar.Show()
