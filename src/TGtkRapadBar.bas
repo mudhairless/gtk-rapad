@@ -56,7 +56,7 @@ namespace GtkRapad
 
         __pArrMnuMain[__pArrMnuMain_Count] = item_
 
-        print "x: "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
+        print __pArrMnuMain_Count & ": "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
     end sub
 
     sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
@@ -105,7 +105,6 @@ namespace GtkRapad
     sub TGtkRapadBar.SetName( byref newName as string )
         objname_ = newName
         'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", strptr(newName) )
     end sub
 
     function TGtkRapadBar.GetName() as string
@@ -116,12 +115,13 @@ namespace GtkRapad
         's = *p
 
         'return s
+
         return objname_
     end function
 
     sub TGtkRapadBar.SetParent( byval p as GtkWidget Pointer )
         parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
+        gtk_container_add( GTK_CONTAINER( parent_ ), GTK_WIDGET( id_ ) )
     end sub
 
     function TGtkRapadBar.GetParent() as GtkWidget Pointer

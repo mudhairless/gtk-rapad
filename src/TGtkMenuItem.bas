@@ -6,7 +6,7 @@ namespace GtkRapad
         id_ = gtk_menu_item_new_with_mnemonic( _label_ )
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     constructor TGtkMenuItem()
@@ -15,7 +15,7 @@ namespace GtkRapad
 
         id_ = gtk_menu_item_new_with_mnemonic( "" )
         objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     sub TGtkMenuItem.Associate( byval p as GtkWidget pointer )
@@ -36,17 +36,18 @@ namespace GtkRapad
 
     sub TGtkMenuItem.SetName( byref newName as string )
         objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end sub
 
     function TGtkMenuItem.GetName() as string
-        dim p as string pointer
-        dim s as string
+        'dim p as string pointer
+        'dim s as string
 
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
+        'p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
+        's = *p
 
-        return s
+        'return s
+        return objname_
     end function
 
     sub TGtkMenuItem.SetSubMenu( byval cwid_ as GtkWidget pointer )
