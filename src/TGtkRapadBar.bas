@@ -6,7 +6,7 @@ namespace GtkRapad
         id_ = gtk_menu_bar_new()
         gtype_ = GetGtkWidgetType( id_ )
         objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", strptr(objname_) )
     end constructor
 
     operator TGtkRapadBar.cast() as GtkWidget Pointer
@@ -60,8 +60,8 @@ namespace GtkRapad
     end sub
 
     sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
-        'gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
-        'gtk_widget_show( cwid_ )
+        gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
+        gtk_widget_show( cwid_ )
     end sub
 
     sub TGTkRapadBar.CreateMenu( byval name_ as string, byval label_ as string )
@@ -104,17 +104,19 @@ namespace GtkRapad
 
     sub TGtkRapadBar.SetName( byref newName as string )
         objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", strptr(newName) )
     end sub
 
     function TGtkRapadBar.GetName() as string
-        dim p as string pointer
-        dim s as string
+        'dim p as string pointer
+        'dim s as string
 
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
+        'p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
+        's = *p
 
-        return s
+        'return s
+        return objname_
     end function
 
     sub TGtkRapadBar.SetParent( byval p as GtkWidget Pointer )
