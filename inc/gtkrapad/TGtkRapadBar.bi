@@ -12,11 +12,11 @@ namespace GtkRapad
 
             declare sub ResizeMainMenuArray( byval size_ as uinteger )
 
-            declare sub AddChild( byref cwid_ as TGtkMenuItem )
+            declare sub AddChild( byval cwid_ as TGtkMenuItem )
 
             declare sub CreateMenu( byval name_ as string, byval label_ as string )
             declare sub CreateMenuChild( byval parent_ as string, byval name_ as string, byval label_ as string, byval aMethod as GtkGenericCallback )
-            declare sub CreateMenuAssociation( byval name_ as string, byref item_ as TGtkMenuItem )
+            declare sub CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
 
             declare function GetMenuAssociationIndex( byval name_ as string ) as integer
 

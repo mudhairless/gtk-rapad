@@ -49,7 +49,7 @@ namespace GtkRapad
         next x
     end function
 
-    sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byref item_ as TGtkMenuItem )
+    sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
         __pArrMnuMain_Count += 1
 
         ResizeMainMenuArray( __pArrMnuMain_Count )
@@ -59,7 +59,7 @@ namespace GtkRapad
         print "x: "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
     end sub
 
-    sub TGtkRapadBar.AddChild( byref cwid_ as TGtkMenuItem )
+    sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
         'gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
         'gtk_widget_show( cwid_ )
     end sub
