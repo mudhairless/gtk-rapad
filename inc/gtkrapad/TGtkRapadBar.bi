@@ -10,7 +10,8 @@ namespace GtkRapad
 
             declare sub Associate( byval p as GtkWidget pointer )
 
-            'declare sub AddChild( byval cwid_ as GtkWidget pointer )
+            declare sub ResizeMainMenuArray( byval size_ as uinteger )
+
             declare sub AddChild( byval cwid_ as TGtkMenuItem )
 
             declare sub CreateMenu( byval name_ as string, byval label_ as string )
@@ -38,6 +39,10 @@ namespace GtkRapad
             parent_ as GtkWidget pointer    'pointer to our parent object
             gtype_ as string                'GtkWidget type
             objname_ as string              'name of our object
+
+            __pArrMnuMain         as TGtkMenuItem pointer
+            __pArrMnuMain_Count   as uinteger
+
     end type
 
 end namespace

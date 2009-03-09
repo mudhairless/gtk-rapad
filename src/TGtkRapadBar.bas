@@ -2,10 +2,6 @@
 
 namespace GtkRapad
 
-    dim shared __rapadbar_main_menu_name() as string
-    dim shared __rapadbar_main_menu_item() as TGtkMenuItem
-    dim shared __rapadbar_main_menu_cont() as TGtkMenu
-
     constructor TGtkRapadBar
         id_ = gtk_menu_bar_new()
         gtype_ = GetGtkWidgetType( id_ )
@@ -29,40 +25,43 @@ namespace GtkRapad
         end if
     end sub
 
+    sub TGtkRapadBar.ResizeMainMenuArray( byval size_ as uinteger )
+        if (size_ <= 0) then
+            deallocate( __pArrMnuMain )
+
+            __pArrMnuMain_Count = 0
+
+            return
+        end if
+
+        __pArrMnuMain = reallocate(__pArrMnuMain, __pArrMnuMain_Count * SizeOf( TGtkMenuItem ))
+    end sub
+
     function TGtkRapadBar.GetMenuAssociationIndex( byval name_ as string ) as integer
         dim x as integer
 
-        if (ubound( __rapadbar_main_menu_name ) = 1) then
-            return 1
-        else
+        if (__pArrMnuMain_Count = 0 ) then return 0
 
-            for x = 1 to ubound( __rapadbar_main_menu_name )
-                if ( __rapadbar_main_menu_name(x) = name_ ) then
-                    return x
-                end if
-            next x
-
-        end if
+        for x = 1 to __pArrMnuMain_Count
+            if ( __pArrMnuMain[__pArrMnuMain_Count].GetName() = name_ ) then
+                return x
+            end if
+        next x
     end function
 
     sub TGtkRapadBar.CreateMenuAssociation( byval name_ as string, byval item_ as TGtkMenuItem )
-        dim x as integer
+        __pArrMnuMain_Count += 1
 
-        x = ubound( __rapadbar_main_menu_item ) + 1
+        ResizeMainMenuArray( __pArrMnuMain_Count )
 
-        redim preserve __rapadbar_main_menu_name(x) as string
-        redim preserve __rapadbar_main_menu_item(x) as TGtkMenuItem
-        redim preserve __rapadbar_main_menu_cont(x) as TGtkMenu
+        __pArrMnuMain[__pArrMnuMain_Count] = item_
 
-        __rapadbar_main_menu_name(x) = name_
-        __rapadbar_main_menu_item(x) = item_
-
-        print "x: "; __rapadbar_main_menu_item(x).GetName()
+        print "x: "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
     end sub
 
     sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
-        gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
-        gtk_widget_show( cwid_ )
+        'gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), cwid_ )
+        'gtk_widget_show( cwid_ )
     end sub
 
     sub TGTkRapadBar.CreateMenu( byval name_ as string, byval label_ as string )
@@ -77,8 +76,8 @@ namespace GtkRapad
     sub TGTkRapadBar.CreateMenuChild( byval parent_ as string, byval name_ as string, byval label_ as string, byval aMethod as GtkGenericCallback )
         dim x as integer
 
-        for x = 0 to ubound( __rapadbar_main_menu_item )
-            print x & ": " & __rapadbar_main_menu_item(x).GetName()
+        for x = 1 to __pArrMnuMain_Count
+            print x & ": " & __pArrMnuMain[__pArrMnuMain_Count].GetName()
         next x
     end sub
 
