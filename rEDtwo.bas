@@ -54,6 +54,7 @@ sub Main()
 
     mnuRapadBar.CreateMenu( "mnuFile", "_File" )
     mnuRapadBar.CreateMenuChild( "mnuFile", "mnuFileNew", "_New", null )
+    mnuRapadBar.CreateMenuChild( "mnuEdit", "mnuEditOptions", "_Options", null )
 
     print mnuRapadBar.GetName()
 

@@ -5,7 +5,7 @@ namespace GtkRapad
     constructor TGtkMenu()
         id_ = gtk_menu_new()
         objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
     operator TGtkMenu.cast() as GtkWidget Pointer
@@ -31,7 +31,7 @@ namespace GtkRapad
 
     sub TGtkMenu.SetName( byref newName as string )
         objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end sub
 
     function TGtkMenu.GetName() as string

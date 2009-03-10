@@ -40,7 +40,7 @@ namespace GtkRapad
     function TGtkRapadBar.GetMenuAssociationIndex( byval name_ as string ) as integer
         dim x as integer
 
-        if (__pArrMnuMain_Count = 0 ) then return 0
+        if ( __pArrMnuMain_Count = 0 ) then return 0
 
         for x = 1 to __pArrMnuMain_Count
             if ( __pArrMnuMain[__pArrMnuMain_Count].GetName() = name_ ) then
@@ -56,7 +56,7 @@ namespace GtkRapad
 
         __pArrMnuMain[__pArrMnuMain_Count] = item_
 
-        print __pArrMnuMain_Count & ": "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
+        'print __pArrMnuMain_Count & ": "; __pArrMnuMain[__pArrMnuMain_Count].GetName()
     end sub
 
     sub TGtkRapadBar.AddChild( byval cwid_ as TGtkMenuItem )
@@ -76,9 +76,15 @@ namespace GtkRapad
     sub TGTkRapadBar.CreateMenuChild( byval parent_ as string, byval name_ as string, byval label_ as string, byval aMethod as GtkGenericCallback )
         dim x as integer
 
-        for x = 1 to __pArrMnuMain_Count
-            print x & ": " & __pArrMnuMain[__pArrMnuMain_Count].GetName()
-        next x
+        x = GetMenuAssociationIndex( parent_ )
+        if (x = 0) then
+            RuntimeError("TGTkRapadBar.CreateMenuChild :: No parent with the name `" & parent_ & "` could be located.")
+            return
+        end if
+
+
+
+        'print x & ": "; __pArrMnuMain[x].GetName()
     end sub
 
 
