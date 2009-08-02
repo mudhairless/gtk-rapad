@@ -1,7 +1,7 @@
 '
 '   rED.bas
 '
-'   I simple text editor, like notepad
+'   Simple text editor, like notepad
 '
 
 #include once "gtkrapad/gtkrapad.bi"
@@ -17,8 +17,8 @@ dim shared vPanel               as TGtkVBox
 dim shared txtTextView          as TGtkTextView
 dim shared btnOk                as TGtkButton
 
-dim shared mnuMenuBar           as TGtkMenuBar
 dim shared mnuMenuBox           as TGtkVBox
+dim shared mnuMenuBar           as TGtkMenuBar
 dim shared mnuMainFile          as TGtkMenu
 dim shared mnuMainFileNew       as TGtkMenuItem
 dim shared mnuMainFileOpen      as TGtkMenuItem
@@ -49,7 +49,7 @@ sub Main()
     GtkApp.SetName( "rED" )
 
     frmMain.SetKeepAbove( false )
-    frmMain.SetSize( 400, 100 )
+    frmMain.SetSize( 500, 500 )
     frmMain.SetTitle( GtkApp.GetName() & " :: []")
 
     mnuMainFileNew.SetLabel( "_New" )
@@ -58,11 +58,11 @@ sub Main()
     mnuMainFileSaveAs.SetLabel( "Save _As ..." )
     mnuMainFileExit.SetLabel( "E_xit" )
 
-    mnuMainFileNew.Activate( @mnuMainFileNew_Click(), 0 )
-    mnuMainFileOpen.Activate( @mnuMainFileOpen_Click(), 0 )
-    mnuMainFileSave.Activate( @mnuMainFileSave_Click(), 0 )
-    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click(), 0 )
-    mnuMainFileExit.Activate( @mnuMainFileExit_Click(), 0 )
+    mnuMainFileNew.Activate( @mnuMainFileNew_Click() )
+    mnuMainFileOpen.Activate( @mnuMainFileOpen_Click() )
+    mnuMainFileSave.Activate( @mnuMainFileSave_Click() )
+    mnuMainFileSaveAs.Activate( @mnuMainFileSaveAs_Click() )
+    mnuMainFileExit.Activate( @mnuMainFileExit_Click() )
 
     mnuMainFile.AddChild( mnuMainFileNew )
     mnuMainFile.AddChild( mnuMainFileOpen )
@@ -77,7 +77,13 @@ sub Main()
     vPanel.AddChild( btnOk, false, false, 0 )
 
     mnuMenuBar.SetParent( mnuMenuBox )
+
     mnuMenuBar.AddMenu( "_File", mnuMainFile )
+
+    'with mnuMenuBar
+        '.AddMenuMain( "mnuFile", "_File" )
+        '.AddMenuSub( "mnuFile", "mnuFileNew", "_New", @mnuMainFileNew_Click() )
+    'end with
 
     txtTextView.SetText("")
 
