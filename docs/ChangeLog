@@ -1,3 +1,9 @@
+2008.08.01
+
+    -   Reverted the repo back to a working copy but preserved the
+        (non-functional) TGtkRapadBar.  My goal is to create a
+        simplified menu manager widget.
+
 2009.02.28
 
     -   TGtkVBox:  New AddChild() and AddChildEnd() which will both
