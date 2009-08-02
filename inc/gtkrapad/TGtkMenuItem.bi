@@ -33,8 +33,6 @@ namespace GtkRapad
             parent_ as GtkWidget pointer    'pointer to our parent object
             gtype_ as string                'GtkWidget type
             objname_ as string
-
-            'mnuContainer as TGtkMenu
     end type
 
 

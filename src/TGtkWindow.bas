@@ -10,7 +10,13 @@ namespace GtkRapad
 
         gtk_window_set_title( GTK_WINDOW( id_ ), "window" )
         gtk_window_set_destroy_with_parent( GTK_WINDOW( id_ ), true)
+
         gtk_window_resize( GTK_WINDOW( id_ ), 320, 240 )
+
+        'posx_ = 100
+        'posy_ = 100
+
+        'gtk_window_move( GTK_WINDOW( id_ ), posx_, posy_ )
 
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
 
@@ -26,7 +32,6 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
-            g_free( id_ )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )

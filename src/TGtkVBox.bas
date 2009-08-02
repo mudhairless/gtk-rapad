@@ -25,7 +25,6 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
-            g_free( id_ )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )

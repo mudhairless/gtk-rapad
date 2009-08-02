@@ -6,7 +6,9 @@ namespace GtkRapad
     constructor TGtkButton
         id_ = gtk_button_new_with_label( "" )
         gtype_ = GetGtkWidgetType( id_ )
+
         objname_ = str( (gtype_ & "-" & id_) )
+
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end constructor
 
@@ -24,7 +26,6 @@ namespace GtkRapad
         'as the pointer type is appropriate for this class.
 
         if ( GetGtkWidgetType( p ) = gtype_ ) then
-            g_free( p )
             id_ = p
         else
             RuntimeError( "Associate() failed - pointer type mismatch" )

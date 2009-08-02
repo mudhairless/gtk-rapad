@@ -1,12 +1,5 @@
 
 
-menubar and menu item appear to be on the same level.  they are both
-sub classes of the GtkMenuShell object, and both will accept GtkMenuItem
-as a child.
-
-GtkMenu is a listing container of GtkMenuItems, (afaik) its only purpose
-is to house a list of children.
-
 menubar
     .menuitem
         .menu

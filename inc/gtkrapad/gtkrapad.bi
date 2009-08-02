@@ -39,26 +39,32 @@ end namespace
 #define NULL 0
 #endif
 
+'Special
+#include once "gtkrapad/TGtkApplication.bi"
+#include once "gtkrapad/TGtkWindow.bi"
+'#include once "gtkrapad/CommonDialogs.bi"
 
-#include once "gtkrapad/TGtkApplication.bi"     'Special
-#include once "gtkrapad/TGtkWindow.bi"          'Special
-#include once "gtkrapad/TGdkScreen.bi"          'Special
-#include once "gtkrapad/TGtkMenu.bi"            'Container
-#include once "gtkrapad/TGtkMenuBar.bi"         'Container
-#include once "gtkrapad/TGtkMenuItem.bi"        'Widget     (used by TGtkRapadBar)
-#include once "gtkrapad/TGtkRapadBar.bi"        'Special
+'Containers
+#include once "gtkrapad/TGtkFixed.bi"
+#include once "gtkrapad/TGtkHBox.bi"
+#include once "gtkrapad/TGtkVBox.bi"
+#include once "gtkrapad/TGtkMenuBar.bi"
+#include once "gtkrapad/TGtkMenu.bi"
 
-#include once "gtkrapad/TGtkFixed.bi"           'Container
-#include once "gtkrapad/TGtkHBox.bi"            'Container
-#include once "gtkrapad/TGtkVBox.bi"            'Container
+'Widgets
+#include once "gtkrapad/TGtkButton.bi"
+#include once "gtkrapad/TGtkLabel.bi"
+#include once "gtkrapad/TGtkEntry.bi"
+#include once "gtkrapad/TGtkMenuItem.bi"
+#include once "gtkrapad/TGtkCheckBox.bi"
+#include once "gtkrapad/TGtkRadioButton.bi"
+#include once "gtkrapad/TGtkTextView.bi"
 
-#include once "gtkrapad/TGtkButton.bi"          'Widget
-#include once "gtkrapad/TGtkLabel.bi"           'Widget
-#include once "gtkrapad/TGtkEntry.bi"           'Widget
-#include once "gtkrapad/TGtkCheckBox.bi"        'Widget
-#include once "gtkrapad/TGtkRadioButton.bi"     'Widget
-#include once "gtkrapad/TGtkTextView.bi"        'Widget
-#include once "gtkrapad/TGtkListView.bi"        'Widget
+#include once "gtkrapad/TGtkListView.bi"
+'#include once "gtkrapad/TGtkListStore.bi"
+'#include once "gtkrapad/TGtkListViewColumn.bi"
+'#include once "gtkrapad/TGtkTreeView.bi"
 
+#include once "gtkrapad/TGdkScreen.bi"
 
 #inclib "gtkrapad"

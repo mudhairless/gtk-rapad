@@ -19,7 +19,7 @@ namespace GtkRapad
             declare function GetName() as string
 
             declare sub AddMenuMain( byref key_ as string, byval label_ as string )
-            declare sub AddMenuItem( byref pkey_ as string, byref key_ as string, byref label_ as string, byval aMethod as GtkGenericCallback )
+            declare sub AddMenuSub( byref pkey_ as string, byref key_ as string, byref label_ as string, byval aMethod as GtkGenericCallback )
 
             declare sub AddMenu( byref name_ as string, byval _widget_ as GtkWidget pointer )
 
