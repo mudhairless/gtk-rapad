@@ -1,3 +1,5 @@
+#include once "gtkrapad/gtkrapad.bi"
+
 
 namespace GtkRapad
 

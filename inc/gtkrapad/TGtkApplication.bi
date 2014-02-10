@@ -4,10 +4,12 @@
 '   A wrapper for generic GTK calls
 '
 
+#if not __FB_MIN_VERSION__(0,18,3)
 'making up for missing declares in .18.3's headers
 extern "C"
     declare sub gtk_file_chooser_set_do_overwrite_confirmation (byval __ as GtkFileChooser pointer, byval do_overwrite_confirmation as gboolean )
 end extern
+#endif
 
 #include once "gtkrapad/TGtkMessageDialog.bi"
 

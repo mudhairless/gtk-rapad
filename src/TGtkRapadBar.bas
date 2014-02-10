@@ -1,4 +1,4 @@
-#include once "gtkrapad/gtkrapad.bi"
+#include once "gtkrapad/TGtkRapadBar.bi"
 
 namespace GtkRapad
 
