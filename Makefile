@@ -27,7 +27,7 @@ all : $(LIBRARY)
 
 $(LIBRARY) : $(OBJS)
 	@test -d $(LIBDIR) || $(MD) $(LIBDIR)
-	$(FBC) -lib -x $(LIBDIR)/$(LIBNAME) $(FBC_CFLAGS) $(OBJS)
+	$(FBC) -lib -x $(LIBRARY) $(FBC_CFLAGS) $(OBJS)
 
 .PHONY : notice
 notice :
