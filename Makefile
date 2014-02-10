@@ -2,17 +2,18 @@ LIBNAME := gtkrapad
 
 FBC := fbc
 RM := rm
+MD := mkdir
 
 SRCDIR := src
-BINDIR := bin
+LIBDIR := lib
 INCDIR := inc
 
 SRCS := $(wildcard $(SRCDIR)/*.bas)
 OBJS := $(SRCS:%.bas=%.o)
 
-LIBRARY := $(BINDIR)/lib$(LIBNAME).a
+LIBRARY := $(LIBDIR)/lib$(LIBNAME).a
 
-FBC_CFLAGS := -w pedantic -i $(INCDIR)
+FBC_CFLAGS := -w all -i $(INCDIR)
 
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #  targets
@@ -25,7 +26,8 @@ all : $(LIBRARY)
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 $(LIBRARY) : $(OBJS)
-	$(FBC) -lib -x $(BINDIR)/$(LIBNAME) $(FBC_CFLAGS) $(OBJS)
+	@test -d $(LIBDIR) || $(MD) $(LIBDIR)
+	$(FBC) -lib -x $(LIBDIR)/$(LIBNAME) $(FBC_CFLAGS) $(OBJS)
 
 .PHONY : notice
 notice :
