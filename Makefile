@@ -32,7 +32,7 @@ all : $(LIBRARY) examples
 	$(FBC) $(FBC_CFLAGS) -p lib $< -x $@
 
 .PHONY : examples
-examples : $(EX_BINS)
+examples : $(LIBRARY) $(EX_BINS)
 
 .PHONY : clean-examples
 clean-examples :

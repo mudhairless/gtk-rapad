@@ -1,5 +1,5 @@
 '
-'   Author      : Michael Isaac <subjugator@gmail.com>
+'   Author      : Michael Isaac <michael@thedevel.com>
 '   Library     : GtkRapad
 '   File        : gtkrapad.bi
 '   Copyright   : (C) 2008, Michael Isaac.  All rights reserved.
@@ -27,6 +27,8 @@ namespace GtkRapad
 
 end namespace
 
+#define CALLBACK(x) sub x cdecl ( byval _data_ as any ptr )
+#define ENDCALLBACK end sub
 '
 '   FreeBASIC does not have a logical not operator, so this
 '   will have to do for now.
