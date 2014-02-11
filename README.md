@@ -1,10 +1,10 @@
-= GTK Rapad =
+# GTK Rapad
 Object Oriented GTK wrapper for FreeBASIC
 
-== Description ==
+## Description
 !! WRITE ME !!
 
-== License ==
+## License
 Copyright (c) 2008, Michael Isaac <subjugator@gmail.com>
 Copyright (c) 2014, Ebben Feagan <ebben.feagan@gmail.com>
 
