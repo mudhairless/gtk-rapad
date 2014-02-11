@@ -1,5 +1,3 @@
-
-
 '
 '   d20.bas
 '
@@ -14,57 +12,84 @@ using GtkRapad
 dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared cmdRoll as TGtkButton
-dim shared hPanel as TGtkVBox 'TGtkHBox
+dim shared numDice as TGtkEntry
+dim shared dLabel as TGtkLabel
+dim shared numSides as TGtkEntry
+dim shared rollList as TGtkListView
+dim shared hPanel as TGtkVBox
+dim shared iPanel as TGtkHBox
 
-'Prototyping each function of our application
 declare sub Main()
-
-declare sub Roll cdecl ( byval __ as any pointer )
-
-'------------+------------+------------+------------+------------+----------'
-'   End the General Declarations ( if you speak Visual Basic )
-'------------+------------+------------+------------+------------+----------'
+declare CALLBACK(Roll)
 
 sub Main()
-
-    'Main function which will setup
-    'the GUI and some system call backs. w00t.
 
     with frmMain
         .SetTitle( "D20 Roller" )
         .SetKeepAbove( false )
-        .SetSize( 300, 50 )
+        .SetSize( 200, 50 )
     end with
 
     with hPanel
         .SetParent( frmMain )
     end with
 
+    with rollList
+        .SetParent( hPanel )
+        .addColumn("Results",0)
+    end with
+
+    with numDice
+        .SetParent(iPanel)
+        .SetText("1")
+        .SetMaxLength(3)
+    end with
+
+    with dLabel
+        .SetParent(iPanel)
+        .SetText("d")
+    end with
+
+    with numSides
+        .SetParent(iPanel)
+        .SetText("20")
+        .SetMaxLength(4)
+    end with
+
+    with iPanel
+        .SetParent( hPanel )
+    end with
 
     with cmdRoll
         .SetCaption("Roll!")
-        .SetMouseClick( @Roll() )
+        .SetMouseClick( @Roll )
         .SetParent( hPanel )
     end with
 
     frmMain.ShowAll()
 
-    'the start line must be the last line when starting the application.
-    'any gui framework be setup by now, cause after the gtk library has
-    'focus, no other lines of code will get called unless by callback.
+    randomize timer
 
     GtkApp.Start( frmMain )
 end sub
 
+CALLBACK(Roll)
 
-sub Roll cdecl ( byval __ as any pointer )
+    var _numsides = valint(numSides.getText())
+    var _numdice = valint(numDice.getText())
 
-    print "Test!"
+    if _numsides = 0 orelse _numdice = 0 then
+        GtkApp.MessageBox("Oops!","One or both of those values doesn't make sense!")
+    else
+        var total = 0u
+        for n as integer = 1 to _numdice
+            var t = int(rnd(1)*_numsides) + 1
+            total += t
+        next
+        rollList.addString(_numdice & "d" & _numsides & ": " & total,0)
+        'GtkApp.MessageBox("Your Roll","You rolled a " & _numdice & "d" & _numsides & " and got: " & total)
+    end if
 
-end sub
-
-'------------+------------+------------+------------+------------+----------'
-'   Invoke the Main() function
-'------------+------------+------------+------------+------------+----------'
+ENDCALLBACK
 
 Main()
