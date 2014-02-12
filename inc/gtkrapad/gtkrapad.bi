@@ -46,6 +46,12 @@ end namespace
 
     declare sub setParent( byval p as GtkWidget ptr )
     declare function GetParent() as GtkWidget pointer
+    declare sub setProperty overload( byref prop_name__ as string, byref value__ as string )
+    declare sub setProperty overload( byref prop_name__ as string, byval value__ as integer )
+    declare sub setProperty overload( byref prop_name__ as string, byval value__ as double )
+    declare function getPropertyString ( byref prop_name__ as string ) as string
+    declare function getPropertyInteger ( byref prop_name__ as string ) as integer
+    declare function getPropertyDouble ( byref prop_name__ as string ) as double
     declare sub SetName( byref newName as string )
     declare function GetName() as string
 
@@ -60,9 +66,9 @@ end namespace
         g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
     end sub
 
-function cname.connect(byref signal as string,byval func as GtkGenericCallback, byval fd as any ptr = 0 ) as uinteger
-    return g_signal_connect(GTK_OBJECT(id_),signal,G_CALLBACK(func),fd)
-end function
+    function cname.connect(byref signal as string,byval func as GtkGenericCallback, byval fd as any ptr = 0 ) as uinteger
+        return g_signal_connect(GTK_OBJECT(id_),signal,G_CALLBACK(func),fd)
+    end function
 
     sub cname.Associate( byval p as GtkWidget pointer )
         'Will assign a new pointer for this class to reference so long
@@ -95,19 +101,49 @@ end function
         gtk_widget_destroy( GTK_WIDGET( id_ ) )
     end sub
 
+    sub cname.setProperty overload( byref prop_name__ as string, byref value__ as string )
+        g_object_set_data( G_OBJECT(id_), prop_name__, @value__[0] )
+    end sub
+
+    sub cname.setProperty overload( byref prop_name__ as string, byval value__ as integer )
+        g_object_set_data( G_OBJECT(id_), prop_name__, @value__ )
+    end sub
+
+    sub cname.setProperty overload( byref prop_name__ as string, byval value__ as double )
+        g_object_set_data( G_OBJECT(id_), prop_name__, @value__ )
+    end sub
+
+    function cname.getPropertyString( byref prop_name__ as string ) as string
+        var ret = ""
+        var retp = @ret
+        retp = g_object_get_data( G_OBJECT(id_), prop_name__ )
+        ret = *retp
+        return ret
+    end function
+
+    function cname.getPropertyInteger( byref prop_name__ as string ) as integer
+        var ret = 0
+        var retp = @ret
+        retp = g_object_get_data( G_OBJECT(id_), prop_name__ )
+        ret = *retp
+        return ret
+    end function
+
+    function cname.getPropertyDouble( byref prop_name__ as string ) as double
+        var ret = 0.0
+        var retp = @ret
+        retp = g_object_get_data( G_OBJECT(id_), prop_name__ )
+        ret = *retp
+        return ret
+    end function
+
     sub cname.SetName( byref newName as string )
         objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        setProperty( "rapad.name", objname_ )
     end sub
 
     function cname.GetName() as string
-        dim p as string pointer
-        dim s as string
-
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
-
-        return s
+        return getPropertyString( "rapad.name" )
     end function
 
     sub cname.SetParent( byval p as GtkWidget Pointer )
