@@ -24,6 +24,10 @@ declare CALLBACK(Roll)
 
 sub Main()
 
+    dim cols(0 to 1) as integer
+    cols(0) = G_TYPE_STRING
+    cols(1) = G_TYPE_STRING
+
     with frmMain
         .SetTitle( "D20 Roller" )
         .SetKeepAbove( false )
@@ -35,8 +39,10 @@ sub Main()
     end with
 
     with rollList
+        .setColumnTypes(cols())
         .SetParent( hPanel )
-        .addColumn("Results",0)
+        .setColumnTitle(0,"Dice")
+        .setColumnTitle(1,"Result")
     end with
 
     with numDice
@@ -86,7 +92,9 @@ CALLBACK(Roll)
             var t = int(rnd(1)*_numsides) + 1
             total += t
         next
-        rollList.addString(_numdice & "d" & _numsides & ": " & total,0)
+        rollList.appendRow()
+        rollList.addString(_numdice & "d" & _numsides)
+        rollList.addString(str(total),1)
         'GtkApp.MessageBox("Your Roll","You rolled a " & _numdice & "d" & _numsides & " and got: " & total)
     end if
 
