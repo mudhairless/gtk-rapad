@@ -18,9 +18,11 @@ dim shared numSides as TGtkEntry
 dim shared rollList as TGtkListView
 dim shared hPanel as TGtkVBox
 dim shared iPanel as TGtkHBox
+dim shared iScroll as TGtkScrollable
 
 declare sub Main()
 declare CALLBACK(Roll)
+declare CALLBACK(listChanged)
 
 sub Main()
 
@@ -31,16 +33,22 @@ sub Main()
     with frmMain
         .SetTitle( "D20 Roller" )
         .SetKeepAbove( false )
-        .SetSize( 200, 50 )
+        .SetSize( 200, 150 )
     end with
 
     with hPanel
         .SetParent( frmMain )
     end with
 
+    with iScroll
+        .setSize(,100)
+        .setScrollBarPolicy(GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC)
+        .setParent( hPanel )
+    end with
+
     with rollList
         .setColumnTypes(cols())
-        .SetParent( hPanel )
+        .SetParent( iScroll )
         .setColumnTitle(0,"Dice")
         .setColumnTitle(1,"Result")
     end with
@@ -76,8 +84,16 @@ sub Main()
 
     randomize timer
 
+    iScroll.getVadjustment()->connect("changed", @listChanged)
+
     GtkApp.Start( frmMain )
 end sub
+
+CALLBACK(listChanged)
+
+    iScroll.getVadjustment->value = iScroll.getVadjustment->upper
+
+ENDCALLBACK
 
 CALLBACK(Roll)
 
@@ -95,7 +111,6 @@ CALLBACK(Roll)
         rollList.appendRow()
         rollList.addString(_numdice & "d" & _numsides)
         rollList.addString(str(total),1)
-        'GtkApp.MessageBox("Your Roll","You rolled a " & _numdice & "d" & _numsides & " and got: " & total)
     end if
 
 ENDCALLBACK
