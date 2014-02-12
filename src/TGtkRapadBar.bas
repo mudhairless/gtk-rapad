@@ -2,28 +2,16 @@
 
 namespace GtkRapad
 
+    COMMON_FUNCS(TGtkRapadBar)
+
     constructor TGtkRapadBar
         id_ = gtk_menu_bar_new()
-        gtype_ = GetGtkWidgetType( id_ )
-        objname_ = str( (gtype_ & "-" & id_) )
-        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", strptr(objname_) )
+        init()
     end constructor
 
     operator TGtkRapadBar.cast() as GtkWidget Pointer
         return id_
     end operator
-
-    sub TGtkRapadBar.Associate( byval p as GtkWidget pointer )
-        'Will assign a new pointer for this class to reference so long
-        'as the pointer type is appropriate for this class.
-
-        if ( GetGtkWidgetType( p ) = gtype_ ) then
-            g_free( p )
-            id_ = p
-        else
-            RuntimeError( "Associate() failed - pointer type mismatch" )
-        end if
-    end sub
 
     sub TGtkRapadBar.ResizeMainMenuArray( byval size_ as uinteger )
         if (size_ <= 0) then
@@ -86,53 +74,6 @@ namespace GtkRapad
 
         'print x & ": "; __pArrMnuMain[x].GetName()
     end sub
-
-
-    sub TGtkRapadBar.Show()
-        gtk_widget_show( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRapadBar.Hide()
-        gtk_widget_hide( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRapadBar.ShowAll()
-        gtk_widget_show_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRapadBar.HideAll()
-        gtk_widget_hide_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRapadBar.Destroy()
-        gtk_widget_destroy( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRapadBar.SetName( byref newName as string )
-        objname_ = newName
-        'g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end sub
-
-    function TGtkRapadBar.GetName() as string
-        'dim p as string pointer
-        'dim s as string
-
-        'p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        's = *p
-
-        'return s
-
-        return objname_
-    end function
-
-    sub TGtkRapadBar.SetParent( byval p as GtkWidget Pointer )
-        parent_ = p
-        gtk_container_add( GTK_CONTAINER( parent_ ), GTK_WIDGET( id_ ) )
-    end sub
-
-    function TGtkRapadBar.GetParent() as GtkWidget Pointer
-        return parent_
-    end function
 
     sub TGtkRapadBar.SetEvent( byval ev as TGtkEvents, byval aMethod as GtkGenericCallback )
 

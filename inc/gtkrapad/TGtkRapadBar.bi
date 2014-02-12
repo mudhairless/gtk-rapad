@@ -10,8 +10,6 @@ namespace GtkRapad
 
             declare operator cast() as GtkWidget pointer
 
-            declare sub Associate( byval p as GtkWidget pointer )
-
             declare sub ResizeMainMenuArray( byval size_ as uinteger )
 
             declare sub AddChild( byval cwid_ as TGtkMenuItem )
@@ -22,26 +20,13 @@ namespace GtkRapad
 
             declare function GetMenuAssociationIndex( byval name_ as string ) as integer
 
-            declare sub Show()
-            declare sub Hide()
-            declare sub ShowAll()
-            declare sub HideAll()
-            declare sub Destroy()
-            declare function GetParent() as GtkWidget Pointer
-            declare function GetName() as string
-
-            '---------------------------------------
-
             declare sub SetEvent( byval ev as TGtkEvents, byval aMethod as GtkGenericCallback )
-            declare sub SetParent( byval p as GtkWidget Pointer )
-            declare sub SetName(byref newName as string)
+
+            DECLARE_COMMON_FUNCS()
+
+            COMMON_MEMBERS()
 
         private:
-            id_ as GtkWidget Pointer        'pointer to this object
-            parent_ as GtkWidget pointer    'pointer to our parent object
-            gtype_ as string                'GtkWidget type
-            objname_ as string              'name of our object
-
             __pArrMnuMain         as TGtkMenuItem pointer
             __pArrMnuMain_Count   as uinteger
 

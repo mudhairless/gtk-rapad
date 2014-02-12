@@ -2,6 +2,8 @@
 
 namespace GtkRapad
 
+    COMMON_FUNCS(TGtkMenuBar)
+
     dim shared mnu_key(31) as string
     dim shared mnu_item(31) as GtkWidget pointer
     dim shared mnu_shell(31) as GtkWidget pointer
@@ -59,8 +61,7 @@ namespace GtkRapad
 
     constructor TGtkMenuBar( )
         id_ = gtk_menu_bar_new()
-        objname_ = str( (gtype_ & "-" & id_) )
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        init()
     end constructor
 
     operator TGtkMenuBar.cast() as GtkWidget pointer
@@ -101,26 +102,6 @@ namespace GtkRapad
         gtk_widget_show ( _item_ )
         gtk_menu_item_set_submenu( GTK_MENU_ITEM( _item_ ), _widget_)
         gtk_menu_shell_append( GTK_MENU_SHELL( id_ ), _item_)
-    end sub
-
-    sub TGtkMenuBar.SetName( byref newName as string )
-        objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end sub
-
-    function TGtkMenuBar.GetName() as string
-        dim p as string pointer
-        dim s as string
-
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
-
-        return s
-    end function
-
-    sub TGtkMenuBar.SetParent( byval prnt_ as GtkWidget pointer )
-        parent_ = prnt_
-        gtk_container_add( GTK_CONTAINER( parent_ ), GTK_WIDGET( id_ ) )
     end sub
 
 end namespace

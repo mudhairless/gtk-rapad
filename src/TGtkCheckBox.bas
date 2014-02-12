@@ -1,80 +1,21 @@
 #include once "gtkrapad/gtkrapad.bi"
 namespace GtkRapad
 
+    COMMON_FUNCS(TGtkCheckBox)
+
     constructor TGtkCheckBox()
         id_ = gtk_check_button_new_with_mnemonic( "" )
-        gtype_ = GetGtkWidgetType( id_ )
-        objname_ = str( (gtype_ & "-" & id_) )
-
-
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        init()
     end constructor
 
     constructor TGtkCheckBox( byref lbl as string )
         id_ = gtk_check_button_new_with_mnemonic( lbl )
-        gtype_ = GetGtkWidgetType( id_ )
+        init()
     end constructor
 
     operator TGtkCheckBox.cast() as GtkWidget Pointer
         return id_
     end operator
-
-    sub TGtkCheckBox.Associate( byval p as GtkWidget pointer )
-        'Will assign a new pointer for this class to reference so long
-        'as the pointer type is appropriate for this class.
-
-        if ( GetGtkWidgetType( p ) = gtype_ ) then
-            id_ = p
-        else
-            RuntimeError( "Associate() failed - pointer type mismatch" )
-        end if
-    end sub
-
-    sub TGtkCheckBox.Show()
-        gtk_widget_show( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkCheckBox.Hide()
-        gtk_widget_hide( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkCheckBox.ShowAll()
-        gtk_widget_show_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkCheckBox.HideAll()
-        gtk_widget_hide_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkCheckBox.Destroy()
-        gtk_widget_destroy( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkCheckBox.SetName( byref newName as string )
-        objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end sub
-
-    function TGtkCheckBox.GetName() as string
-        dim p as string pointer
-        dim s as string
-
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
-
-        return s
-    end function
-
-    sub TGtkCheckBox.SetParent( byval p as GtkWidget Pointer )
-        parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
-    end sub
-
-    function TGtkCheckBox.GetParent() as GtkWidget Pointer
-        return parent_
-    end function
-
-    '-----------------------------------------------
 
     sub TGtkCheckBox.SetLabel( byref lbl as string )
         gtk_button_set_label( GTK_BUTTON( id_ ), lbl )
@@ -97,7 +38,7 @@ namespace GtkRapad
 
         end select
 
-        g_signal_connect( GTK_OBJECT( id_ ), action, G_CALLBACK( aMethod ), 0 )
+        connect( action, aMethod )
 
     end sub
 

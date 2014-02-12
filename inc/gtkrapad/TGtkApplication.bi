@@ -11,8 +11,6 @@ extern "C"
 end extern
 #endif
 
-#include once "gtkrapad/TGtkMessageDialog.bi"
-
 namespace GtkRapad
 
     type TGtkApplication

@@ -33,25 +33,14 @@ namespace GtkRapad
             declare operator cast() as GtkWidget pointer
 
             declare function ActivateFocus() as gboolean
-            declare sub Associate( byval p as GtkWidget pointer )
-            declare sub Destroy()
-            declare sub Hide()
-            declare sub HideAll()
             declare sub Move( byval x_ as integer, byval y_ as integer )
-            declare sub Show()
-            declare sub ShowAll()
-
             declare function GetFullScreen() as gboolean
             declare function GetKeepAbove() as gboolean
             declare function GetMaximized() as gboolean
             declare function GetMinimized() as gboolean
-            declare function GetName() as string
-            declare function GetParent() as GtkWidget pointer
             declare function GetResizable() as gboolean
             declare function GetSticky() as gboolean
             declare function GetTitle() as string
-
-            '---------------------------------------
 
             declare sub SetDestroyCallback( byval aMethod as gtkGenericCallback )
             declare sub SetFocus( byval wid as GtkWidget pointer )
@@ -59,8 +48,6 @@ namespace GtkRapad
             declare sub SetKeepAbove( byval b as gboolean )
             declare sub SetMaximized( byval b as gboolean )
             declare sub SetMinimized( byval b as gboolean )
-            declare sub SetName( byref newName as string )
-            declare sub SetParent( byval p as GtkWidget pointer )
             declare sub SetPosition( byref position as GtkWindowPosition )
             declare sub SetResizable( byval b as gboolean )
             declare sub SetSize( byval width as integer, byval height as integer )
@@ -77,16 +64,15 @@ namespace GtkRapad
             declare function GetHeight() as integer
             declare function GetWidth() as integer
 
+            DECLARE_COMMON_FUNCS()
 
+            COMMON_MEMBERS()
+            
         private:
             fullscreen_ as gboolean
-            gtype_ as string                'GtkWidget type
-            id_ as GtkWidget pointer        'pointer to this object
             keepabove_ as gboolean
             maximize_ as gboolean
             minimized_ as gboolean
-            objname_ as string
-            parent_ as GtkWidget pointer    'pointer to our parent object
             posx_ as integer                'x position
             posy_ as integer                'y position
             resizable_ as gboolean

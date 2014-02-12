@@ -3,60 +3,24 @@
 
 namespace GtkRapad
 
+    COMMON_FUNCS(TGtkWindow)
+
     constructor TGtkWindow
         id_ = gtk_window_new( GTK_WINDOW_TOPLEVEL )
-        gtype_ = GetGtkWidgetType( id_ )
-        objname_ = str( (gtype_ & "-" & id_) )
 
         gtk_window_set_title( GTK_WINDOW( id_ ), "window" )
         gtk_window_set_destroy_with_parent( GTK_WINDOW( id_ ), true)
 
         gtk_window_resize( GTK_WINDOW( id_ ), 320, 240 )
 
-        'posx_ = 100
-        'posy_ = 100
+        connect( "destroy", cast(GtkGenericCallback,@gtk_widget_destroy), id_ )
 
-        'gtk_window_move( GTK_WINDOW( id_ ), posx_, posy_ )
-
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-
-        g_signal_connect( GTK_OBJECT( id_ ), "destroy", G_CALLBACK(@gtk_widget_destroy()), id_ )
+        init()
     end constructor
 
     operator TGtkWindow.cast() as GtkWidget Pointer
         return id_
     end operator
-
-    sub TGtkWindow.Associate( byval p as GtkWidget pointer )
-        'Will assign a new pointer for this class to reference so long
-        'as the pointer type is appropriate for this class.
-
-        if ( GetGtkWidgetType( p ) = gtype_ ) then
-            id_ = p
-        else
-            RuntimeError( "Associate() failed - pointer type mismatch" )
-        end if
-    end sub
-
-    sub TGtkWindow.Show()
-        gtk_widget_show( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkWindow.Hide()
-        gtk_widget_hide( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkWindow.ShowAll()
-        gtk_widget_show_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkWindow.HideAll()
-        gtk_widget_hide_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkWindow.Destroy()
-        gtk_widget_destroy( GTK_WIDGET( id_ ) )
-    end sub
 
     sub TGtkWindow.Move( byval x_ as integer, byval y_ as integer )
         posx_ = x_
@@ -64,33 +28,6 @@ namespace GtkRapad
 
         gtk_window_move( GTK_WINDOW( id_ ), posx_, posy_ )
     end sub
-
-    sub TGtkWindow.SetName( byref newName as string )
-        objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end sub
-
-    function TGtkWindow.GetName() as string
-        dim p as string pointer
-        dim s as string
-
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
-
-        return s
-    end function
-
-    sub TGtkWindow.SetParent( byval p as GtkWidget Pointer )
-        parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
-    end sub
-
-    function TGtkWindow.GetParent() as GtkWidget Pointer
-        return parent_
-    end function
-
-    '-----------------------------------------------
-
 
     sub TGtkWindow.SetFocus( byval wid as GtkWidget Pointer )
         gtk_window_set_focus( GTK_WINDOW( id_ ), wid )
@@ -175,7 +112,7 @@ namespace GtkRapad
     end function
 
     sub TGtkWindow.SetDestroyCallback( byval aMethod as gtkGenericCallback )
-        g_signal_connect( GTK_OBJECT( id_ ), "destroy", G_CALLBACK( aMethod ), id_ )
+        connect( "destroy", aMethod, id_ )
     end sub
 
     sub TGtkWindow.SetTitle( byref newTitle as string )

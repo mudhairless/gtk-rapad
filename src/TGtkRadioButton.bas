@@ -2,86 +2,23 @@
 
 namespace GtkRapad
 
+    COMMON_FUNCS(TGtkRadioButton)
+
     constructor TGtkRadioButton()
         id_ = gtk_radio_button_new_with_mnemonic( 0, "")
-        gtype_ = GetGtkWidgetType( id_ )
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
-        objname_ = str( (gtype_ & "-" & id_) )
-
-
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        init()
     end constructor
 
     constructor TGtkRadioButton( byref label as string )
         id_ = gtk_radio_button_new_with_mnemonic( 0, label)
-        gtype_ = GetGtkWidgetType( id_ )
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
-        objname_ = str( (gtype_ & "-" & id_) )
-
-
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
+        init()
     end constructor
 
     operator TGtkRadioButton.cast() as GtkWidget Pointer
         return id_
     end operator
-
-    sub TGtkRadioButton.Associate( byval p as GtkWidget pointer )
-        'Will assign a new pointer for this class to reference so long
-        'as the pointer type is appropriate for this class.
-
-        if ( GetGtkWidgetType( p ) = gtype_ ) then
-            id_ = p
-        else
-            RuntimeError( "Associate() failed - pointer type mismatch" )
-        end if
-    end sub
-
-    sub TGtkRadioButton.Show()
-        gtk_widget_show( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRadioButton.Hide()
-        gtk_widget_hide( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRadioButton.ShowAll()
-        gtk_widget_show_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRadioButton.HideAll()
-        gtk_widget_hide_all( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRadioButton.Destroy()
-        gtk_widget_destroy( GTK_WIDGET( id_ ) )
-    end sub
-
-    sub TGtkRadioButton.SetName( byref newName as string )
-        objname_ = newName
-        g_object_set_data( G_OBJECT( id_ ), "rapad.name", @objname_ )
-    end sub
-
-    function TGtkRadioButton.GetName() as string
-        dim p as string pointer
-        dim s as string
-
-        p = g_object_get_data( G_OBJECT( id_ ), "rapad.name" )
-        s = *p
-
-        return s
-    end function
-
-    sub TGtkRadioButton.SetParent( byval p as GtkWidget Pointer )
-        parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
-    end sub
-
-    function TGtkRadioButton.GetParent() as GtkWidget Pointer
-        return parent_
-    end function
-
-    '-----------------------------------------------
 
     sub TGtkRadioButton.SetLabel( byref label as string )
         gtk_button_set_label( GTK_BUTTON( id_ ), label )
@@ -116,7 +53,7 @@ namespace GtkRapad
                 RuntimeError("Radio Button event not implemented.")
         end select
 
-        g_signal_connect( GTK_OBJECT( id_ ), action, G_CALLBACK( aMethod ), 0 )
+        connect( action, aMethod )
     end sub
 
 end namespace
