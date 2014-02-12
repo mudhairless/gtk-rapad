@@ -6,7 +6,7 @@
 '   but rather retuns the scrolled window which contains it.
 '   If you must reference the actual buffer in an external function
 '   you should use the View() accessor.
-
+#include once "gtkrapad/TGtkScrollable.bi"
 
 namespace GtkRapad
 
@@ -26,6 +26,8 @@ namespace GtkRapad
             declare sub SetText( byval text_ as string )
             declare sub SetFont( byval font_ as string )
 
+            declare function getScrollable() as TGtkScrollable ptr
+
             DECLARE_COMMON_FUNCS()
 
             COMMON_MEMBERS()
@@ -33,7 +35,7 @@ namespace GtkRapad
         private:
             textbuffer_ as  GtkTextBuffer pointer       'our text buffer
             texttagtable_ as GtkTextTagTable pointer    '?
-            scrollwindow_ as GtkWidget pointer          'This object is the default container for this class
+            scrollwindow_ as TGtkScrollable
     end type
 
 end namespace

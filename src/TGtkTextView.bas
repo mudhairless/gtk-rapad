@@ -17,14 +17,17 @@ namespace GtkRapad
         texttagtable_ = gtk_text_tag_table_new()
         textbuffer_ = gtk_text_buffer_new( texttagtable_ )
         id_ = gtk_text_view_new_with_buffer( textbuffer_ )
-        scrollwindow_ = gtk_scrolled_window_new( null, null )
 
-        gtk_container_add( GTK_CONTAINER( scrollwindow_ ), GTK_WIDGET( id_ ) )
+        gtk_container_add( GTK_CONTAINER( cast(GtkWidget ptr,scrollwindow_) ), GTK_WIDGET( id_ ) )
         init()
     end constructor
 
+    function TGtkTextView.getScrollable() as TGtkScrollable ptr
+        return @scrollwindow_
+    end function
+
     operator TGtkTextView.cast() as GtkWidget Pointer
-        return scrollwindow_
+        return id_
     end operator
 
     function TGtkTextView.TextView() as GtkWidget Pointer
