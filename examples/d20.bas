@@ -31,9 +31,9 @@ sub Main()
     cols(1) = G_TYPE_STRING
 
     with frmMain
-        .SetTitle( "D20 Roller" )
+        .SetTitle( "Dice Roller" )
         .SetKeepAbove( false )
-        .SetSize( 200, 150 )
+        .SetSize( 200, 200 )
     end with
 
     with hPanel
@@ -41,9 +41,7 @@ sub Main()
     end with
 
     with iScroll
-        .setSize(,100)
         .setScrollBarPolicy(GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC)
-        .setParent( hPanel )
     end with
 
     with rollList
@@ -70,15 +68,14 @@ sub Main()
         .SetMaxLength(4)
     end with
 
-    with iPanel
-        .SetParent( hPanel )
-    end with
-
     with cmdRoll
         .SetCaption("Roll!")
         .SetMouseClick( @Roll )
-        .SetParent( hPanel )
     end with
+
+    hPanel.addChild(iScroll,true,true,0)
+    hPanel.addChild(iPanel,false,false,0)
+    hPanel.addChild(cmdRoll,false,false,0)
 
     frmMain.ShowAll()
 
