@@ -17,6 +17,8 @@ type TGtkProgressBar
     declare sub setOrientation( byval d as GtkProgressBarOrientation )
     declare function getOrientation() as GtkProgressBarOrientation
 
+    declare operator cast() as GtkWidget ptr
+
     DECLARE_COMMON_FUNCS()
 
     COMMON_MEMBERS()

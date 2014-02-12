@@ -48,4 +48,8 @@ namespace GtkRapad
         return gtk_progress_bar_get_orientation(GTK_PROGRESS_BAR(id_))
     end function
 
+    operator TGtkProgressBar.cast() as GtkWidget ptr
+        return id_
+    end operator
+
 end namespace
