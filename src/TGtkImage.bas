@@ -132,7 +132,19 @@ namespace GtkRapad
     function TGtkImage.getAnimation() as GdkPixbufAnimation ptr
         return gtk_image_get_animation(GTK_IMAGE(id_))
     end function
-    
+
+    sub TGtkImage.clear()
+        gtk_image_clear(GTK_IMAGE(id_))
+    end sub
+
+    sub TGtkImage.setPixelSize( byval ns as integer )
+        gtk_image_set_pixel_size(GTK_IMAGE(id_),ns)
+    end sub
+
+    function TGtkImage.getPixelSize( ) as integer
+        return gtk_image_get_pixel_size(GTK_IMAGE(id_))
+    end function
+
     function TGtkImage.getStorageType() as GtkImageType
         return gtk_image_get_storage_type(GTK_IMAGE(id_))
     end function

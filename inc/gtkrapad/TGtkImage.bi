@@ -33,6 +33,11 @@ type TGtkImage
 
     declare function getStorageType() as GtkImageType
 
+    declare sub clear()
+
+    declare sub setPixelSize( byval ns as integer )
+    declare function getPixelSize( ) as integer
+
     declare operator cast() as GtkWidget ptr
 
     DECLARE_COMMON_FUNCS()
