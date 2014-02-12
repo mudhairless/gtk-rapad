@@ -195,6 +195,7 @@ end namespace
 #include once "gtkrapad/TGtkTextView.bi"
 #include once "gtkrapad/TGtkImage.bi"
 #include once "gtkrapad/TGtkProgressBar.bi"
+#include once "gtkrapad/TGtkStatusBar.bi"
 
 #include once "gtkrapad/TGtkListView.bi"
 '#include once "gtkrapad/TGtkListStore.bi"
