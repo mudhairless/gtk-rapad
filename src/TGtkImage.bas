@@ -84,6 +84,54 @@ namespace GtkRapad
     sub TGtkImage.setFromAnimation( byval anim as GdkPixbufAnimation ptr )
         gtk_image_set_from_animation(GTK_IMAGE(id_),anim)
     end sub
+
+    function TGtkImage.getPixbuf() as GdkPixbuf ptr
+        return gtk_image_get_pixbuf(GTK_IMAGE(id_))
+    end function
+    
+    function TGtkImage.getImage( byval bm as GdkBitmap ptr ptr ) as GdkImage ptr
+        dim x as GdkImage ptr
+        gtk_image_get_image(GTK_IMAGE(id_),@x,bm)
+        return x
+    end function
+    
+    function TGtkImage.getPixmap( byval bm as GdkBitmap ptr ptr ) as GdkPixmap ptr
+        dim x as GdkPixmap ptr
+        gtk_image_get_pixmap(GTK_IMAGE(id_),@x,bm)
+        return x
+    end function
+    
+    function TGtkImage.getStock( byref s as GtkIconSize ) as string
+        dim x as zstring ptr
+        var ret = ""
+        gtk_image_get_stock(GTK_IMAGE(id_),@x,@s)
+        ret = *x
+        return ret
+    end function
+    
+    function TGtkImage.getIcon( byref s as GtkIconSize ) as GIcon ptr
+        dim x as GIcon ptr
+        gtk_image_get_gicon(GTK_IMAGE(id_),@x,@s)
+        return x
+    end function
+    
+    function TGtkImage.getIconSet( byref s as GtkIconSize ) as GtkIconSet ptr
+        dim x as GtkIconSet ptr
+        gtk_image_get_icon_set(GTK_IMAGE(id_),@x,@s)
+        return x
+    end function
+    
+    function TGtkImage.getIconName( byref s as GtkIconSize ) as string
+        dim x as zstring ptr
+        var ret = ""
+        gtk_image_get_icon_name(GTK_IMAGE(id_),@x,@s)
+        ret = *x
+        return ret
+    end function
+    
+    function TGtkImage.getAnimation() as GdkPixbufAnimation ptr
+        return gtk_image_get_animation(GTK_IMAGE(id_))
+    end function
     
     function TGtkImage.getStorageType() as GtkImageType
         return gtk_image_get_storage_type(GTK_IMAGE(id_))

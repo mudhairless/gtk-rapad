@@ -22,6 +22,15 @@ type TGtkImage
     declare sub setFromIconName( byref icn as string, byval s as GtkIconSize )
     declare sub setFromAnimation( byval anim as GdkPixbufAnimation ptr )
 
+    declare function getPixbuf() as GdkPixbuf ptr
+    declare function getImage( byval bm as GdkBitmap ptr ptr ) as GdkImage ptr
+    declare function getPixmap( byval bm as GdkBitmap ptr ptr ) as GdkPixmap ptr
+    declare function getStock( byref s as GtkIconSize ) as string
+    declare function getIcon( byref s as GtkIconSize ) as GIcon ptr
+    declare function getIconSet( byref s as GtkIconSize ) as GtkIconSet ptr
+    declare function getIconName( byref s as GtkIconSize ) as string
+    declare function getAnimation() as GdkPixbufAnimation ptr
+
     declare function getStorageType() as GtkImageType
 
     declare operator cast() as GtkWidget ptr
