@@ -11,6 +11,7 @@ type TGtkFormSpace
     Active as ubyte
 end type
 
+dim shared GtkApp as TGtkApplication
 dim shared GtkFormSpace(1 to 64)    as TGtkFormSpace
 
 dim shared frmMain                  as TGtkWindow
@@ -87,8 +88,6 @@ sub FromCreate cdecl ( byval Title as string )
 end sub
 
 sub Main()
-
-    GtkApp.init()
 
     with frmMain
         .SetKeepAbove( true )

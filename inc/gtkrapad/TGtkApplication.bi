@@ -4,7 +4,7 @@
 '   A wrapper for generic GTK calls
 '
 
-#if not __FB_MIN_VERSION__(0,18,3)
+#if not __FB_MIN_VERSION__(0,18,4)
 'making up for missing declares in .18.3's headers
 extern "C"
     declare sub gtk_file_chooser_set_do_overwrite_confirmation (byval __ as GtkFileChooser pointer, byval do_overwrite_confirmation as gboolean )
@@ -16,7 +16,7 @@ namespace GtkRapad
     type TGtkApplication
 
         public:
-            declare sub init( byval argc as integer pointer = 0, byval argv as byte pointer pointer pointer = 0)
+            declare constructor()
 
             declare sub Start( byval quitObj as GtkWidget pointer )
             declare sub Quit()

@@ -165,6 +165,4 @@ end function
 
 #include once "gtkrapad/TGdkScreen.bi"
 
-extern GtkApp as gtkrapad.TGtkApplication
-
 #inclib "gtkrapad"

@@ -9,6 +9,7 @@
 using GtkRapad
 
 'Global object variables
+dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared txtEntry as TGtkEntry
 dim shared Label as TGtkLabel
@@ -55,8 +56,6 @@ declare sub chk_tog_event cdecl ( byval __ as any pointer )
 
 sub Main()
 
-    GtkApp.init()
-    
     'Main function which will setup
     'the GUI and some system call backs. w00t.
 

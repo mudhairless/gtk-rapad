@@ -9,7 +9,7 @@ constructor TGtkAdjustment
 end constructor
 
 constructor TGtkAdjustment( byval x as any ptr )
-    id_ = GTK_WIDGET(x)
+    id_ = cast(GtkWidget ptr,x)
 end constructor
 
 property TGtkAdjustment.value () as double

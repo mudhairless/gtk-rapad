@@ -1,13 +1,11 @@
 
 #include once "gtkrapad/gtkrapad.bi"
 
-dim shared GtkApp as gtkrapad.TGtkApplication
-
 namespace GtkRapad
 
-    sub TGtkApplication.init ( byval argc as integer ptr, byval argv as byte ptr ptr ptr )
-        gtk_init(argc,argv)
-    end sub
+    constructor TGtkApplication
+        gtk_init(0,0)
+    end constructor
 
     sub TGtkApplication.Start( byval quitObj as GtkWidget Pointer )
         'Once gtk_main() is called our application will enter a loop

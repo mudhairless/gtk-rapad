@@ -12,8 +12,8 @@
 using GtkRapad
 
 'Global object variables
+dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
-
 dim shared rb1 as TGtkRadioButton
 dim shared rb2 as TGtkRadioButton
 dim shared rb3 as TGtkRadioButton
@@ -30,8 +30,6 @@ declare sub RadioSwitchEvent cdecl ( byval __ as any pointer )
 '------------+------------+------------+------------+------------+----------'
 
 sub Main()
-
-    GtkApp.init()
 
     'Main function which will setup
     'the GUI and some system call backs. w00t.

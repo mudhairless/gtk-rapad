@@ -9,6 +9,7 @@
 using GtkRapad
 
 'Global object variables
+dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared cmdRoll as TGtkButton
 dim shared numDice as TGtkEntry
@@ -24,8 +25,6 @@ declare CALLBACK(Roll)
 declare CALLBACK(listChanged)
 
 sub Main()
-
-    GtkApp.init()
 
     dim cols(0 to 1) as integer
     cols(0) = G_TYPE_STRING
@@ -101,7 +100,7 @@ CALLBACK(Roll)
     var _numsides = valint(numSides.getText())
     var _numdice = valint(numDice.getText())
 
-    if _numsides = 0 orelse _numdice = 0 then
+    if _numsides < 2 or _numdice < 1 then
         GtkApp.MessageBox("Oops!","One or both of those values doesn't make sense!")
     else
         var total = 0u

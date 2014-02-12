@@ -11,6 +11,7 @@
 using GtkRapad
 
 'Global object variables
+dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared hPanel as TGtkHBox
 dim shared btnClose as TGtkButton
@@ -26,8 +27,6 @@ declare CALLBACK(button_click)
 '------------+------------+------------+------------+------------+----------'
 
 sub Main()
-
-    GtkApp.init()
 
     frmMain.SetKeepAbove( false )
     frmMain.SetSize( 400, 100 )

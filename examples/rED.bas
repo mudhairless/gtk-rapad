@@ -9,6 +9,7 @@
 using GtkRapad
 
 'Global object variables
+dim shared GtkApp as TGtkApplication
 dim shared frmMain              as TGtkWindow
 dim shared vPanel               as TGtkVBox
 dim shared txtTextView          as TGtkTextView
@@ -42,8 +43,6 @@ declare sub mnuMainFileExit_Click cdecl( byval __ as any pointer)
 '--------------------------------------------------------------------
 
 sub Main()
-
-    GtkApp.init()
 
     GtkApp.SetName( "rED" )
 
