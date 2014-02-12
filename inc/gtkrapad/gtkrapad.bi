@@ -183,6 +183,7 @@ end namespace
 #include once "gtkrapad/TGtkVBox.bi"
 #include once "gtkrapad/TGtkMenuBar.bi"
 #include once "gtkrapad/TGtkMenu.bi"
+#include once "gtkrapad/TGtkEventBox.bi"
 
 'Widgets
 #include once "gtkrapad/TGtkButton.bi"
