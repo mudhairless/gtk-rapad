@@ -9,7 +9,6 @@
 using GtkRapad
 
 'Global object variables
-dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared cmdRoll as TGtkButton
 dim shared numDice as TGtkEntry
@@ -25,6 +24,8 @@ declare CALLBACK(Roll)
 declare CALLBACK(listChanged)
 
 sub Main()
+
+    GtkApp.init()
 
     dim cols(0 to 1) as integer
     cols(0) = G_TYPE_STRING

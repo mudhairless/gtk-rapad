@@ -7,11 +7,11 @@
 '
 
 #include once "gtkrapad/gtkrapad.bi"
+#include once "gtkrapad/attic/TGtkTreeView.bi"
 
 using GtkRapad
 
 'Global object variables
-dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 
 dim shared rb1 as TGtkRadioButton
@@ -19,7 +19,6 @@ dim shared rb2 as TGtkRadioButton
 dim shared rb3 as TGtkRadioButton
 
 dim shared hPanel as TGtkVBox 'TGtkHBox
-dim shared listTreeView as TGtkTreeView
 
 'Prototyping each function of our application
 declare sub Main()
@@ -31,6 +30,8 @@ declare sub RadioSwitchEvent cdecl ( byval __ as any pointer )
 '------------+------------+------------+------------+------------+----------'
 
 sub Main()
+
+    GtkApp.init()
 
     'Main function which will setup
     'the GUI and some system call backs. w00t.
@@ -60,8 +61,6 @@ sub Main()
     rb1.SetParent( hPanel )
     rb2.SetParent( hPanel )
     rb3.SetParent( hPanel )
-
-    listTreeView.SetParent( hPanel )
 
     frmMain.ShowAll()
 

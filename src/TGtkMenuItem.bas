@@ -11,6 +11,7 @@ namespace GtkRapad
 
     constructor TGtkMenuItem()
         id_ = gtk_menu_item_new()
+        gtk_menu_item_set_use_underline(GTK_MENU_ITEM(id_),true)
         init()
     end constructor
 

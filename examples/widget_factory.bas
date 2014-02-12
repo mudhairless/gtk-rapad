@@ -9,7 +9,6 @@
 using GtkRapad
 
 'Global object variables
-dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared txtEntry as TGtkEntry
 dim shared Label as TGtkLabel
@@ -56,6 +55,8 @@ declare sub chk_tog_event cdecl ( byval __ as any pointer )
 
 sub Main()
 
+    GtkApp.init()
+    
     'Main function which will setup
     'the GUI and some system call backs. w00t.
 
@@ -177,7 +178,7 @@ end sub
 
 sub btnTest_Click cdecl( byval __ as any pointer )
     var x = GtkApp.SelectColorWithAlpha("What is your favorite color?")
-    print using "Dec: ###########, Hex: &"; x, hex(x)
+    print using "Dec: &, Hex: &"; x; hex(x)
 end sub
 
 sub btnOk_Click cdecl( byval __ as any pointer )

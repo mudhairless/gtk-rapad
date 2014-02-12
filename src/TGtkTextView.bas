@@ -27,7 +27,7 @@ namespace GtkRapad
     end function
 
     operator TGtkTextView.cast() as GtkWidget Pointer
-        return id_
+        return cast(GtkWidget ptr,scrollwindow_)
     end operator
 
     function TGtkTextView.TextView() as GtkWidget Pointer

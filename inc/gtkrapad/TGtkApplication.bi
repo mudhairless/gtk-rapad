@@ -16,8 +16,7 @@ namespace GtkRapad
     type TGtkApplication
 
         public:
-            declare constructor()
-            declare constructor( byval argc as integer pointer, byval argv as byte pointer pointer pointer )
+            declare sub init( byval argc as integer pointer = 0, byval argv as byte pointer pointer pointer = 0)
 
             declare sub Start( byval quitObj as GtkWidget pointer )
             declare sub Quit()
