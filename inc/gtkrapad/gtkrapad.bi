@@ -178,17 +178,17 @@ end namespace
 '#include once "gtkrapad/CommonDialogs.bi"
 
 'Containers
-#include once "gtkrapad/TGtkAlignment.bi"
-#include once "gtkrapad/TGtkAspectFrame.bi"
-#include once "gtkrapad/TGtkFixed.bi"
-#include once "gtkrapad/TGtkHBox.bi"
-#include once "gtkrapad/TGtkVBox.bi"
+#include once "gtkrapad/containers/TGtkAlignment.bi"
+#include once "gtkrapad/containers/TGtkAspectFrame.bi"
+#include once "gtkrapad/containers/TGtkFixed.bi"
+#include once "gtkrapad/containers/TGtkHBox.bi"
+#include once "gtkrapad/containers/TGtkVBox.bi"
+#include once "gtkrapad/containers/TGtkNotebook.bi"
+
+'Widgets
 #include once "gtkrapad/TGtkMenuBar.bi"
 #include once "gtkrapad/TGtkMenu.bi"
 #include once "gtkrapad/TGtkEventBox.bi"
-#include once "gtkrapad/TGtkNotebook.bi"
-
-'Widgets
 #include once "gtkrapad/TGtkButton.bi"
 #include once "gtkrapad/TGtkLabel.bi"
 #include once "gtkrapad/TGtkEntry.bi"
