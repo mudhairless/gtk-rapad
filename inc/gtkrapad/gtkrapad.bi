@@ -175,8 +175,40 @@ end namespace
 'Special
 #include once "gtkrapad/TGtkApplication.bi"
 #include once "gtkrapad/TGtkWindow.bi"
-#include once "gtkrapad/TGtkStatusIcon.bi"
 #include once "gtkrapad/TGtkAssistant.bi"
+
+'Display Widgets
+#include once "gtkrapad/TGtkLabel.bi"
+#include once "gtkrapad/TGtkImage.bi"
+#include once "gtkrapad/TGtkProgressBar.bi"
+#include once "gtkrapad/TGtkStatusBar.bi"
+#include once "gtkrapad/TGtkInfoBar.bi"
+#include once "gtkrapad/TGtkStatusIcon.bi"
+#include once "gtkrapad/TGtkSpinner.bi"
+
+'Buttons and Toggles
+#include once "gtkrapad/TGtkButton.bi"
+#include once "gtkrapad/TGtkCheckBox.bi"
+#include once "gtkrapad/TGtkRadioButton.bi"
+#include once "gtkrapad/TGtkToggleButton.bi"
+#include once "gtkrapad/TGtkLinkButton.bi"
+
+'Numericy/Text Data Entry
+#include once "gtkrapad/TGtkEntry.bi"
+
+'Multiline Text Editor
+#include once "gtkrapad/TGtkTextView.bi"
+
+'Tree, List and Icon Grid Widgets
+#include once "gtkrapad/TGtkListView.bi"
+
+'Menus, Combo Box, Toolbar
+#include once "gtkrapad/TGtkMenuBar.bi"
+#include once "gtkrapad/TGtkMenu.bi"
+#include once "gtkrapad/TGtkMenuItem.bi"
+
+'Scrolling
+#include once "gtkrapad/TGtkScrollable.bi"
 
 'Containers
 #include once "gtkrapad/containers/TGtkAlignment.bi"
@@ -188,37 +220,13 @@ end namespace
 #include once "gtkrapad/containers/TGtkFixed.bi"
 #include once "gtkrapad/containers/TGtkHPaned.bi"
 #include once "gtkrapad/containers/TGtkVPaned.bi"
-#include once "gtkrapad/TGtkScrollable.bi"
 #include once "gtkrapad/containers/TGtkLayout.bi"
 #include once "gtkrapad/containers/TGtkNotebook.bi"
 #include once "gtkrapad/containers/TGtkTable.bi"
 #include once "gtkrapad/containers/TGtkExpander.bi"
 
-
-'Widgets
-#include once "gtkrapad/TGtkMenuBar.bi"
-#include once "gtkrapad/TGtkMenu.bi"
+'Miscellaneous
 #include once "gtkrapad/TGtkEventBox.bi"
-#include once "gtkrapad/TGtkButton.bi"
-#include once "gtkrapad/TGtkLabel.bi"
-#include once "gtkrapad/TGtkEntry.bi"
-#include once "gtkrapad/TGtkMenuItem.bi"
-#include once "gtkrapad/TGtkCheckBox.bi"
-#include once "gtkrapad/TGtkRadioButton.bi"
-#include once "gtkrapad/TGtkTextView.bi"
-#include once "gtkrapad/TGtkImage.bi"
-#include once "gtkrapad/TGtkProgressBar.bi"
-#include once "gtkrapad/TGtkStatusBar.bi"
-#include once "gtkrapad/TGtkInfoBar.bi"
-#include once "gtkrapad/TGtkSpinner.bi"
-#include once "gtkrapad/TGtkLinkButton.bi"
-
-#include once "gtkrapad/TGtkListView.bi"
-'#include once "gtkrapad/TGtkListStore.bi"
-'#include once "gtkrapad/TGtkListViewColumn.bi"
-'#include once "gtkrapad/TGtkTreeView.bi"
-
-
 #include once "gtkrapad/TGdkScreen.bi"
 
 #inclib "gtkrapad"
