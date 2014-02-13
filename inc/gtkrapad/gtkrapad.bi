@@ -176,6 +176,7 @@ end namespace
 #include once "gtkrapad/TGtkApplication.bi"
 #include once "gtkrapad/TGtkWindow.bi"
 #include once "gtkrapad/TGtkStatusIcon.bi"
+#include once "gtkrapad/TGtkAssistant.bi"
 
 'Containers
 #include once "gtkrapad/containers/TGtkAlignment.bi"
