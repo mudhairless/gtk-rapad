@@ -25,6 +25,15 @@ type TGtkNotebook
     declare function at( byval ind as integer ) as GtkWidget ptr
     declare function length() as integer
 
+    declare sub setTabLabel( byval child as GtkWidget ptr, byval lbl as GtkWidget ptr = 0 )
+    declare sub setTabLabelText( byval child as GtkWidget ptr, byref t as string )
+    declare function getTabLabel( byval child as GtkWidget ptr ) as GtkWidget ptr
+
+    declare sub setMenuLabel( byval child as GtkWidget ptr, byval menulbl as GtkWidget ptr = 0 )
+    declare sub setMenuLabelText( byval child as GtkWidget ptr, byref t as string )
+    declare function getMenuLabel( byval child as GtkWidget ptr ) as GtkWidget ptr
+    
+
     declare sub enablePopup()
     declare sub disablePopup()
 

@@ -76,6 +76,31 @@ namespace GtkRapad
         gtk_notebook_popup_disable(GTK_NOTEBOOK(id_))
     end sub
 
+    sub TGtkNotebook.setTabLabel( byval child as GtkWidget ptr, byval lbl as GtkWidget ptr = 0 )
+        gtk_notebook_set_tab_label(GTK_NOTEBOOK(id_),child,lbl)
+    end sub
+    
+    sub TGtkNotebook.setTabLabelText( byval child as GtkWidget ptr, byref t as string )
+        gtk_notebook_set_tab_label_text(GTK_NOTEBOOK(id_),child,t)
+    end sub
+    
+    function TGtkNotebook.getTabLabel( byval child as GtkWidget ptr ) as GtkWidget ptr
+        return gtk_notebook_get_tab_label(GTK_NOTEBOOK(id_),child)
+    end function
+
+    sub TGtkNotebook.setMenuLabel( byval child as GtkWidget ptr, byval menulbl as GtkWidget ptr = 0 )
+        gtk_notebook_set_menu_label(GTK_NOTEBOOK(id_),child,menulbl)
+    end sub
+
+    sub TGtkNotebook.setMenuLabelText( byval child as GtkWidget ptr, byref t as string )
+        gtk_notebook_set_menu_label_text(GTK_NOTEBOOK(id_),child,t)
+    end sub
+
+    function TGtkNotebook.getMenuLabel( byval child as GtkWidget ptr ) as GtkWidget ptr
+        return gtk_notebook_get_menu_label(GTK_NOTEBOOK(id_),child)
+    end function
+    
+
     property TGtkNotebook.tabsPosition() as GtkPositionType
         return gtk_notebook_get_tab_pos(GTK_NOTEBOOK(id_))
     end property
