@@ -180,10 +180,18 @@ end namespace
 'Containers
 #include once "gtkrapad/containers/TGtkAlignment.bi"
 #include once "gtkrapad/containers/TGtkAspectFrame.bi"
-#include once "gtkrapad/containers/TGtkFixed.bi"
 #include once "gtkrapad/containers/TGtkHBox.bi"
 #include once "gtkrapad/containers/TGtkVBox.bi"
+#include once "gtkrapad/containers/TGtkHButtonBox.bi"
+#include once "gtkrapad/containers/TGtkVButtonBox.bi"
+#include once "gtkrapad/containers/TGtkFixed.bi"
+#include once "gtkrapad/containers/TGtkHPaned.bi"
+#include once "gtkrapad/containers/TGtkVPaned.bi"
+#include once "gtkrapad/containers/TGtkLayou.bi"
 #include once "gtkrapad/containers/TGtkNotebook.bi"
+#include once "gtkrapad/containers/TGtkTable.bi"
+#include once "gtkrapad/containers/TGtkExpander.bi"
+#include once "gtkrapad/containers/TGtkOrientable.bi"
 
 'Widgets
 #include once "gtkrapad/TGtkMenuBar.bi"
