@@ -209,6 +209,7 @@ end namespace
 #include once "gtkrapad/TGtkImage.bi"
 #include once "gtkrapad/TGtkProgressBar.bi"
 #include once "gtkrapad/TGtkStatusBar.bi"
+#include once "gtkrapad/TGtkInfoBar.bi"
 #include once "gtkrapad/TGtkSpinner.bi"
 #include once "gtkrapad/TGtkLinkButton.bi"
 
