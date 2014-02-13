@@ -9,9 +9,6 @@ type TGtkLayout
     declare sub setSize( byval w as uinteger, byval h as uinteger )
     declare sub getSize( byref w as uinteger, byref h as uinteger )
 
-    declare sub freeze()
-    declare sub thaw()
-
     declare property hadjustment() as TGtkAdjustment
     declare property hadjustment( byref t as TGtkAdjustment )
 

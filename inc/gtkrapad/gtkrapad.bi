@@ -187,11 +187,12 @@ end namespace
 #include once "gtkrapad/containers/TGtkFixed.bi"
 #include once "gtkrapad/containers/TGtkHPaned.bi"
 #include once "gtkrapad/containers/TGtkVPaned.bi"
+#include once "gtkrapad/TGtkScrollable.bi"
 #include once "gtkrapad/containers/TGtkLayout.bi"
 #include once "gtkrapad/containers/TGtkNotebook.bi"
 #include once "gtkrapad/containers/TGtkTable.bi"
 #include once "gtkrapad/containers/TGtkExpander.bi"
-#include once "gtkrapad/containers/TGtkOrientable.bi"
+
 
 'Widgets
 #include once "gtkrapad/TGtkMenuBar.bi"
@@ -213,7 +214,7 @@ end namespace
 '#include once "gtkrapad/TGtkListStore.bi"
 '#include once "gtkrapad/TGtkListViewColumn.bi"
 '#include once "gtkrapad/TGtkTreeView.bi"
-#include once "gtkrapad/TGtkScrollable.bi"
+
 
 #include once "gtkrapad/TGdkScreen.bi"
 

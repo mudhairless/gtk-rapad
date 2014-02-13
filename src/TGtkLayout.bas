@@ -25,20 +25,12 @@ namespace GtkRapad
         gtk_layout_get_size(GTK_LAYOUT(id_),@w,@h)
     end sub
 
-    sub TGtkLayout.freeze()
-        gtk_layout_freeze(GTK_LAYOUT(id_))
-    end sub
-
-    sub TGtkLayout.thaw()
-        gtk_layout_thaw(GTK_LAYOUT(id_))
-    end sub
-
     property TGtkLayout.hadjustment() as TGtkAdjustment
         return gtk_layout_get_hadjustment(GTK_LAYOUT(id_))
-    end propety
+    end property
 
     property TGtkLayout.hadjustment( byref t as TGtkAdjustment )
-        gtk_layout_set_hadjustment(GTK_LAYOUT(id_),t)
+        gtk_layout_set_hadjustment(GTK_LAYOUT(id_),GTK_ADJUSTMENT(cast(GtkObject ptr,t)))
     end property
 
     property TGtkLayout.vadjustment() as TGtkAdjustment
@@ -46,7 +38,7 @@ namespace GtkRapad
     end property
 
     property TGtkLayout.vadjustment( byref t as TGtkAdjustment )
-        gtk_layout_set_vadjustment(GTK_LAYOUT(id_),t)
+        gtk_layout_set_vadjustment(GTK_LAYOUT(id_),GTK_ADJUSTMENT(cast(GtkObject ptr,t)))
     end property
 
     property TGtkLayout.binWindow() as GdkWindow ptr
