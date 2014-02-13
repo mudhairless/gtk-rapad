@@ -175,7 +175,7 @@ end namespace
 'Special
 #include once "gtkrapad/TGtkApplication.bi"
 #include once "gtkrapad/TGtkWindow.bi"
-'#include once "gtkrapad/CommonDialogs.bi"
+#include once "gtkrapad/TGtkStatusIcon.bi"
 
 'Containers
 #include once "gtkrapad/containers/TGtkAlignment.bi"
