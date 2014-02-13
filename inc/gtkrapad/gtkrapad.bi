@@ -187,7 +187,7 @@ end namespace
 #include once "gtkrapad/containers/TGtkFixed.bi"
 #include once "gtkrapad/containers/TGtkHPaned.bi"
 #include once "gtkrapad/containers/TGtkVPaned.bi"
-#include once "gtkrapad/containers/TGtkLayou.bi"
+#include once "gtkrapad/containers/TGtkLayout.bi"
 #include once "gtkrapad/containers/TGtkNotebook.bi"
 #include once "gtkrapad/containers/TGtkTable.bi"
 #include once "gtkrapad/containers/TGtkExpander.bi"
