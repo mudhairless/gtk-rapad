@@ -22,6 +22,8 @@ type TGtkAlignment
                             byref xscale as uinteger, _
                             byref yscale as uinteger )
 
+    declare operator cast() as GtkWidget ptr
+
     DECLARE_COMMON_FUNCS()
 
     COMMON_MEMBERS()

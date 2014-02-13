@@ -4,6 +4,10 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkAlignment)
 
+    operator TGtkAlignment.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     constructor TGtkAlignment (  byval xalign as uinteger = 0, _
                             byval yalign as uinteger = 0, _
                             byval xscale as uinteger = 0, _

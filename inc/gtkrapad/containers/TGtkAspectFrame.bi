@@ -16,6 +16,8 @@ type TGtkAspectFrame
                      byval obey_c as gboolean _
                      )
 
+    declare operator cast() as GtkWidget ptr
+
     DECLARE_COMMON_FUNCS()
 
     COMMON_MEMBERS()

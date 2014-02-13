@@ -51,6 +51,8 @@ type TGtkNotebook
     declare property vBorder() as ushort
     declare property vBorder( byval w as ushort )
 
+    declare operator cast() as GtkWidget ptr
+
     DECLARE_COMMON_FUNCS()
 
     COMMON_MEMBERS()

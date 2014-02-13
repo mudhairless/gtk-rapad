@@ -4,6 +4,10 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkAspectFrame)
 
+    operator TGtkAspectFrame.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     constructor TGtkAspectFrame( byref lbl as string, _
                          byval xalign as single, _
                          byval yalign as single, _

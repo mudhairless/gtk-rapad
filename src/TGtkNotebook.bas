@@ -4,6 +4,10 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkNotebook)
 
+    operator TGtkNotebook.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     constructor TGtkNotebook
         id_ = gtk_notebook_new()
         init()
