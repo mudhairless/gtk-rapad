@@ -236,6 +236,7 @@ end namespace
 #include once "gtkrapad/TGtkVSeparator.bi"
 
 'Miscellaneous
+#include once "gtkrapad/TGtkArrow.bi"
 #include once "gtkrapad/TGtkEventBox.bi"
 #include once "gtkrapad/TGdkScreen.bi"
 
