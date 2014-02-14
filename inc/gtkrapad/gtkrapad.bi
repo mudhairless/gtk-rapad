@@ -230,6 +230,11 @@ end namespace
 #include once "gtkrapad/containers/TGtkTable.bi"
 #include once "gtkrapad/containers/TGtkExpander.bi"
 
+'Ornaments
+#include once "gtkrapad/TGtkFrame.bi"
+'#include once "gtkrapad/TGtkHSeparator.bi"
+'#include once "gtkrapad/TGtkVSeparator.bi"
+
 'Miscellaneous
 #include once "gtkrapad/TGtkEventBox.bi"
 #include once "gtkrapad/TGdkScreen.bi"
