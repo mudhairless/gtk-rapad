@@ -1,6 +1,6 @@
 namespace GtkRapad
 
-type TGtkHScale
+type TGtkVScale
 
     declare constructor( byval min_ as double = 0.0, byval max_ as double = 10.0, byval step_ as double = 1.0 )
 

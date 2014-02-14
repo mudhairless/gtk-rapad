@@ -198,7 +198,7 @@ end namespace
 'Numericy/Text Data Entry
 #include once "gtkrapad/TGtkEntry.bi"
 #include once "gtkrapad/TGtkHScale.bi"
-'#include once "gtkrapad/TGtkVScale.bi"
+#include once "gtkrapad/TGtkVScale.bi"
 
 'Multiline Text Editor
 #include once "gtkrapad/TGtkTextView.bi"
