@@ -32,37 +32,43 @@ namespace GtkRapad
             declare constructor()
             declare operator cast() as GtkWidget pointer
 
+            declare sub setIconFromFile( byref f as string )
+            declare sub setIconFromName( byref n as string )
+            declare sub setIcon( byval i as GdkPixbuf ptr )
+
             declare function ActivateFocus() as gboolean
             declare sub Move( byval x_ as integer, byval y_ as integer )
-            declare function GetFullScreen() as gboolean
-            declare function GetKeepAbove() as gboolean
-            declare function GetMaximized() as gboolean
-            declare function GetMinimized() as gboolean
-            declare function GetResizable() as gboolean
-            declare function GetSticky() as gboolean
-            declare function GetTitle() as string
 
             declare sub SetDestroyCallback( byval aMethod as gtkGenericCallback )
             declare sub SetFocus( byval wid as GtkWidget pointer )
-            declare sub SetFullScreen( byval b as gboolean )
-            declare sub SetKeepAbove( byval b as gboolean )
-            declare sub SetMaximized( byval b as gboolean )
-            declare sub SetMinimized( byval b as gboolean )
-            declare sub SetPosition( byref position as GtkWindowPosition )
-            declare sub SetResizable( byval b as gboolean )
-            declare sub SetSize( byval width as integer, byval height as integer )
-            declare sub SetSticky( byval b as gboolean )
-            declare sub SetTitle( byref newTitle as string )
+            declare sub setSize( byval width as integer, byval height as integer )
 
-            declare sub SetX( byref x_ as integer )
-            declare sub SetY( byref y_ as integer )
-            declare sub SetHeight( byref h_ as integer )
-            declare sub SetWidth( byref w_ as integer )
+            declare property FullScreen() as gboolean
+            declare property KeepAbove() as gboolean
+            declare property Maximized() as gboolean
+            declare property Minimized() as gboolean
+            declare property Resizable() as gboolean
+            declare property Sticky() as gboolean
+            declare property Title() as string
 
-            declare function GetX() as integer
-            declare function GetY() as integer
-            declare function GetHeight() as integer
-            declare function GetWidth() as integer
+            declare property FullScreen( byval b as gboolean )
+            declare property KeepAbove( byval b as gboolean )
+            declare property Maximized( byval b as gboolean )
+            declare property Minimized( byval b as gboolean )
+            declare property Position( byref position_ as GtkWindowPosition )
+            declare property Resizable( byval b as gboolean )
+            declare property Sticky( byval b as gboolean )
+            declare property Title( byref newTitle as string )
+
+            declare property X( byval x_ as integer )
+            declare property Y( byval y_ as integer )
+            declare property Height( byval h_ as integer )
+            declare property Width( byval w_ as integer )
+
+            declare property X() as integer
+            declare property Y() as integer
+            declare property Height() as integer
+            declare property Width() as integer
 
             DECLARE_COMMON_FUNCS()
 

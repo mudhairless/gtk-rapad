@@ -28,9 +28,9 @@ declare CALLBACK(button_click)
 
 sub Main()
 
-    frmMain.SetKeepAbove( false )
+    frmMain.KeepAbove = false
     frmMain.SetSize( 400, 100 )
-    frmMain.SetTitle( "Simple Window w/ Buttons")
+    frmMain.Title = "Simple Window w/ Buttons"
 
     hPanel.SetParent( frmMain )
 

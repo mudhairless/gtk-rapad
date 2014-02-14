@@ -60,8 +60,8 @@ sub Main()
     'the GUI and some system call backs. w00t.
 
     with frmMain
-        .SetTitle( "Can you click the OK Button?")
-        .SetKeepAbove( false )
+        .Title = "Can you click the OK Button?"
+        .KeepAbove = false 
         .SetSize( 400, 100 )
     end with
 
@@ -182,16 +182,16 @@ end sub
 
 sub btnOk_Click cdecl( byval __ as any pointer )
     S_COUNTER += 1
-    frmMain.SetTitle( "'Ok' Button Clicked " & S_COUNTER & " Times!")
+    frmMain.Title = "'Ok' Button Clicked " & S_COUNTER & " Times!"
     print btnOk.GetCaption()
 end sub
 
 sub btnOk_MouseEnter cdecl( byval __ as any pointer )
-    frmMain.SetTitle( "You're over the button, Click it." )
+    frmMain.Title = "You're over the button, Click it."
 end sub
 
 sub btnOk_MouseLeave cdecl( byval __ as any pointer )
-    frmMain.SetTitle( "Move over the 'Ok' button!" )
+    frmMain.Title = "Move over the 'Ok' button!"
 end sub
 
 sub txtEntry_Activate cdecl( byval __ as any pointer )

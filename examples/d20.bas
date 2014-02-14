@@ -31,8 +31,8 @@ sub Main()
     cols(1) = G_TYPE_STRING
 
     with frmMain
-        .SetTitle( "Dice Roller" )
-        .SetKeepAbove( false )
+        .Title = "Dice Roller"
+        .KeepAbove = false
         .SetSize( 200, 200 )
     end with
 

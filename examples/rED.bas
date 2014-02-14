@@ -46,9 +46,9 @@ sub Main()
 
     GtkApp.SetName( "rED" )
 
-    frmMain.SetKeepAbove( false )
+    frmMain.KeepAbove = false 
     frmMain.SetSize( 500, 500 )
-    frmMain.SetTitle( GtkApp.GetName() & " :: []")
+    frmMain.Title = GtkApp.GetName() & " :: []"
 
     mnuMainFileNew.SetLabel( "_New" )
     mnuMainFileOpen.SetLabel( "_Open ..." )
@@ -120,7 +120,7 @@ sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
         txtTextView.SetText( ReadFile( G_FILENAME ) )
     end if
 
-    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+    frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"
 end sub
 
 
@@ -131,7 +131,7 @@ sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
         WriteFile( G_FILENAME, txtTextView.GetText() )
     end if
 
-    frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+    frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"
 end sub
 
 
@@ -142,7 +142,7 @@ sub mnuMainFileSaveAs_Click cdecl( byval __ as any pointer)
 
     if ( not ( fn = "" ) ) then
         G_FILENAME = fn
-        frmMain.SetTitle( GtkApp.GetName() & " :: [" & G_FILENAME & "]" )
+        frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"
         mnuMainFileSave_Click( 0 )
     end if
 end sub

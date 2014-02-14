@@ -35,8 +35,8 @@ sub Main()
     'the GUI and some system call backs. w00t.
 
     with frmMain
-        .SetTitle( "TGtkRadioButton Example")
-        .SetKeepAbove( false )
+        .Title = "TGtkRadioButton Example"
+        .KeepAbove = false
         .SetSize( 300, 50 )
     end with
 

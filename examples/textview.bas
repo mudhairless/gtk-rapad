@@ -25,9 +25,9 @@ declare sub btnOk_Click cdecl ( byval __ as any pointer )
 
 sub Main()
 
-    frmMain.SetKeepAbove( false )
+    frmMain.KeepAbove = false 
     frmMain.SetSize( 400, 100 )
-    frmMain.SetTitle( "Simple TextView Demo")
+    frmMain.Title = "Simple TextView Demo"
 
     vPanel.SetParent( frmMain )
 

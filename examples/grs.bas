@@ -82,7 +82,7 @@ sub FromCreate cdecl ( byval Title as string )
 
         .Form.SetDestroyCallback( @FormDestroy() )
         .Form.SetName( Title + str( x ) )
-        .Form.SetTitle( .Form.GetName() )
+        .Form.Title = .Form.GetName()
         .Form.Show()
     end with
 end sub
@@ -90,9 +90,9 @@ end sub
 sub Main()
 
     with frmMain
-        .SetKeepAbove( true )
+        .KeepAbove = true
         .SetName( "frmMain" )
-        .SetTitle( "Scribe" )
+        .Title = "Scribe"
 
         .Move( 0, 0 )
         .SetSize( GScreen.GetWidth(), 32 )

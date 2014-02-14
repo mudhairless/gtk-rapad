@@ -37,92 +37,147 @@ namespace GtkRapad
         return gtk_window_activate_focus( GTK_WINDOW( id_ ) )
     end function
 
-    sub TGtkWindow.SetPosition( byref position as GtkWindowPosition )
-        gtk_window_set_position( GTK_WINDOW( id_ ), position )
-    end sub
+    property TGtkWindow.Position( byref position_ as GtkWindowPosition )
+        gtk_window_set_position( GTK_WINDOW( id_ ), position_ )
+    end property
 
-    sub TGtkWindow.SetResizable( byval b as gboolean )
-        resizable_ = b
+    property TGtkWindow.Resizable( byval b as gboolean )
         gtk_window_set_resizable( GTK_WINDOW( id_ ), resizable_ )
-    end sub
+    end property
 
-    sub TGtkWindow.SetMinimized( byval b as gboolean )
+    property TGtkWindow.Minimized( byval b as gboolean )
         minimized_ = b
         if (minimized_ = false) then
             gtk_window_deiconify( GTK_WINDOW( id_ ) )
         else
             gtk_window_iconify( GTK_WINDOW( id_ ) )
         end if
-    end sub
+    end property
 
-    sub TGtkWindow.SetSticky( byval b as gboolean )
+    property TGtkWindow.Sticky( byval b as gboolean )
         sticky_ = b
         if (sticky_ = false) then
             gtk_window_unstick( GTK_WINDOW( id_ ) )
         else
             gtk_window_stick( GTK_WINDOW( id_ ) )
         end if
-    end sub
+    end property
 
-    sub TGtkWindow.SetMaximized( byval b as gboolean )
+    property TGtkWindow.Maximized( byval b as gboolean )
         maximize_ = b
         if (maximize_ = false) then
             gtk_window_unmaximize( GTK_WINDOW( id_ ) )
         else
             gtk_window_maximize( GTK_WINDOW( id_ ) )
         end if
-    end sub
+    end property
 
-    sub TGtkWindow.SetFullScreen( byval b as gboolean )
+    property TGtkWindow.FullScreen( byval b as gboolean )
         fullscreen_ = b
         if (fullscreen_ = false) then
             gtk_window_unfullscreen( GTK_WINDOW( id_ ) )
         else
             gtk_window_fullscreen( GTK_WINDOW( id_ ) )
         end if
-    end sub
+    end property
 
-    sub TGtkWindow.SetKeepAbove( byval b as gboolean )
+    property TGtkWindow.KeepAbove( byval b as gboolean )
         keepabove_ = b
         gtk_window_set_keep_above( GTK_WINDOW( id_ ), keepabove_ )
-    end sub
+    end property
 
-    function TGtkWindow.GetResizable() as gboolean
-        return resizable_
-    end function
+    property TGtkWindow.Resizable() as gboolean
+        return gtk_window_get_resizable(GTK_WINDOW(id_))
+    end property
 
-    function TGtkWindow.GetMinimized() as gboolean
+    property TGtkWindow.Minimized() as gboolean
         return minimized_
-    end function
+    end property
 
-    function TGtkWindow.GetSticky() as gboolean
+    property TGtkWindow.Sticky() as gboolean
         return sticky_
-    end function
+    end property
 
-    function TGtkWindow.GetMaximized() as gboolean
+    property TGtkWindow.Maximized() as gboolean
         return maximize_
-    end function
+    end property
 
-    function TGtkWindow.GetFullScreen() as gboolean
+    property TGtkWindow.FullScreen() as gboolean
         return fullscreen_
-    end function
+    end property
 
-    function TGtkWindow.GetKeepAbove() as gboolean
+    property TGtkWindow.KeepAbove() as gboolean
         return keepabove_
-    end function
+    end property
 
     sub TGtkWindow.SetDestroyCallback( byval aMethod as gtkGenericCallback )
         connect( "destroy", aMethod, id_ )
     end sub
 
-    sub TGtkWindow.SetTitle( byref newTitle as string )
+    property TGtkWindow.Title( byref newTitle as string )
         title_ = newTitle
         gtk_window_set_title( GTK_WINDOW( id_ ), title_ )
-    end sub
+    end property
 
-    function TGtkWindow.GetTitle() as string
+    property TGtkWindow.Title() as string
         return title_
-    end function
+    end property
+
+    property TGtkWindow.X() as integer
+        var myx = 0
+        var myy = 0
+        gtk_window_get_position(GTK_WINDOW(id_),@myx,@myy)
+        return myx
+    end property
+
+    property TGtkWindow.X( byval x_ as integer )
+        var myx = 0
+        var myy = 0
+        gtk_window_get_position(GTK_WINDOW(id_),@myx,@myy)
+        gtk_window_move(GTK_WINDOW(id_),x_,myy)
+    end property
+
+    property TGtkWindow.Y() as integer
+        var myx = 0
+        var myy = 0
+        gtk_window_get_position(GTK_WINDOW(id_),@myx,@myy)
+        return myy
+    end property
+
+    property TGtkWindow.Y( byval y_ as integer )
+        var myx = 0
+        var myy = 0
+        gtk_window_get_position(GTK_WINDOW(id_),@myx,@myy)
+        gtk_window_move(GTK_WINDOW(id_),myx,y_)
+    end property
+
+    property TGtkWindow.width() as integer
+        var myx = 0
+        var myy = 0
+        gtk_window_get_size(GTK_WINDOW(id_),@myx,@myy)
+        return myx
+    end property
+
+    property TGtkWindow.width( byval x_ as integer )
+        var myx = 0
+        var myy = 0
+        gtk_window_get_size(GTK_WINDOW(id_),@myx,@myy)
+        gtk_window_resize(GTK_WINDOW(id_),x_,myy)
+    end property
+
+    property TGtkWindow.height() as integer
+        var myx = 0
+        var myy = 0
+        gtk_window_get_size(GTK_WINDOW(id_),@myx,@myy)
+        return myy
+    end property
+
+    property TGtkWindow.height( byval y_ as integer )
+        var myx = 0
+        var myy = 0
+        gtk_window_get_size(GTK_WINDOW(id_),@myx,@myy)
+        gtk_window_resize(GTK_WINDOW(id_),myx,y_)
+    end property
 
     sub TGtkWindow.SetSize( byval width_ as integer, byval height_ as integer )
         'gtk_window_set_default_size( GTK_WINDOW( id_ ), width_, height_ )
