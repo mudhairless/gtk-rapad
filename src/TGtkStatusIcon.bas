@@ -2,16 +2,12 @@
 
 namespace GtkRapad
 
-    COMMON_FUNCS(TGtkStatusIcon)
-
     constructor TGtkStatusIcon
         _s = gtk_status_icon_new()
-        init()
     end constructor
 
     constructor TGtkStatusIcon( byref ico_fn as string )
         _s = gtk_status_icon_new_from_file(ico_fn)
-        init()
     end constructor
 
     sub TGtkStatusIcon.setIconFromPixbuf( byval pb as GdkPixbuf ptr )
@@ -60,22 +56,6 @@ namespace GtkRapad
 
     property TGtkStatusIcon.screen( byval s as GdkScreen ptr )
         gtk_status_icon_set_screen(_s,s)
-    end property
-
-    property TGtkStatusIcon.tooltip() as string
-        return *gtk_status_icon_get_tooltip_markup(_s)
-    end property
-
-    property TGtkStatusIcon.tooltip( byref t as string )
-        gtk_status_icon_set_tooltip_markup(_s,t)
-    end property
-
-    property TGtkStatusIcon.hasTooltip() as gboolean
-        return gtk_status_icon_get_has_tooltip(_s)
-    end property
-
-    property TGtkStatusIcon.hasTooltip( byval t as gboolean )
-        gtk_status_icon_set_has_tooltip(_s,t)
     end property
 
     property TGtkStatusIcon.title() as string
