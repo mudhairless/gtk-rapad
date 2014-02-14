@@ -233,7 +233,7 @@ end namespace
 'Ornaments
 #include once "gtkrapad/TGtkFrame.bi"
 #include once "gtkrapad/TGtkHSeparator.bi"
-'#include once "gtkrapad/TGtkVSeparator.bi"
+#include once "gtkrapad/TGtkVSeparator.bi"
 
 'Miscellaneous
 #include once "gtkrapad/TGtkEventBox.bi"
