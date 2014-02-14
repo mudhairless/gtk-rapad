@@ -12,9 +12,9 @@ using GtkRapad
 dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
 dim shared cmdRoll as TGtkButton
-dim shared numDice as TGtkEntry
+dim shared numDice as TGtkSpinButton
 dim shared dLabel as TGtkLabel
-dim shared numSides as TGtkEntry
+dim shared numSides as TGtkSpinButton
 dim shared rollList as TGtkListView
 dim shared hPanel as TGtkVBox
 dim shared iPanel as TGtkHBox
@@ -53,8 +53,11 @@ sub Main()
 
     with numDice
         .SetParent(iPanel)
-        .SetText("1")
-        .SetMaxLength(3)
+        .setRange(1,30)
+        .value = 1
+        .onlyNumeric = true
+        .wrap = true
+        .tooltip = "The number of dice to roll."
     end with
 
     with dLabel
@@ -64,8 +67,11 @@ sub Main()
 
     with numSides
         .SetParent(iPanel)
-        .SetText("20")
-        .SetMaxLength(4)
+        .setRange(2,100)
+        .value = 20
+        .onlyNumeric = true
+        .wrap = true
+        .tooltip = "How many sides the dice have."
     end with
 
     with cmdRoll
@@ -94,8 +100,8 @@ ENDCALLBACK
 
 CALLBACK(Roll)
 
-    var _numsides = valint(numSides.getText())
-    var _numdice = valint(numDice.getText())
+    var _numsides = numSides.intValue()
+    var _numdice = numDice.intValue()
 
     if _numsides < 2 or _numdice < 1 then
         GtkApp.MessageBox("Oops!","One or both of those values doesn't make sense!")
