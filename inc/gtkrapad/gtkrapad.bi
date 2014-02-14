@@ -44,6 +44,12 @@ end namespace
     declare sub ShowAll()
     declare sub init()
 
+    declare property hasTooltip() as gboolean
+    declare property hasTooltip( byval t as gboolean )
+
+    declare property tooltip() as string
+    declare property tooltip( byref t as string )
+
     declare sub setParent( byval p as GtkWidget ptr )
     declare function GetParent() as GtkWidget pointer
     declare sub setProperty overload( byref prop_name__ as string, byref value__ as string )
@@ -59,6 +65,22 @@ end namespace
 #endmacro
 
 #macro COMMON_FUNCS(cname)
+
+    property cname.hasTooltip() as gboolean
+        return gtk_widget_get_has_tooltip(id_)
+    end property
+
+    property cname.hasTooltip( byval t as gboolean )
+        gtk_widget_set_has_tooltip(id_,t)
+    end property
+
+    property cname.tooltip() as string
+        return *gtk_widget_get_tooltip_markup(id_)
+    end property
+
+    property cname.tooltip( byref t as string )
+        gtk_widget_set_tooltip_markup(id_,t)
+    end property
 
     sub cname.init()
         gtype_ = GetGtkWidgetType( id_ )
