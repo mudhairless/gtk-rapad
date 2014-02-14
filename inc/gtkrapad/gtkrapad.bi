@@ -238,6 +238,7 @@ end namespace
 'Miscellaneous
 #include once "gtkrapad/TGtkArrow.bi"
 #include once "gtkrapad/TGtkCalendar.bi"
+#include once "gtkrapad/TGtkDrawingArea.bi"
 #include once "gtkrapad/TGtkEventBox.bi"
 #include once "gtkrapad/TGdkScreen.bi"
 
