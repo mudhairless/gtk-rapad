@@ -11,12 +11,15 @@ extern "C"
 end extern
 #endif
 
+type TGtkClipboard_ as TGtkClipboard
+
 namespace GtkRapad
 
     type TGtkApplication
 
         public:
             declare constructor()
+            declare destructor
 
             declare sub Start( byval quitObj as GtkWidget pointer )
             declare sub Quit()
@@ -32,6 +35,8 @@ namespace GtkRapad
 
             declare sub SetName(byref nname_ as string)
             declare function GetName() as string
+
+        Clipboard as TGtkClipboard_ ptr
 
         private:
             appname_ as string

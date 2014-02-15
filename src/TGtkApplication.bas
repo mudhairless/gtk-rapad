@@ -5,7 +5,12 @@ namespace GtkRapad
 
     constructor TGtkApplication
         gtk_init(0,0)
+        this.Clipboard = cast(TGtkClipboard_ ptr,new TGtkClipboard())
     end constructor
+
+    destructor TGtkApplication
+        delete Clipboard
+    end destructor
 
     sub TGtkApplication.Start( byval quitObj as GtkWidget Pointer )
         'Once gtk_main() is called our application will enter a loop
