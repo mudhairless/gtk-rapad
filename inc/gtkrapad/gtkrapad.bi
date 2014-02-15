@@ -231,6 +231,7 @@ end namespace
 #include once "gtkrapad/TGtkTextChildAnchor.bi"
 #include once "gtkrapad/TGtkTextTag.bi"
 #include once "gtkrapad/TGtkTextTagTable.bi"
+'#include once "gtkrapad/TGtkTextBuffer.bi"
 #include once "gtkrapad/TGtkTextView.bi"
 
 'Tree, List and Icon Grid Widgets
