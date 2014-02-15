@@ -83,7 +83,7 @@ sub Main()
         '.AddMenuSub( "mnuFile", "mnuFileNew", "_New", @mnuMainFileNew_Click() )
     'end with
 
-    txtTextView.SetText("")
+    txtTextView.Text = ""
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
@@ -100,13 +100,13 @@ sub btnOk_Click cdecl( byval __ as any pointer )
 
     x = GtkApp.SelectFont()
 
-    txtTextView.SetFont( x )
+    txtTextView.Font = x
 end sub
 
 
 sub mnuMainFileNew_Click cdecl( byval __ as any pointer)
     G_FILENAME = "newfile"
-    txtTextView.SetText( "" )
+    txtTextView.Text = ""
 end sub
 
 
@@ -117,7 +117,7 @@ sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
 
     if ( not ( fn = "" ) ) then
         G_FILENAME = fn
-        txtTextView.SetText( ReadFile( G_FILENAME ) )
+        txtTextView.Text = ReadFile( G_FILENAME )
     end if
 
     frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"
@@ -128,7 +128,7 @@ sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
     if (G_FILENAME = "") then
         mnuMainFileSaveAs_Click( 0 )
     else
-        WriteFile( G_FILENAME, txtTextView.GetText() )
+        WriteFile( G_FILENAME, txtTextView.Text )
     end if
 
     frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"

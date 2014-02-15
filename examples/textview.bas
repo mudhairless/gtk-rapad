@@ -32,7 +32,7 @@ sub Main()
     vPanel.SetParent( frmMain )
 
     txtTextView.SetParent( vPanel )
-    txtTextView.SetText("Please type something here...")
+    txtTextView.Text = "Please type something here..."
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
@@ -52,7 +52,7 @@ sub btnOk_Click cdecl( byval __ as any pointer )
 
     print x
 
-    txtTextView.SetFont( x )
+    txtTextView.Font = x
 end sub
 
 

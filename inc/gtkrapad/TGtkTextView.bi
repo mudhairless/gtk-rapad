@@ -10,23 +10,26 @@
 
 namespace GtkRapad
 
-
-
     type TGtkTextView
 
         public:
             inserttextcallback_ as GtkGenericCallback
 
             declare constructor()
+            declare constructor( byval b as GtkTextBuffer ptr )
+
+            declare property Text() as string
+            declare property Text( byval text_ as string )
+
+            declare property Font( byval font_ as string )
+
+            declare property buffer() as GtkTextBuffer ptr
+            declare property buffer( byval b as GtkTextBuffer ptr )
+
             declare operator cast() as GtkWidget pointer
-
-            declare function TextView() as GtkWidget Pointer
-            declare sub Move( byval x_ as integer, byval y_ as integer )
-            declare function GetText() as string
-            declare sub SetText( byval text_ as string )
-            declare sub SetFont( byval font_ as string )
-
-            declare function getScrollable() as TGtkScrollable ptr
+            declare property Tags() as GtkTextTagTable ptr
+            declare property TextView() as GtkWidget Pointer
+            declare property Scrollable() as TGtkScrollable
 
             DECLARE_COMMON_FUNCS()
 
