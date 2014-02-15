@@ -28,4 +28,8 @@ namespace GtkRapad
         return gtk_text_tag_table_get_size(id_)
     end function
 
+    operator TGtkTextTagTable.cast() as GtkTextTagTable ptr
+        return id_
+    end operator
+
 end namespace

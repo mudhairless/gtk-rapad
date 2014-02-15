@@ -11,6 +11,8 @@ type TGtkTextTagTable
 
     declare function length() as integer
 
+    declare operator cast() as GtkTextTagTable ptr
+
     private:
     id_ as GtkTextTagTable ptr
 
