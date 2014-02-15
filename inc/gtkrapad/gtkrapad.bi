@@ -228,6 +228,7 @@ end namespace
 'Multiline Text Editor
 #include once "gtkrapad/TGtkTextIter.bi"
 #include once "gtkrapad/TGtkTextMark.bi"
+#include once "gtkrapad/TGtkTextChildAnchor.bi"
 #include once "gtkrapad/TGtkTextView.bi"
 
 'Tree, List and Icon Grid Widgets
