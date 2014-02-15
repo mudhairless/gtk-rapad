@@ -199,6 +199,7 @@ end namespace
 #include once "gtkrapad/TGtkWindow.bi"
 #include once "gtkrapad/TGtkAssistant.bi"
 #include once "gtkrapad/TGtkAboutDialog.bi"
+#include once "gtkrapad/TGtkClipboard.bi"
 
 'Display Widgets
 #include once "gtkrapad/TGtkLabel.bi"
