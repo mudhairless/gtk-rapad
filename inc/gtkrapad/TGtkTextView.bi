@@ -26,9 +26,9 @@ namespace GtkRapad
             declare property buffer() as GtkTextBuffer ptr
             declare property buffer( byval b as GtkTextBuffer ptr )
 
-            declare operator cast() as GtkWidget pointer
-            declare property Tags() as GtkTextTagTable ptr
-            declare property TextView() as GtkWidget Pointer
+            declare operator cast() as GtkWidget ptr
+            declare property Tags() as TGtkTextTagTable
+            declare property TextView() as GtkWidget ptr
             declare property Scrollable() as TGtkScrollable
 
             DECLARE_COMMON_FUNCS()
@@ -37,7 +37,7 @@ namespace GtkRapad
 
         private:
             textbuffer_ as  GtkTextBuffer pointer       'our text buffer
-            texttagtable_ as GtkTextTagTable pointer    '?
+            texttagtable_ as TGtkTextTagTable
             scrollwindow_ as TGtkScrollable
     end type
 

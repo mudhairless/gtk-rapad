@@ -14,15 +14,13 @@ namespace GtkRapad
     COMMON_FUNCS(TGtkTextView)
     
     constructor TGtkTextView
-        texttagtable_ = gtk_text_tag_table_new()
-        textbuffer_ = gtk_text_buffer_new( texttagtable_ )
+        textbuffer_ = gtk_text_buffer_new( cast(GtkTextTagTable ptr,texttagtable_) )
         id_ = gtk_text_view_new_with_buffer( textbuffer_ )
         gtk_container_add( GTK_CONTAINER( cast(GtkWidget ptr,scrollwindow_) ), GTK_WIDGET( id_ ) )
         init()
     end constructor
 
     constructor TGtkTextView( byval b as GtkTextBuffer ptr )
-        texttagtable_ = gtk_text_tag_table_new()
         textbuffer_ = b
         id_ = gtk_text_view_new_with_buffer( textbuffer_ )
         gtk_container_add( GTK_CONTAINER( cast(GtkWidget ptr,scrollwindow_) ), GTK_WIDGET( id_ ) )
@@ -41,7 +39,7 @@ namespace GtkRapad
         return id_
     end property
 
-    property TGtkTextView.Tags() as GtkTextTagTable ptr
+    property TGtkTextView.Tags() as TGtkTextTagTable
         return texttagtable_
     end property
 
