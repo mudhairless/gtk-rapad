@@ -9,6 +9,11 @@ namespace GtkRapad
         init()
     end constructor
 
+    constructor TGtkTextTag( byval i as GtkTextTag ptr)
+        id_ = cast(GtkWidget ptr,i)
+        init()
+    end constructor
+
     property TGtkTextTag.priority() as integer
         return gtk_text_tag_get_priority(GTK_TEXT_TAG(id_))
     end property
