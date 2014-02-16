@@ -51,11 +51,11 @@ sub Main()
     frmMain.SetSize( 500, 500 )
     frmMain.Title = GtkApp.GetName() & " :: []"
 
-    mnuMainFileNew.SetLabel( "_New" )
-    mnuMainFileOpen.SetLabel( "_Open ..." )
-    mnuMainFileSave.SetLabel( "_Save" )
-    mnuMainFileSaveAs.SetLabel( "Save _As ..." )
-    mnuMainFileExit.SetLabel( "E_xit" )
+    mnuMainFileNew.Label = "_New"
+    mnuMainFileOpen.Label = "_Open ..."
+    mnuMainFileSave.Label = "_Save"
+    mnuMainFileSaveAs.Label = "Save _As ..."
+    mnuMainFileExit.Label = "E_xit"
 
     mnuMainFileNew.Activate( @mnuMainFileNew_Click() )
     mnuMainFileOpen.Activate( @mnuMainFileOpen_Click() )

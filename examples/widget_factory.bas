@@ -71,22 +71,22 @@ sub Main()
 
     MenuBar.SetParent( Menu_VBox )
 
-    file_halp.SetLabel("H_alp")
+    file_halp.Label = "H_alp"
     file_halp.Activate(@halp_menu_click)
 
-    file_save.SetLabel("_Save")
+    file_save.Label = "_Save"
     file_save.Activate(@save_menu_click)
 
-    file_open.SetLabel("Op_en")
+    file_open.Label = "Op_en"
     file_open.Activate(@open_menu_click)
 
-    file_font.SetLabel("Font _Chooser")
+    file_font.Label = "Font _Chooser"
     file_font.Activate(@font_menu_click)
 
-    file_lulz.SetLabel("For the Lul_z")
+    file_lulz.Label = "For the Lul_z"
     file_lulz.Activate(@lulz_menu_click)
 
-    opt_folder.SetLabel("Choose _a Folder")
+    opt_folder.Label = "Choose _a Folder"
     opt_folder.Activate(@folder_menu_click)
 
     with FileMenu
