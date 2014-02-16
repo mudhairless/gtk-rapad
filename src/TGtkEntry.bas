@@ -14,45 +14,45 @@ namespace GtkRapad
         init()
     end constructor
 
-    operator TGtkEntry.cast() as GtkWidget Pointer
+    operator TGtkEntry.cast() as GtkWidget ptr
         return id_
     end operator
 
-    sub TGtkEntry.SetMaxLength( byval mlen as integer )
+    property TGtkEntry.MaxLength( byval mlen as integer )
         gtk_entry_set_max_length( GTK_ENTRY(id_), mlen )
-    end sub
+    end property
 
-    function TGtkEntry.GetMaxLength() as integer
+    property TGtkEntry.MaxLength() as integer
         return gtk_entry_get_max_length( GTK_ENTRY(id_) )
-    end function
+    end property
 
-    sub TGtkEntry.SetHasFrame( byval b as gboolean )
+    property TGtkEntry.HasFrame( byval b as gboolean )
         gtk_entry_set_has_frame( GTK_ENTRY(id_), b )
-    end sub
+    end property
 
-    function TGtkEntry.GetHasFrame() as gboolean
+    property TGtkEntry.HasFrame() as gboolean
         return gtk_entry_get_has_frame( GTK_ENTRY(id_) )
-    end function
+    end property
 
-    sub TGtkEntry.SetVisibility( byval b as gboolean )
+    property TGtkEntry.Visibility( byval b as gboolean )
         gtk_entry_set_visibility( GTK_ENTRY(id_), b )
-    end sub
+    end property
 
-    function TGtkEntry.GetVisibility() as gboolean
+    property TGtkEntry.Visibility() as gboolean
         return gtk_entry_get_visibility( GTK_ENTRY(id_) )
-    end function
+    end property
 
     sub TGtkEntry.Clear()
         gtk_entry_set_text( GTK_ENTRY(id_), "" )
     end sub
 
-    sub TGtkEntry.SetText( byval txt as string )
+    property TGtkEntry.Text( byval txt as string )
         gtk_entry_set_text( GTK_ENTRY(id_), txt )
-    end sub
+    end property
 
-    function TGtkEntry.GetText() as string
+    property TGtkEntry.Text() as string
         return *gtk_entry_get_text( GTK_ENTRY(id_) )
-    end function
+    end property
 
     sub TGtkEntry.SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
 

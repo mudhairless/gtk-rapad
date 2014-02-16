@@ -129,7 +129,7 @@ sub Main()
 
     with txtEntry
         .SetParent( vPanel )
-        .SetVisibility( true )
+        .Visibility = true
         .SetEvent( ACTIVATE, @txtEntry_Activate() )
 
         'Demonstrating what attempting to connect an event that doesn't get sent does: (hint: nothing)
@@ -196,8 +196,8 @@ end sub
 
 sub txtEntry_Activate cdecl( byval __ as any pointer )
     with txtEntry
-        print "Your message: " & .GetText()
-        .SetText("")
+        print "Your message: " & .Text
+        .clear
     end with
 end sub
 
@@ -209,7 +209,7 @@ end sub
 
 sub lulz_menu_click cdecl ( byval __ as any pointer )
 
-    txtEntry.SetHasFrame( CNOT(txtEntry.GetHasFrame()) )
+    txtEntry.HasFrame = CNOT(txtEntry.HasFrame)
 
     'txtEntry.SetVisibility( cnot(txtEntry.GetVisibility()) )
     'txtEntry.SetMaxLength( txtEntry.GetMaxLength() + 1 )
