@@ -296,6 +296,8 @@ end namespace
 
 'Recent Documents
 #include once "gtkrapad/TGtkRecentManager.bi"
+#include once "gtkrapad/TGtkRecentChooser.bi"
+#include once "gtkrapad/TGtkRecentChooserMenu.bi"
 
 #ifndef RAPAD_NO_SOURCEVIEW
 'GtkSourceview
