@@ -6,6 +6,10 @@ namespace GtkRapad
 
     MENU_ITEM_COMMON(TGtkCheckMenuItem)
 
+    operator TGtkCheckMenuItem.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     constructor TGtkCheckMenuItem
         id_ = gtk_check_menu_item_new()
         init()

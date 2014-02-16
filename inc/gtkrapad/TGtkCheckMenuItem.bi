@@ -3,6 +3,7 @@ namespace GtkRapad
 type TGtkCheckMenuItem
 
     declare constructor
+    declare operator cast() as GtkWidget ptr
 
     declare property active() as gboolean
     declare property active( byval t as gboolean )

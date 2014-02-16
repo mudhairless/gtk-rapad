@@ -6,6 +6,10 @@ namespace GtkRapad
 
     MENU_ITEM_COMMON(TGtkRadioMenuItem)
 
+    operator TGtkRadioMenuItem.cast() as GtkWidget ptr
+        return id_
+    end operator
+
     constructor TGtkRadioMenuItem
         id_ = gtk_radio_menu_item_new(0)
         _group = gtk_radio_menu_item_get_group(GTK_RADIO_MENU_ITEM(id_))

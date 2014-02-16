@@ -10,6 +10,8 @@ type TGtkRadioMenuItem
     declare property active() as gboolean
     declare property active( byval t as gboolean )
 
+    declare operator cast() as GtkWidget ptr
+
     DECLARE_MENU_ITEM_COMMON()
 
     DECLARE_COMMON_FUNCS()
