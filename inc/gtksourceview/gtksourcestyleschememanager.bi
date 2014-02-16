@@ -31,9 +31,9 @@ extern "c"
 #define GTK_IS_SOURCE_STYLE_SCHEME_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SOURCE_STYLE_SCHEME_MANAGER))
 #define GTK_SOURCE_STYLE_SCHEME_MANAGER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_SOURCE_STYLE_SCHEME_MANAGER, GtkSourceStyleSchemeManagerClass))
 
-type GtkSourceStyleSchemeManager        as _GtkSourceStyleSchemeManager;
-type GtkSourceStyleSchemeManagerClass   as _GtkSourceStyleSchemeManagerClass;
-type GtkSourceStyleSchemeManagerPrivate as _GtkSourceStyleSchemeManagerPrivate;
+type GtkSourceStyleSchemeManager        as _GtkSourceStyleSchemeManager
+type GtkSourceStyleSchemeManagerClass   as _GtkSourceStyleSchemeManagerClass
+type GtkSourceStyleSchemeManagerPrivate as _GtkSourceStyleSchemeManagerPrivate
 
 type _GtkSourceStyleSchemeManager
   as GObject parent
@@ -58,7 +58,7 @@ declare sub      gtk_source_style_scheme_manager_append_search_path (sm as GtkSo
 declare sub      gtk_source_style_scheme_manager_prepend_search_path (sm as GtkSourceStyleSchemeManager ptr, path as gchar ptr)
 declare function gtk_source_style_scheme_manager_get_search_path (sm as GtkSourceStyleSchemeManager ptr) as gchar ptr ptr
 declare sub      gtk_source_style_scheme_manager_force_rescan (sm as GtkSourceStyleSchemeManager ptr)
-declare function gtk_source_style_scheme_manager_get_scheme_ids (sm as GtkSourceStyleSchemeManager ptr) as char ptr ptr
+declare function gtk_source_style_scheme_manager_get_scheme_ids (sm as GtkSourceStyleSchemeManager ptr) as gchar ptr ptr
 declare function gtk_source_style_scheme_manager_get_scheme (sm as GtkSourceStyleSchemeManager ptr, scheme_id as gchar ptr) as GtkSourceStyleScheme ptr
 
 end extern
