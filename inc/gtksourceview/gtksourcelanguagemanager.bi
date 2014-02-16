@@ -56,6 +56,7 @@ declare function gtk_source_language_manager_get_search_path (lm as GtkSourceLan
 declare sub      gtk_source_language_manager_set_search_path (lm as GtkSourceLanguageManager ptr,dirs as gchar ptr ptr)
 declare function gtk_source_language_manager_get_language_ids (lm as GtkSourceLanguageManager ptr) as gchar ptr ptr
 declare function gtk_source_language_manager_get_language (lm as GtkSourceLanguageManager ptr,id as gchar ptr) as GtkSourceLanguage ptr
+declare function gtk_source_language_manager_guess_language(byval lm as GtkSourceLanguageManager ptr, byval id as gchar ptr, byval content_type as gchar ptr ) as GtkSourceLanguage ptr
 
 end extern
 
