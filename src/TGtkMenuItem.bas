@@ -19,13 +19,7 @@ namespace GtkRapad
         return id_
     end operator
 
-    sub TGtkMenuItem.SetLabel( byref _label_ as string )
-        gtk_menu_item_set_label( GTK_MENU_ITEM(id_),_label_)
-    end sub
-
-    sub TGtkMenuItem.SetSubMenu( byval _child_ as GtkWidget pointer )
-        gtk_menu_item_set_submenu( GTK_MENU_ITEM(id_), _child_ )
-    end sub
+    MENU_ITEM_COMMON(TGtkMenuItem)
 
     sub TGtkMenuItem.Activate( byval aMethod as GtkGenericCallback )
         connect("activate", aMethod )
