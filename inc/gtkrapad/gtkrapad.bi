@@ -294,6 +294,9 @@ end namespace
 #include once "gtkrapad/TGtkEventBox.bi"
 #include once "gtkrapad/TGdkScreen.bi"
 
+'Recent Documents
+#include once "gtkrapad/TGtkRecentManager.bi"
+
 #ifndef RAPAD_NO_SOURCEVIEW
 'GtkSourceview
 #include once "gtkrapad/TGtkSourceBuffer.bi"
