@@ -13,15 +13,15 @@ namespace GtkRapad
     end constructor
 
     property TGtkSourceView.Text( byval text_ as string )
-        gtk_text_buffer_set_text( this.buffer, @text_, len(text_) )
+        gtk_text_buffer_set_text( cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)), @text_, len(text_) )
     end property
 
     property TGtkSourceView.Text() as string
         dim as GtkTextIter text_s, text_e
 
-        gtk_text_buffer_get_bounds( this.buffer, @text_s, @text_e)
+        gtk_text_buffer_get_bounds( cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)), @text_s, @text_e)
 
-        return *(gtk_text_buffer_get_text( this.buffer, @text_s, @text_e, false ))
+        return *(gtk_text_buffer_get_text( cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)), @text_s, @text_e, false ))
     end property
 
     property TGtkSourceView.Font( byval font_ as string )
@@ -31,19 +31,19 @@ namespace GtkRapad
     end property
 
     property TGtkSourceView.modified() as gboolean
-        return gtk_text_buffer_get_modified(this.buffer)
+        return gtk_text_buffer_get_modified(cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)))
     end property
 
     property TGtkSourceView.modified( byval t as gboolean )
-        gtk_text_buffer_set_modified(this.buffer,t)
+        gtk_text_buffer_set_modified(cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)),t)
     end property
 
     property TGtkSourceView.lineCount() as integer
-        return gtk_text_buffer_get_line_count(this.buffer)
+        return gtk_text_buffer_get_line_count(cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)))
     end property
 
     property TGtkSourceView.charCount() as integer
-        return gtk_text_buffer_get_char_count(this.buffer)
+        return gtk_text_buffer_get_char_count(cast(GtkTextBuffer ptr,cast(GtkSourceBuffer ptr,this.buffer)))
     end property
 
     property TGtkSourceView.autoIndent() as gboolean
@@ -142,12 +142,12 @@ namespace GtkRapad
         gtk_source_view_set_draw_spaces(GTK_SOURCE_VIEW(id_),t)
     end property
 
-    property TGtkSourceView.buffer() as GtkTextBuffer ptr
-        return gtk_text_view_get_buffer(GTK_TEXT_VIEW(id_))
+    property TGtkSourceView.buffer() as TGtkSourceBuffer
+        return TGtkSourceBuffer(cast(GtkSourceBuffer ptr,gtk_text_view_get_buffer(GTK_TEXT_VIEW(id_))))
     end property
 
-    property TGtkSourceView.buffer( byval p as GtkTextBuffer ptr )
-        gtk_text_view_set_buffer(GTK_TEXT_VIEW(id_),p)
+    property TGtkSourceView.buffer( byval p as TGtkSourceBuffer )
+        gtk_text_view_set_buffer(GTK_TEXT_VIEW(id_),GTK_TEXT_BUFFER(cast(GtkSourceBuffer ptr,p)))
     end property
 
     'property TGtkSourceView.completion() as GtkSourceCompletion ptr

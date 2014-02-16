@@ -12,7 +12,8 @@ using GtkRapad
 dim shared GtkApp as TGtkApplication
 dim shared frmMain              as TGtkWindow
 dim shared vPanel               as TGtkVBox
-dim shared txtTextView          as TGtkTextView
+dim shared txtTextView          as TGtkSourceView
+dim shared langManager          as TGtkSourceLanguageManager
 dim shared btnOk                as TGtkButton
 
 dim shared mnuMenuBox           as TGtkVBox
@@ -117,6 +118,9 @@ sub mnuMainFileOpen_Click cdecl( byval __ as any pointer)
 
     if ( not ( fn = "" ) ) then
         G_FILENAME = fn
+        var l = langManager.guessLanguage(fn,"")
+        (txtTextView.buffer).language = l
+        (txtTextView.buffer).highlightSyntax = true
         txtTextView.Text = ReadFile( G_FILENAME )
     end if
 
@@ -128,6 +132,11 @@ sub mnuMainFileSave_Click cdecl( byval __ as any pointer)
     if (G_FILENAME = "") then
         mnuMainFileSaveAs_Click( 0 )
     else
+        var l = langManager.guessLanguage(G_FILENAME)
+        with txtTextView.buffer
+            .language = l
+            .highlightSyntax = true
+        end with
         WriteFile( G_FILENAME, txtTextView.Text )
     end if
 
@@ -144,6 +153,11 @@ sub mnuMainFileSaveAs_Click cdecl( byval __ as any pointer)
         G_FILENAME = fn
         frmMain.Title = GtkApp.GetName() & " :: [" & G_FILENAME & "]"
         mnuMainFileSave_Click( 0 )
+        var l = langManager.guessLanguage(G_FILENAME)
+        with txtTextView.buffer
+            .language = l
+            .highlightSyntax = true
+        end with
     end if
 end sub
 

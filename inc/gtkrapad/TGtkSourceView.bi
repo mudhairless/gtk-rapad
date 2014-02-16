@@ -50,8 +50,8 @@ type TGtkSourceView
     declare property drawSpaces() as GtkSourceDrawSpacesFlags
     declare property drawSpaces( byval t as GtkSourceDrawSpacesFlags )
 
-    declare property buffer() as GtkTextBuffer ptr
-    declare property buffer( byval p as GtkTextBuffer ptr )
+    declare property buffer() as TGtkSourceBuffer
+    declare property buffer( byval p as TGtkSourceBuffer )
 
     'declare property completion() as GtkSourceCompletion ptr
     'declare property gutter() as GtkSourceGutter ptr

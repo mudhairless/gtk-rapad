@@ -276,6 +276,7 @@ end namespace
 
 #ifndef RAPAD_NO_SOURCEVIEW
 'GtkSourceview
+#include once "gtkrapad/TGtkSourceBuffer.bi"
 #include once "gtkrapad/TGtkSourceView.bi"
 #include once "gtkrapad/TGtkSourceLanguageManager.bi"
 #endif

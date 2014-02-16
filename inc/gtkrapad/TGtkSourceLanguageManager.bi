@@ -10,7 +10,7 @@ type TGtkSourceLanguageManager
     declare property langIDs() as zstring ptr ptr
 
     declare function getLanguage(byref id as string) as GtkSourceLanguage ptr
-    declare function guessLanguage(byref fn as string, byref mimetype as string ) as GtkSourceLanguage ptr
+    declare function guessLanguage(byref fn as string, byref mimetype as string = "" ) as GtkSourceLanguage ptr
 
     private:
     id_ as GtkSourceLanguageManager ptr
