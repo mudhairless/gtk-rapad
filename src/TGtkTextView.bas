@@ -65,10 +65,37 @@ namespace GtkRapad
         return textbuffer_
     end property
 
-    property TGtkTextView.buffer( byval b as GtkTextBuffer ptr )
-        g_object_unref(textbuffer_)
-        textbuffer_ = b
-        gtk_text_view_set_buffer(GTK_TEXT_VIEW(id_),b)
+    property TGtkTextView.modified() as gboolean
+        return gtk_text_buffer_get_modified(textbuffer_)
     end property
+
+    property TGtkTextView.modified( byval t as gboolean )
+        gtk_text_buffer_set_modified(textbuffer_,t)
+    end property
+
+    property TGtkTextView.lineCount() as integer
+        return gtk_text_buffer_get_line_count(textbuffer_)
+    end property
+
+    property TGtkTextView.charCount() as integer
+        return gtk_text_buffer_get_char_count(textbuffer_)
+    end property
+
+    sub TGtkTextView.insertAt( byref start_ as TGtkTextIter, byref txt as string )
+        gtk_text_buffer_insert(textbuffer_,cast(GtkTextIter ptr,start_),txt,len(txt))
+    end sub
+
+    sub TGtkTextView.insertAtCursor( byref txt as string )
+        gtk_text_buffer_insert_at_cursor(textbuffer_,txt,len(txt))
+    end sub
+
+    function TGtkTextView.slice( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter ) as string
+        return *gtk_text_buffer_get_slice(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_),false)
+    end function
+
+    sub TGtkTextView.deleteFrom( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+        gtk_text_buffer_delete(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
+    end sub
+
 
 end namespace

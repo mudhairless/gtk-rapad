@@ -21,10 +21,20 @@ namespace GtkRapad
             declare property Text() as string
             declare property Text( byval text_ as string )
 
+            declare property modified() as gboolean
+            declare property modified( byval t as gboolean )
+
             declare property Font( byval font_ as string )
 
+            declare property lineCount() as integer
+            declare property charCount() as integer
+
+            declare sub insertAt( byref start_ as TGtkTextIter, byref txt as string )
+            declare sub insertAtCursor( byref txt as string )
+            declare sub deleteFrom( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+            declare function slice( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter ) as string
+
             declare property buffer() as GtkTextBuffer ptr
-            declare property buffer( byval b as GtkTextBuffer ptr )
 
             declare operator cast() as GtkWidget ptr
             declare property Tags() as TGtkTextTagTable
