@@ -27,6 +27,8 @@
 
 #include once "gtk/gtk.bi"
 #include once "gtksourceview/gtksourcebuffer.bi"
+'#include once "gtksourceview/gtksourcecompletion.bi"
+'#include once "gtksourceview/gtksourcegutter.bi"
 
 extern "c"
 
@@ -78,6 +80,17 @@ enum GtkSourceSmartHomeEndType
   GTK_SOURCE_SMART_HOME_END_ALWAYS
 end enum
 
+enum GtkSourceDrawSpacesFlags
+  GTK_SOURCE_DRAW_SPACES_SPACE = (1 shl 0)
+  GTK_SOURCE_DRAW_SPACES_TAB = (1 shl 1)
+  GTK_SOURCE_DRAW_SPACES_NEWLINE = (1 shl 2)
+  GTK_SOURCE_DRAW_SPACES_NBSP = (1 shl 3)
+  GTK_SOURCE_DRAW_SPACES_LEADING = (1 shl 4)
+  GTK_SOURCE_DRAW_SPACES_TEXT = (1 shl 5)
+  GTK_SOURCE_DRAW_SPACES_TRAILING = (1 shl 6)
+  GTK_SOURCE_DRAW_SPACES_ALL = GTK_SOURCE_DRAW_SPACES_SPACE or GTK_SOURCE_DRAW_SPACES_TAB or GTK_SOURCE_DRAW_SPACES_NEWLINE or GTK_SOURCE_DRAW_SPACES_NBSP or GTK_SOURCE_DRAW_SPACES_LEADING or GTK_SOURCE_DRAW_SPACES_TEXT or GTK_SOURCE_DRAW_SPACES_TRAILING
+end enum
+
 declare function gtk_source_view_get_type () as GType
 
 ' Constructors
@@ -123,6 +136,9 @@ declare function gtk_source_view_get_mark_category_priority (view as GtkSourceVi
 
 declare sub      gtk_source_view_set_smart_home_end (view as GtkSourceView ptr, smart_he as GtkSourceSmartHomeEndType)
 declare function gtk_source_view_get_smart_home_end (view as GtkSourceView ptr) as GtkSourceSmartHomeEndType
+
+declare sub gtk_source_view_set_draw_spaces ( byval view as GtkSourceView ptr, byval f as GtkSourceDrawSpacesFlags )
+declare function gtk_source_view_get_draw_spaces ( byval view as GtkSourceView ptr ) as GtkSourceDrawSpacesFlags
 
 end extern
 
