@@ -12,6 +12,40 @@ namespace GtkRapad
         init()
     end constructor
 
+    property TGtkSourceView.Text( byval text_ as string )
+        gtk_text_buffer_set_text( this.buffer, @text_, len(text_) )
+    end property
+
+    property TGtkSourceView.Text() as string
+        dim as GtkTextIter text_s, text_e
+
+        gtk_text_buffer_get_bounds( this.buffer, @text_s, @text_e)
+
+        return *(gtk_text_buffer_get_text( this.buffer, @text_s, @text_e, false ))
+    end property
+
+    property TGtkSourceView.Font( byval font_ as string )
+        if (not (font_ = "" )) then
+            gtk_widget_modify_font( GTK_WIDGET( id_ ), pango_font_description_from_string( font_ ) )
+        end if
+    end property
+
+    property TGtkSourceView.modified() as gboolean
+        return gtk_text_buffer_get_modified(this.buffer)
+    end property
+
+    property TGtkSourceView.modified( byval t as gboolean )
+        gtk_text_buffer_set_modified(this.buffer,t)
+    end property
+
+    property TGtkSourceView.lineCount() as integer
+        return gtk_text_buffer_get_line_count(this.buffer)
+    end property
+
+    property TGtkSourceView.charCount() as integer
+        return gtk_text_buffer_get_char_count(this.buffer)
+    end property
+
     property TGtkSourceView.autoIndent() as gboolean
         return gtk_source_view_get_auto_indent(GTK_SOURCE_VIEW(id_))
     end property

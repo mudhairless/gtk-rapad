@@ -3,6 +3,17 @@ namespace GtkRapad
 type TGtkSourceView
     declare constructor
 
+    declare property Text() as string
+    declare property Text( byval text_ as string )
+
+    declare property modified() as gboolean
+    declare property modified( byval t as gboolean )
+
+    declare property Font( byval font_ as string )
+
+    declare property lineCount() as integer
+    declare property charCount() as integer
+
     declare property autoIndent() as gboolean
     declare property autoIndent( byval t as gboolean )
 
