@@ -93,9 +93,64 @@ namespace GtkRapad
         return *gtk_text_buffer_get_slice(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_),false)
     end function
 
+    function TGtkTextView.selectionBounds( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter ) as gboolean
+        return gtk_text_buffer_get_selection_bounds(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
+    end function
+
     sub TGtkTextView.deleteFrom( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
         gtk_text_buffer_delete(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
     end sub
 
+    sub TGtkTextView.placeCursor( byref where_ as TGtkTextIter )
+        gtk_text_buffer_place_cursor(textbuffer_,cast(GtkTextIter ptr,where_))
+    end sub
+
+    sub TGtkTextView.applyTag( byref name_ as string, byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+        gtk_text_buffer_apply_tag_by_name(textbuffer_,name_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
+    end sub
+
+    sub TGtkTextView.removeTag( byref name_ as string, byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+        gtk_text_buffer_remove_tag_by_name(textbuffer_,name_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
+    end sub
+
+    sub TGtkTextView.removeAllTags( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+        gtk_text_buffer_remove_all_tags(textbuffer_,cast(GtkTextIter ptr,start_),cast(GtkTextIter ptr,end_))
+    end sub
+
+    property TGtkTextView.startIter() as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_start_iter(textbuffer_,@r)
+        return TGtkTextIter(@r)
+    end property
+
+    property TGtkTextView.endIter() as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_end_iter(textbuffer_,@r)
+        return TGtkTextIter(@r)
+    end property
+
+    function TGtkTextView.iterAtLine( byval l as integer ) as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_iter_at_line(textbuffer_,@r,l)
+        return TGtkTextIter(@r)
+    end function
+
+    function TGtkTextView.iterAtLineOffset( byval l as integer, byval o as integer ) as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_iter_at_line_offset(textbuffer_,@r,l,o)
+        return TGtkTextIter(@r)
+    end function
+
+    function TGtkTextView.iterAtLineIndex( byval l as integer, byval i as integer ) as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_iter_at_line_offset(textbuffer_,@r,l,i)
+        return TGtkTextIter(@r)
+    end function
+    
+    function TGtkTextView.iterAtOffset( byval o as integer ) as TGtkTextIter
+        dim r as GtkTextIter
+        gtk_text_buffer_get_iter_at_offset(textbuffer_,@r,o)
+        return TGtkTextIter(@r)
+    end function
 
 end namespace

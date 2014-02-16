@@ -34,6 +34,21 @@ namespace GtkRapad
             declare sub deleteFrom( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
             declare function slice( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter ) as string
 
+            declare function selectionBounds( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter ) as gboolean
+
+            declare property startIter() as TGtkTextIter
+            declare property endIter() as TGtkTextIter
+            declare function iterAtLine( byval l as integer ) as TGtkTextIter
+            declare function iterAtLineOffset( byval l as integer, byval o as integer ) as TGtkTextIter
+            declare function iterAtLineIndex( byval l as integer, byval i as integer ) as TGtkTextIter
+            declare function iterAtOffset( byval o as integer ) as TGtkTextIter
+
+            declare sub placeCursor( byref where_ as TGtkTextIter )
+
+            declare sub applyTag( byref name_ as string, byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+            declare sub removeTag( byref name_ as string, byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+            declare sub removeAllTags( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )
+
             declare property buffer() as GtkTextBuffer ptr
 
             declare operator cast() as GtkWidget ptr
