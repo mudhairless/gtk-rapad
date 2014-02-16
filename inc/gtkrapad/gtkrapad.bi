@@ -10,6 +10,7 @@
 #ifndef RAPAD_NO_SOURCEVIEW
 #include once "gtksourceview/gtksourceview.bi"
 #include once "gtksourceview/gtksourcelanguagemanager.bi"
+#include once "gtksourceview/gtksourcestyleschememanager.bi"
 #endif
 namespace GtkRapad
 
@@ -279,6 +280,7 @@ end namespace
 #include once "gtkrapad/TGtkSourceBuffer.bi"
 #include once "gtkrapad/TGtkSourceView.bi"
 #include once "gtkrapad/TGtkSourceLanguageManager.bi"
+#include once "gtkrapad/TGtkSourceStyleSchemeManager.bi"
 #endif
 
 #inclib "gtkrapad"
