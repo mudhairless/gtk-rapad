@@ -251,6 +251,7 @@ end namespace
 #include once "gtkrapad/TGtkMenu.bi"
 #include once "gtkrapad/TGtkMenuItem.bi"
 #include once "gtkrapad/TGtkImageMenuItem.bi"
+#include once "gtkrapad/TGtkRadioMenuItem.bi"
 
 'Scrolling
 #include once "gtkrapad/TGtkScrollable.bi"
