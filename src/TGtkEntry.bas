@@ -46,12 +46,36 @@ namespace GtkRapad
         gtk_entry_set_text( GTK_ENTRY(id_), "" )
     end sub
 
-    property TGtkEntry.Text( byval txt as string )
+    property TGtkEntry.Text( byref txt as string )
         gtk_entry_set_text( GTK_ENTRY(id_), txt )
     end property
 
     property TGtkEntry.Text() as string
         return *gtk_entry_get_text( GTK_ENTRY(id_) )
+    end property
+
+    sub TGtkEntry.prependText( byref txt as string )
+        gtk_entry_prepend_text(GTK_ENTRY(id_),txt)
+    end sub
+
+    sub TGtkEntry.appendText( byref txt as string )
+        gtk_entry_append_text(GTK_ENTRY(id_),txt)
+    end sub
+
+    property TGtkEntry.editable() as gboolean
+        return getPropertyInteger("editable")
+    end property
+
+    property TGtkEntry.editable( byval t as gboolean )
+        gtk_entry_set_editable(GTK_ENTRY(id_),t)
+    end property
+
+    property TGtkEntry.alignment() as single
+        return gtk_entry_get_alignment(GTK_ENTRY(id_))
+    end property
+
+    property TGtkEntry.alignment( byval v as single )
+        gtk_entry_set_alignment(GTK_ENTRY(id_),v)
     end property
 
     sub TGtkEntry.SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )

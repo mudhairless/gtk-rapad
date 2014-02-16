@@ -18,10 +18,18 @@ namespace GtkRapad
             declare property MaxLength( byval iv as integer )
 
             declare property Text() as string
-            declare property Text( byval txt as string )
+            declare property Text( byref txt as string )
+            declare sub prependText( byref txt as string )
+            declare sub appendText( byref txt as string )
+
+            declare property editable() as gboolean
+            declare property editable( byval t as gboolean )
 
             declare property Visibility() as gboolean
             declare property Visibility( byval b as gboolean )
+
+            declare property alignment() as single
+            declare property alignment( byval v as single )
 
             declare sub SetActivate( byval aMethod as gtkGenericCallback )
             declare sub SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
