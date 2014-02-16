@@ -84,7 +84,10 @@ sub Main()
         '.AddMenuSub( "mnuFile", "mnuFileNew", "_New", @mnuMainFileNew_Click() )
     'end with
 
-    txtTextView.Text = ""
+    with txtTextView
+        .Text = ""
+        .showLineNumbers = true
+    end with
 
     btnOk.SetCaption( "Change Font" )
     btnOk.SetMouseClick( @btnOk_Click() )
