@@ -7,7 +7,9 @@
 '
 
 #include once "gtk/gtk.bi"
-
+#ifndef RAPAD_NO_SOURCEVIEW
+#include once "gtksourceview/gtksourceview.bi"
+#endif
 namespace GtkRapad
 
     type GtkGenericCallback as sub cdecl( byval _data_ as any ptr )
@@ -270,5 +272,10 @@ end namespace
 #include once "gtkrapad/TGtkDrawingArea.bi"
 #include once "gtkrapad/TGtkEventBox.bi"
 #include once "gtkrapad/TGdkScreen.bi"
+
+#ifndef RAPAD_NO_SOURCEVIEW
+'GtkSourceview
+#include once "gtkrapad/TGtkSourceView.bi"
+#endif
 
 #inclib "gtkrapad"
