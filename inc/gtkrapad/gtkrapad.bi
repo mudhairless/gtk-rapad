@@ -54,6 +54,7 @@ end namespace
     declare property tooltip() as string
     declare property tooltip( byref t as string )
 
+    declare sub changeParent( byval p as GtkWidget ptr )
     declare sub setParent( byval p as GtkWidget ptr )
     declare function GetParent() as GtkWidget pointer
     declare sub setProperty overload( byref prop_name__ as string, byref value__ as string )
@@ -69,6 +70,10 @@ end namespace
 #endmacro
 
 #macro COMMON_FUNCS(cname)
+
+    sub cname.changeParent( byval p as GtkWidget ptr )
+        gtk_widget_reparent(id_,p)
+    end sub
 
     property cname.hasTooltip() as gboolean
         return gtk_widget_get_has_tooltip(id_)
@@ -178,7 +183,7 @@ end namespace
     end sub
 
     function cname.GetParent() as GtkWidget Pointer
-        return parent_
+        return gtk_widget_get_parent(id_)
     end function
 
 
