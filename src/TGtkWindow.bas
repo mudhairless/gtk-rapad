@@ -5,6 +5,34 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkWindow)
 
+    property TGtkWindow.modal() as gboolean
+        return gtk_window_get_modal(GTK_WINDOW(id_))
+    end property
+
+    property TGtkWindow.modal( byval t as gboolean )
+        gtk_window_set_modal(GTK_WINDOW(id_),t)
+    end property
+
+    property TGtkWindow.skipTaskBarHint( byval t as gboolean )
+        gtk_window_set_skip_taskbar_hint(GTK_WINDOW(id_),t)
+    end property
+
+    property TGtkWindow.skipPagerHint( byval t as gboolean )
+        gtk_window_set_skip_pager_hint(GTK_WINDOW(id_),t)
+    end property
+
+    property TGtkWindow.decorated( byval t as gboolean )
+        gtk_window_set_decorated(GTK_WINDOW(id_),t)
+    end property
+
+    property TGtkWindow.hasFrame( byval t as gboolean )
+        gtk_window_set_has_frame(GTK_WINDOW(id_),t)
+    end property
+
+    property TGtkWindow.urgencyHint( byval t as gboolean )
+        gtk_window_set_urgency_hint(GTK_WINDOW(id_),t)
+    end property
+
     constructor TGtkWindow
         id_ = gtk_window_new( GTK_WINDOW_TOPLEVEL )
 

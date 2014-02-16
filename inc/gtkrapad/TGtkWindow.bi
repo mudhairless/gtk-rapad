@@ -60,6 +60,15 @@ namespace GtkRapad
             declare property Sticky( byval b as gboolean )
             declare property Title( byref newTitle as string )
 
+            declare property modal() as gboolean
+            declare property modal( byval t as gboolean )
+
+            declare property skipTaskBarHint( byval t as gboolean )
+            declare property skipPagerHint( byval t as gboolean )
+            declare property decorated( byval t as gboolean )
+            declare property hasFrame( byval t as gboolean )
+            declare property urgencyHint( byval t as gboolean )
+
             declare property X( byval x_ as integer )
             declare property Y( byval y_ as integer )
             declare property Height( byval h_ as integer )
