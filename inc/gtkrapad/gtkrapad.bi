@@ -258,6 +258,7 @@ end namespace
 #include once "gtkrapad/TGtkSeparatorToolItem.bi"
 #include once "gtkrapad/TGtkToolButton.bi"
 #include once "gtkrapad/TGtkMenuToolButton.bi"
+#include once "gtkrapad/TGtkToggleToolButton.bi"
 #include once "gtkrapad/TGtkToolbar.bi"
 
 'Scrolling
