@@ -9,6 +9,11 @@ namespace GtkRapad
         init()
     end constructor
 
+    constructor TGtkEntry( byval i as GtkEntry ptr )
+        id_ = GTK_WIDGET(i)
+        init()
+    end constructor
+
     constructor TGtkEntry ( byref max_length as integer )
         id_ = gtk_entry_new_with_max_length( max_length )
         init()

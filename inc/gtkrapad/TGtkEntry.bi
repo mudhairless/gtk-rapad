@@ -7,6 +7,7 @@ namespace GtkRapad
 
         public:
             declare constructor()
+            declare constructor( byval i as GtkEntry ptr )
             declare constructor( byref max_length as integer )
 
             declare operator cast() as GtkWidget ptr
