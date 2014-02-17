@@ -7,8 +7,8 @@ namespace GtkRapad
             declare operator cast() as GtkWidget pointer
 
             declare sub initWithModel( byval m as TGtkListStore )
-            declare sub setColumnTitle( byval col_n as integer, byref sText as string )
-            declare function getColumnTitle( byval col_n as integer ) as string
+
+            declare property column( byval i as integer ) as TGtkTreeViewColumn
 
             declare property store() as TGtkListStore
 

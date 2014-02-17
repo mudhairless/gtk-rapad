@@ -27,10 +27,6 @@ declare CALLBACK(listChanged)
 
 sub Main()
 
-    dim cols(0 to 1) as integer
-    cols(0) = G_TYPE_STRING
-    cols(1) = G_TYPE_STRING
-
     with frmMain
         .Title = "Dice Roller"
         .KeepAbove = false
@@ -45,6 +41,10 @@ sub Main()
         .setScrollBarPolicy(GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC)
     end with
 
+    dim cols(0 to 1) as integer
+    cols(0) = G_TYPE_STRING
+    cols(1) = G_TYPE_STRING
+
     with rolls
         .setColumnTypes(cols())
     end with
@@ -52,9 +52,22 @@ sub Main()
     with rollList
         .initWithModel(rolls)
         .SetParent( iScroll )
-        .setColumnTitle(0,"Dice")
-        .setColumnTitle(1,"Result")
     end with
+
+    for n as integer = 0 to 1
+        var col = gtk_cell_renderer_text_new()
+        var lcol = rollList.column(n)
+        with lcol
+            .packStart(col,true)
+            .expand = true
+            .addAttribute(col,"text",n)
+            if n = 0 then
+                .title = "Dice"
+            else
+                .title = "Results"
+            end if
+        end with
+    next
 
     with numDice
         .SetParent(iPanel)
