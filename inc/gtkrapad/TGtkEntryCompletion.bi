@@ -3,6 +3,8 @@ namespace GtkRapad
 type TGtkEntryCompletion
 
     declare constructor
+    declare constructor( byval i as GtkEntryCompletion ptr )
+
     declare property entry() as GtkWidget ptr
 
     declare property model() as GtkTreeModel ptr

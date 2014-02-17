@@ -19,6 +19,14 @@ namespace GtkRapad
         init()
     end constructor
 
+    property TGtkEntry.completion() as GtkEntryCompletion ptr
+        return gtk_entry_get_completion(GTK_ENTRY(id_))
+    end property
+
+    property TGtkEntry.completion( byval t as GtkEntryCompletion ptr )
+        gtk_entry_set_completion(GTK_ENTRY(id_),t)
+    end property
+
     operator TGtkEntry.cast() as GtkWidget ptr
         return id_
     end operator

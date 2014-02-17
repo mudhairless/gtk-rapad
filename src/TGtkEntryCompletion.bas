@@ -6,6 +6,10 @@ namespace GtkRapad
         id_ = gtk_entry_completion_new()
     end constructor
 
+    constructor TGtkEntryCompletion( byval i as GtkEntryCompletion ptr )
+        id_ = i
+    end constructor
+
     property TGtkEntryCompletion.entry() as GtkWidget ptr
         return gtk_entry_completion_get_entry(id_)
     end property

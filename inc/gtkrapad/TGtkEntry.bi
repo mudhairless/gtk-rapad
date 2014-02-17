@@ -18,6 +18,9 @@ namespace GtkRapad
             declare property MaxLength() as integer
             declare property MaxLength( byval iv as integer )
 
+            declare property completion() as GtkEntryCompletion ptr
+            declare property completion( byval t as GtkEntryCompletion ptr )
+
             declare property Text() as string
             declare property Text( byref txt as string )
             declare sub prependText( byref txt as string )
