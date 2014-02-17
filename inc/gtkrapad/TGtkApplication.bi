@@ -24,6 +24,9 @@ namespace GtkRapad
             declare sub Start( byval quitObj as GtkWidget pointer )
             declare sub Quit()
 
+            declare function setTimeout( byval interval as uinteger, byval func as GtkFunction, byval userdata as any ptr ) as integer
+            declare sub removeTimeout( byval tag as integer )
+
             declare sub MessageBox( byref title as string = "Message", byref text as string = "" )
 
             declare function FileOpen( byref title_ as string = "Choose a file", byref dir_start as string = "" ) as string

@@ -22,11 +22,17 @@ namespace GtkRapad
         gtk_main()
     end sub
 
-
     sub TGtkApplication.Quit()
         gtk_main_quit()
     end sub
 
+    function TGtkApplication.setTimeout( byval interval as uinteger, byval func as GtkFunction, byval userdata as any ptr ) as integer
+        return g_timeout_add(interval,func,userdata)
+    end function
+
+    sub TGtkApplication.removeTimeout( byval tag as integer )
+        g_source_remove_(tag)
+    end sub
 
     sub TGtkApplication.MessageBox( byref title as string = "Message", byref text as string = "" )
 
