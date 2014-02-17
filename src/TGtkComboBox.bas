@@ -29,6 +29,14 @@ namespace GtkRapad
         init()
     end constructor
 
+    property TGtkComboBox.activeText() as string
+        if this.hasEntry = true then
+            return *gtk_entry_get_text(GTK_ENTRY(gtk_bin_get_child(GTK_BIN(id_))))
+        else
+            return ""
+        end if
+    end property
+
     property TGtkComboBox.wrapWidth() as integer
         return gtk_combo_box_get_wrap_width(GTK_COMBO_BOX(id_))
     end property

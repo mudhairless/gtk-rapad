@@ -18,6 +18,7 @@ type TGtkComboBox
 
     declare property active() as integer
     declare property active( byval i as integer )
+    declare property activeText() as string
 
     declare property model() as GtkTreeModel ptr
     declare property model( byval i as GtkTreeModel ptr )
