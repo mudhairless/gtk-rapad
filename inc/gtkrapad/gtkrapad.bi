@@ -230,6 +230,7 @@ end namespace
 
 'Numericy/Text Data Entry
 #include once "gtkrapad/TGtkEntry.bi"
+#include once "gtkrapad/TGtkEntryCompletion.bi"
 #include once "gtkrapad/TGtkHScale.bi"
 #include once "gtkrapad/TGtkVScale.bi"
 #include once "gtkrapad/TGtkSpinButton.bi"
