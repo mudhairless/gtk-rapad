@@ -15,6 +15,7 @@ dim shared cmdRoll as TGtkButton
 dim shared numDice as TGtkSpinButton
 dim shared dLabel as TGtkLabel
 dim shared numSides as TGtkSpinButton
+dim shared rolls as TGtkListStore
 dim shared rollList as TGtkListView
 dim shared hPanel as TGtkVBox
 dim shared iPanel as TGtkHBox
@@ -44,8 +45,12 @@ sub Main()
         .setScrollBarPolicy(GTK_POLICY_NEVER,GTK_POLICY_AUTOMATIC)
     end with
 
-    with rollList
+    with rolls
         .setColumnTypes(cols())
+    end with
+
+    with rollList
+        .initWithModel(rolls)
         .SetParent( iScroll )
         .setColumnTitle(0,"Dice")
         .setColumnTitle(1,"Result")
@@ -111,9 +116,11 @@ CALLBACK(Roll)
             var t = int(rnd(1)*_numsides) + 1
             total += t
         next
-        rollList.appendRow()
-        rollList.add(_numdice & "d" & _numsides)
-        rollList.add(str(total),1)
+        with rollList.store
+            .appendRow()
+            .add(_numdice & "d" & _numsides)
+            .add(str(total),1)
+        end with
     end if
 
 ENDCALLBACK
