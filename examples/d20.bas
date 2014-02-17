@@ -112,8 +112,8 @@ CALLBACK(Roll)
             total += t
         next
         rollList.appendRow()
-        rollList.addString(_numdice & "d" & _numsides)
-        rollList.addString(str(total),1)
+        rollList.add(_numdice & "d" & _numsides)
+        rollList.add(str(total),1)
     end if
 
 ENDCALLBACK
