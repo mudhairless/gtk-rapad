@@ -6,6 +6,10 @@ namespace GtkRapad
         id_ = gtk_text_mark_new(name_,left_gravity)
     end constructor
 
+    constructor TGtkTextMark( byval i as GtkTextMark ptr )
+        id_ = i
+    end constructor
+
     property TGtkTextMark.visible() as gboolean
         return gtk_text_mark_get_visible(id_)
     end property

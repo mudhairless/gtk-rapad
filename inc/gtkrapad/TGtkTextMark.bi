@@ -2,6 +2,8 @@ namespace GtkRapad
 
 type TGtkTextMark
     declare constructor( byref name_ as string, byval left_gravity as gboolean )
+    declare constructor( byval i as GtkTextMark ptr )
+
 
     declare property visible() as gboolean
     declare property visible( byval t as gboolean )

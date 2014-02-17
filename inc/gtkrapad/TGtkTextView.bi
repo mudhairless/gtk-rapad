@@ -29,6 +29,16 @@ namespace GtkRapad
             declare property lineCount() as integer
             declare property charCount() as integer
 
+            declare function createMark( byref mark_name as string, byval where_ as TGtkTextIter, byval left_gravity as gboolean ) as TGtkTextMark
+            declare sub addMark( byval m as TGtkTextMark, byval where_ as TGtkTextIter )
+            declare sub moveMark overload ( byval m as TGtkTextMark, byval where_ as TGtkTextIter )
+            declare sub moveMark ( byref m_name as string, byval where_ as TGtkTextIter )
+            declare sub deleteMark overload ( byval m as TGtkTextMark )
+            declare sub deleteMark ( byref m_name as string )
+            declare function getMark ( byref m_name as string ) as TGtkTextMark
+            declare function getInsert() as TGtkTextMark
+            declare function getSelectionBound() as TGtkTextMark
+
             declare sub insertAt( byref start_ as TGtkTextIter, byref txt as string )
             declare sub insertAtCursor( byref txt as string )
             declare sub deleteFrom( byref start_ as TGtkTextIter, byref end_ as TGtkTextIter )

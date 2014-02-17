@@ -27,6 +27,42 @@ namespace GtkRapad
         init()
     end constructor
 
+    function TGtkTextView.createMark( byref mark_name as string, byval where_ as TGtkTextIter, byval left_gravity as gboolean ) as TGtkTextMark
+        return TGtkTextMark(gtk_text_buffer_create_mark(textbuffer_,mark_name,cast(GtkTextIter ptr,where_),left_gravity))
+    end function
+
+    sub TGtkTextView.addMark( byval m as TGtkTextMark, byval where_ as TGtkTextIter )
+        gtk_text_buffer_add_mark(textbuffer_,cast(GtkTextMark ptr,m),cast(GtkTextIter ptr,where_))
+    end sub
+
+    sub TGtkTextView.moveMark overload ( byval m as TGtkTextMark, byval where_ as TGtkTextIter )
+        gtk_text_buffer_move_mark(textbuffer_,cast(GtkTextMark ptr,m),cast(GtkTextIter ptr,where_))
+    end sub
+
+    sub TGtkTextView.moveMark ( byref m_name as string, byval where_ as TGtkTextIter )
+        gtk_text_buffer_move_mark_by_name(textbuffer_,m_name,cast(GtkTextIter ptr,where_))
+    end sub
+
+    sub TGtkTextView.deleteMark overload ( byval m as TGtkTextMark )
+        gtk_text_buffer_delete_mark(textbuffer_,cast(GtkTextMark ptr,m))
+    end sub
+
+    sub TGtkTextView.deleteMark ( byref m_name as string )
+        gtk_text_buffer_delete_mark_by_name(textbuffer_,m_name)
+    end sub
+
+    function TGtkTextView.getMark ( byref m_name as string ) as TGtkTextMark
+        return TGtkTextMark(gtk_text_buffer_get_mark(textbuffer_,m_name))
+    end function
+
+    function TGtkTextView.getInsert() as TGtkTextMark
+        return TGtkTextMark(gtk_text_buffer_get_insert(textbuffer_))
+    end function
+
+    function TGtkTextView.getSelectionBound() as TGtkTextMark
+        return TGtkTextMark(gtk_text_buffer_get_selection_bound(textbuffer_))
+    end function
+
     property TGtkTextView.Scrollable() as TGtkScrollable
         return scrollwindow_
     end property
