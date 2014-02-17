@@ -248,6 +248,7 @@ end namespace
 #include once "gtkrapad/TGtkTreeViewColumn.bi"
 #include once "gtkrapad/TGtkListStore.bi"
 #include once "gtkrapad/TGtkTreeStore.bi"
+#include once "gtkrapad/TGtkIconView.bi"
 #include once "gtkrapad/TGtkTreeView.bi"
 
 'Menus, Combo Box, Toolbar
