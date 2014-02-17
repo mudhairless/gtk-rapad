@@ -2,8 +2,6 @@ namespace GtkRapad
 
     type TGtkListView
         public:
-            col_count_ as integer
-
             declare constructor()
 
             declare operator cast() as GtkWidget pointer

@@ -5,8 +5,11 @@ namespace GtkRapad
     COMMON_FUNCS(TGtkListView)
 
     constructor TGtkListView()
-        model_ = gtk_list_store_new(1, G_TYPE_STRING)
-        id_ = gtk_tree_view_new_with_model( GTK_TREE_MODEL(model_) )
+        var m = TGtkListStore()
+        dim cols(0) as integer
+        cols(0) = G_TYPE_STRING
+        m.setColumnTypes(cols())
+        id_ = gtk_tree_view_new_with_model( GTK_TREE_MODEL(cast(GtkListStore ptr,m)) )
         init()
     end constructor
 
@@ -15,8 +18,7 @@ namespace GtkRapad
     end property
 
     sub TGtkListView.initWithModel( byval m as TGtkListStore )
-        gtk_widget_destroy(id_)
-        id_ = gtk_tree_view_new_with_model( GTK_TREE_MODEL(cast(GtkListStore ptr,m)))
+        gtk_tree_view_set_model( GTK_TREE_VIEW(id_),GTK_TREE_MODEL(cast(GtkListStore ptr,m)))
         for n as integer = 0 to m.numColumns -1
             var renderer = gtk_cell_renderer_text_new()
             var col = gtk_tree_view_column_new_with_attributes("Column " & n,renderer,"text",n,0)

@@ -13,6 +13,9 @@ namespace GtkRapad
     end operator
 
     sub TGtkListStore.setColumnTypes( columns() as integer )
+        if id_ <> 0 then
+            g_object_unref(G_OBJECT(id_))
+        end if
         id_ = gtk_list_store_newv(ubound(columns)+1,@columns(0))
         cols = new integer(ubound(columns)+1)
         for n as integer = 0 to ubound(columns)
