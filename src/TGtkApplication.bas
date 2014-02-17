@@ -34,6 +34,14 @@ namespace GtkRapad
         g_source_remove_(tag)
     end sub
 
+    function TGtkApplication.setIdle( byval func as GtkFunction, byval userdata as any ptr ) as integer
+        return gtk_idle_add(func,userdata)
+    end function
+
+    sub TGtkApplication.removeIdle( byval tag as integer )
+        gtk_idle_remove(tag)
+    end sub
+
     sub TGtkApplication.MessageBox( byref title as string = "Message", byref text as string = "" )
 
         var msgdlg = gtk_message_dialog_new_with_markup( 0, GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, "" )
