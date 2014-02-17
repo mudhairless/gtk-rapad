@@ -252,6 +252,7 @@ end namespace
 #include once "gtkrapad/TGtkTreeView.bi"
 
 'Menus, Combo Box, Toolbar
+#include once "gtkrapad/TGtkComboBox.bi"
 #include once "gtkrapad/TGtkComboBoxText.bi"
 #include once "gtkrapad/TGtkMenuBar.bi"
 #include once "gtkrapad/TGtkMenu.bi"
