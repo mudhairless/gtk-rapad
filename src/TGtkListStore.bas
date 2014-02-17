@@ -8,9 +8,13 @@ namespace GtkRapad
         end if
     end constructor
 
-    operator TGtkListStore.cast() as GtkListStore ptr
-        return id_
+    operator TGtkListStore.cast() as GtkTreeModel ptr
+        return GTK_TREE_MODEL(id_)
     end operator
+
+    sub TGtkListStore.clear()
+        gtk_list_store_clear(id_)
+    end sub
 
     sub TGtkListStore.setColumnTypes( columns() as integer )
         if id_ <> 0 then

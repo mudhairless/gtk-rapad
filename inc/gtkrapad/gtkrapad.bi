@@ -245,7 +245,7 @@ end namespace
 'Tree, List and Icon Grid Widgets
 #include once "gtkrapad/TGtkTreeViewColumn.bi"
 #include once "gtkrapad/TGtkListStore.bi"
-#include once "gtkrapad/TGtkListView.bi"
+#include once "gtkrapad/TGtkTreeView.bi"
 
 'Menus, Combo Box, Toolbar
 #include once "gtkrapad/TGtkComboBoxText.bi"

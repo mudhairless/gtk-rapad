@@ -11,12 +11,14 @@ using GtkRapad
 'Global object variables
 dim shared GtkApp as TGtkApplication
 dim shared frmMain as TGtkWindow
+dim shared bPanel as TGtkHBox
+dim shared cmdClear as TGtkButton
 dim shared cmdRoll as TGtkButton
 dim shared numDice as TGtkSpinButton
 dim shared dLabel as TGtkLabel
 dim shared numSides as TGtkSpinButton
 dim shared rolls as TGtkListStore
-dim shared rollList as TGtkListView
+dim shared rollList as TGtkTreeView
 dim shared hPanel as TGtkVBox
 dim shared iPanel as TGtkHBox
 dim shared iScroll as TGtkScrollable
@@ -24,6 +26,7 @@ dim shared iScroll as TGtkScrollable
 declare sub Main()
 declare CALLBACK(Roll)
 declare CALLBACK(listChanged)
+declare CALLBACK(clearDaList)
 
 sub Main()
 
@@ -50,7 +53,7 @@ sub Main()
     end with
 
     with rollList
-        .initWithModel(rolls)
+        .initWithModel(rolls,rolls.numColumns)
         .SetParent( iScroll )
     end with
 
@@ -92,14 +95,21 @@ sub Main()
         .tooltip = "How many sides the dice have."
     end with
 
+    with cmdClear
+        .SetCaption("Clear")
+        .SetMouseClick( @clearDaList )
+        .setParent(bPanel)
+    end with
+
     with cmdRoll
         .SetCaption("Roll!")
         .SetMouseClick( @Roll )
+        .setParent(bPanel)
     end with
 
     hPanel.addChild(iScroll,true,true,0)
     hPanel.addChild(iPanel,false,false,0)
-    hPanel.addChild(cmdRoll,false,false,0)
+    hPanel.addChild(bPanel,false,false,0)
 
     frmMain.ShowAll()
 
@@ -109,6 +119,13 @@ sub Main()
 
     GtkApp.Start( frmMain )
 end sub
+
+CALLBACK(clearDaList)
+
+    var x = TGtkListStore(rollList.store)
+    x.clear()
+
+ENDCALLBACK
 
 CALLBACK(listChanged)
 
@@ -129,7 +146,8 @@ CALLBACK(Roll)
             var t = int(rnd(1)*_numsides) + 1
             total += t
         next
-        with rollList.store
+        var x = TGtkListStore(rollList.store)
+        with x
             .appendRow()
             .add(_numdice & "d" & _numsides)
             .add(str(total),1)

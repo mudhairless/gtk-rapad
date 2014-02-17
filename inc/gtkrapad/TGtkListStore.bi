@@ -34,7 +34,7 @@ type TGtkListStore
 
     declare sub clear()
 
-    declare operator cast() as GtkListStore ptr
+    declare operator cast() as GtkTreeModel ptr
     private:
     cols as integer ptr
     coln as uinteger
