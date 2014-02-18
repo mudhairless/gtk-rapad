@@ -83,7 +83,7 @@ sub Main()
 
     with dLabel
         .SetParent(iPanel)
-        .SetText("d")
+        .Text ="d"
     end with
 
     with numSides

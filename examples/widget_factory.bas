@@ -135,7 +135,7 @@ sub Main()
         .SetEvent( MOUSE_CLICK, @btnTest_Click() )
     end with
 
-    Label.SetText( "Hai World!" )
+    Label.Text = "Hai World!"
     Label.SetParent( vPanel )
 
     chckBox.SetLabel( "Are _you?" )
