@@ -231,7 +231,7 @@ end namespace
 #include once "gtkrapad/TGtkScaleButton.bi"
 #include once "gtkrapad/TGtkVolumeButton.bi"
 
-'Numericy/Text Data Entry
+'Numeric/Text Data Entry
 #include once "gtkrapad/TGtkEntry.bi"
 #include once "gtkrapad/TGtkEntryCompletion.bi"
 #include once "gtkrapad/TGtkHScale.bi"
