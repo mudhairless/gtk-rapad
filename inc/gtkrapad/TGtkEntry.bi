@@ -38,6 +38,9 @@ namespace GtkRapad
             declare sub SetActivate( byval aMethod as gtkGenericCallback )
             declare sub SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
 
+            declare property iconPixbuf( byval i as GtkEntryIconPosition ) as GdkPixbuf ptr
+            declare property iconPixbuf( byval i as GtkEntryIconPosition, byval x as GdkPixbuf ptr )
+
             declare sub Clear()
 
             DECLARE_COMMON_FUNCS()

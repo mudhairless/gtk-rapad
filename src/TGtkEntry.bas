@@ -19,6 +19,14 @@ namespace GtkRapad
         init()
     end constructor
 
+    property TGtkEntry.iconPixbuf( byval i as GtkEntryIconPosition ) as GdkPixbuf ptr
+        return gtk_entry_get_icon_pixbuf(GTK_ENTRY(id_),i)
+    end property
+
+    property TGtkEntry.iconPixbuf( byval i as GtkEntryIconPosition, byval x as GdkPixbuf ptr )
+        gtk_entry_set_icon_from_pixbuf(GTK_ENTRY(id_),i,x)
+    end property
+
     property TGtkEntry.completion() as GtkEntryCompletion ptr
         return gtk_entry_get_completion(GTK_ENTRY(id_))
     end property

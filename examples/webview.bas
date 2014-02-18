@@ -61,6 +61,7 @@ tsep.setParent(Toolbar)
 workingSpinner.setParent(spinnerTI)
 spinnerTI.setParent(Toolbar)
 spinnerTI.expand = false
+spinnerTI.homogeneous = true
 workingSpinner.start()
 
 WebView.setParent(ScrollWindow)
@@ -72,6 +73,7 @@ ScrollWindow.setParent(MainLayout)
 MainLayout.setParent(MainWindow)
 
 MainWindow.showAll()
+MainWindow.setFocus(WebView)
 
 URIbox.text = "http://www.google.com"
 WebView.uri = "http://www.google.com"
@@ -120,6 +122,7 @@ ENDCALLBACK
 
 CALLBACK(iconloaded)
     MainWindow.setIcon(WebView.iconPixbuf)
+    URIbox.iconPixbuf(GTK_ENTRY_ICON_PRIMARY) = WebView.iconPixbuf
 ENDCALLBACK
 
 function canNavigate( byval wwv as any ptr, byval wwf as any ptr, byval wnr as any ptr, byval wwna as any ptr, byval wwpd as any ptr, byval __ as any ptr ) as gboolean
