@@ -77,12 +77,7 @@ sub Main()
 
     mnuMenuBar.SetParent( mnuMenuBox )
 
-    mnuMenuBar.AddMenu( "_File", mnuMainFile )
-
-    'with mnuMenuBar
-        '.AddMenuMain( "mnuFile", "_File" )
-        '.AddMenuSub( "mnuFile", "mnuFileNew", "_New", @mnuMainFileNew_Click() )
-    'end with
+    mnuMenuBar.append( "_File", mnuMainFile )
 
     with txtTextView
         .Text = ""

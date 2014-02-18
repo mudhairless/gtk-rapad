@@ -101,9 +101,9 @@ sub Main()
     HelpMenu.AddChild(file_halp)
 
     with MenuBar
-        .AddMenu("_File", FileMenu)
-        .AddMenu("_Options", OptionsMenu)
-        .AddMenu("_Help", HelpMenu)
+        .append("_File", FileMenu)
+        .append("_Options", OptionsMenu)
+        .append("_Help", HelpMenu)
     end with
 
     with hPanel
