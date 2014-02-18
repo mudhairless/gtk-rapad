@@ -43,9 +43,9 @@ sub Main()
         .SetParent( frmMain )
     end with
 
-    rb1.SetLabel( "rbutton_1" )
-    rb2.SetLabel( "rbutton_2" )
-    rb3.SetLabel( "rbutton_3" )
+    rb1.Label = "rbutton_1"
+    rb2.Label = "rbutton_2"
+    rb3.Label = "rbutton_3"
 
     rb1.SetEvent( TOGGLED, @RadioSwitchEvent() )
     rb2.SetEvent( TOGGLED, @RadioSwitchEvent() )
@@ -82,8 +82,8 @@ sub RadioSwitchEvent cdecl ( byval __ as any pointer )
 
     btn.Associate( __ )
 
-    if btn.isChecked() then
-        print "You selected " & btn.GetLabel()
+    if btn.active then
+        print "You selected " & btn.label
     end if
 
 end sub

@@ -138,7 +138,7 @@ sub Main()
     Label.Text = "Hai World!"
     Label.SetParent( vPanel )
 
-    chckBox.SetLabel( "Are _you?" )
+    chckBox.Label = "Are _you?"
     chckBox.SetEvent( TOGGLED, @chk_tog_event )
     chckBox.SetParent( vPanel )
 
@@ -213,7 +213,7 @@ sub lulz_menu_click cdecl ( byval __ as any pointer )
     'txtEntry.SetVisibility( cnot(txtEntry.GetVisibility()) )
     'txtEntry.SetMaxLength( txtEntry.GetMaxLength() + 1 )
 
-    chckBox.SetChecked( CNOT( chckBox.isChecked() ) )
+    chckBox.active = CNOT( chckBox.active )
 
 end sub
 
@@ -243,11 +243,11 @@ sub folder_menu_click cdecl ( byval __ as any pointer )
 end sub
 
 sub chk_tog_event cdecl ( byval __ as any pointer )
-    if(chckBox.isChecked() = 0) then
+    if(chckBox.active = false) then
         print "Unchecked"
     else
         print "Checked"
-        chckBox.SetLabel( "Test: " & S_COUNTER )
+        chckBox.Label = "Test: " & S_COUNTER
     end if
 end sub
 
