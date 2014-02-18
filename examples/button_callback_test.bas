@@ -34,12 +34,12 @@ sub Main()
 
     hPanel.SetParent( frmMain )
 
-    btnClose.SetCaption( "Close Me" )
+    btnClose.label = "Close Me"
     btnClose.SetMouseClick( @button_click )
     btnClose.SetName( "btnClose" )
     btnClose.SetParent( hPanel )
 
-    btnOk.SetCaption( "Click Here" )
+    btnOk.label = "Click Here"
     btnOk.SetMouseClick( @button_click )
     btnOk.SetName( "btnOk" )
     btnOk.SetParent( hPanel )

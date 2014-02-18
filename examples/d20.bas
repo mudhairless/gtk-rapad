@@ -96,13 +96,13 @@ sub Main()
     end with
 
     with cmdClear
-        .SetCaption("Clear")
+        .label = "Clear"
         .SetMouseClick( @clearDaList )
         .setParent(bPanel)
     end with
 
     with cmdRoll
-        .SetCaption("Roll!")
+        .label = "Roll!"
         .SetMouseClick( @Roll )
         .setParent(bPanel)
     end with

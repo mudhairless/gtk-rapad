@@ -101,13 +101,13 @@ sub Main()
     hPanel.SetParent( frmMain )
 
     with tbToolbar_Button1
-        .SetCaption( "Create Form" )
+        .label = "Create Form"
         .SetMouseClick( @tbToolbar_Button1_OnClick() )
         .SetParent( hPanel )
     end with
 
     with tbToolbar_Button2
-        .SetCaption( "(future) Create Button" )
+        .label = "(future) Create Button"
         .SetMouseClick( @tbToolbar_Button2_OnClick() )
         .SetParent( hPanel )
     end with

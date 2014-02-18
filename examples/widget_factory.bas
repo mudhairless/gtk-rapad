@@ -111,8 +111,7 @@ sub Main()
     end with
 
     with btnOk
-        .SetCaption( "Ok" )
-
+        .label = "Ok"
         .SetMouseClick( @btnOk_Click() )
         .SetMouseEnter( @btnOk_MouseEnter() )
         .SetMouseLeave( @btnOk_MouseLeave() )
@@ -144,14 +143,14 @@ sub Main()
     chckBox.SetParent( vPanel )
 
     with btnClose
-        .SetCaption( "Close" )
+        .label = "Close"
         .SetEvent( MOUSE_CLICK, @btnClose_Click() )
         .SetParent( hPanel )
     end with
 
 
     with btnTest
-        .SetCaption( "Test" )
+        .label = "Test"
         .SetEvent( MOUSE_CLICK, @btnTest_Click() )
         .SetParent( hPanel )
     end with
@@ -183,7 +182,7 @@ end sub
 sub btnOk_Click cdecl( byval __ as any pointer )
     S_COUNTER += 1
     frmMain.Title = "'Ok' Button Clicked " & S_COUNTER & " Times!"
-    print btnOk.GetCaption()
+    print btnOk.label
 end sub
 
 sub btnOk_MouseEnter cdecl( byval __ as any pointer )

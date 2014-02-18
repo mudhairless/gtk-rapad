@@ -7,7 +7,6 @@
 '
 
 #include once "gtkrapad/gtkrapad.bi"
-#include once "gtkrapad/attic/TGtkTreeView.bi"
 
 using GtkRapad
 
@@ -53,8 +52,8 @@ sub Main()
     rb3.SetEvent( TOGGLED, @RadioSwitchEvent() )
 
     'rb1.Group()
-    rb2.Group( rb1 )
-    rb3.Group( rb1 )
+    rb2.Group = rb1.group
+    rb3.Group = rb1.group
 
     rb1.SetParent( hPanel )
     rb2.SetParent( hPanel )

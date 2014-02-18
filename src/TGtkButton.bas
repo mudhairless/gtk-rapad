@@ -15,17 +15,71 @@ namespace GtkRapad
         init()
     end constructor
 
+    constructor TGtkButton( byref stock_id as string, byval t as gboolean )
+        id_ = gtk_button_new_from_stock(stock_id)
+        init()
+    end constructor
+
     operator TGtkButton.cast() as GtkWidget Pointer
         return id_
     end operator
 
-    sub TGtkButton.SetCaption( byref newCaption as string )
+    property TGtkButton.label( byref newCaption as string )
         gtk_button_set_label( GTK_BUTTON( id_ ), newCaption)
-    end sub
+    end property
 
-    function TGtkButton.GetCaption() as string
+    property TGtkButton.label() as string
         return *(gtk_button_get_label( GTK_BUTTON( id_ )))
-    end function
+    end property
+
+
+    property TGtkButton.relief() as GtkReliefStyle
+        return gtk_button_get_relief(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.relief( byval t as GtkReliefStyle )
+        gtk_button_set_relief(GTK_BUTTON(id_),t)
+    end property
+
+    property TGtkButton.useStock() as gboolean
+        return gtk_button_get_use_stock(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.useStock( byval t as gboolean )
+        gtk_button_set_use_stock(GTK_BUTTON(id_),t)
+    end property
+
+    property TGtkButton.useUnderline() as gboolean
+        return gtk_button_get_use_underline(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.useUnderline( byval t as gboolean )
+        gtk_button_set_use_underline(GTK_BUTTON(id_),t)
+    end property
+
+    property TGtkButton.focusOnClick() as gboolean
+        return gtk_button_get_focus_on_click(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.focusOnClick( byval t as gboolean )
+        gtk_button_set_focus_on_click(GTK_BUTTON(id_),t)
+    end property
+
+    property TGtkButton.image() as GtkWidget ptr
+        return gtk_button_get_image(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.image( byval t as GtkWidget ptr )
+        gtk_button_set_image(GTK_BUTTON(id_),t)
+    end property
+
+    property TGtkButton.imagePosition() as GtkPositionType
+        return gtk_button_get_image_position(GTK_BUTTON(id_))
+    end property
+
+    property TGtkButton.imagePosition( byval t as GtkPositionType )
+        gtk_button_set_image_position(GTK_BUTTON(id_),t)
+    end property
 
     sub TGtkButton.SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
 

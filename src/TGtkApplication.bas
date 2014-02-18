@@ -197,8 +197,9 @@ namespace GtkRapad
     end function
 
     'Global Functions
+    #define RAPAD_LOG_DOMAIN "RAPAD"
     sub RuntimeError( byref error_ as string )
-        print "Runtime Error: " & error_
+        g_log( RAPAD_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, "Runtime Error: " & error_ )
     end sub
 
     function GetGtkWidgetType( byval wid as GtkWidget pointer ) as string

@@ -65,7 +65,7 @@ workingSpinner.start()
 
 WebView.setParent(ScrollWindow)
 WebView.connect("load-finished",@loadFinished)
-WebView.connect("navigation-requested",@canNavigate)
+WebView.connect("navigation-requested",RAPAD_CALLBACK(canNavigate))
 WebView.connect("icon-loaded",@iconloaded)
 MainLayout.addChild(Toolbar,false,false,0)
 ScrollWindow.setParent(MainLayout)

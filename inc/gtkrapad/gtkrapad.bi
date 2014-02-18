@@ -18,6 +18,7 @@
 namespace GtkRapad
 
     type GtkGenericCallback as sub cdecl( byval _data_ as any ptr )
+    #DEFINE RAPAD_CALLBACK(x) cast(GtkGenericCallback,@x)
 
     enum TGtkEvents
         MOUSE_ENTER
@@ -107,11 +108,11 @@ end namespace
     sub cname.Associate( byval p as GtkWidget pointer )
         'Will assign a new pointer for this class to reference so long
         'as the pointer type is appropriate for this class.
-
-        if ( GetGtkWidgetType( p ) = gtype_ ) then
+        var ptype = GetGtkWidgetType(p)
+        if ( ptype = gtype_ ) then
             id_ = p
         else
-            RuntimeError( "Associate() failed - pointer type mismatch" )
+            RuntimeError( "RAPAD: Associate() failed - found " & ptype & " but expected " & gtype_ )
         end if
     end sub
 

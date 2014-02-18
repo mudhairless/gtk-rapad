@@ -89,7 +89,7 @@ sub Main()
         .showLineNumbers = true
     end with
 
-    btnOk.SetCaption( "Change Font" )
+    btnOk.label = "Change Font"
     btnOk.SetMouseClick( @btnOk_Click() )
     btnOk.SetName( "btnOk" )
 

@@ -34,7 +34,7 @@ sub Main()
     txtTextView.SetParent( vPanel )
     txtTextView.Text = "Please type something here..."
 
-    btnOk.SetCaption( "Change Font" )
+    btnOk.label = "Change Font"
     btnOk.SetMouseClick( @btnOk_Click() )
     btnOk.SetName( "btnOk" )
     btnOk.SetParent( vPanel )
