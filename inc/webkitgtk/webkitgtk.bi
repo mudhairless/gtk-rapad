@@ -6,6 +6,9 @@
 
 #inclib "webkitgtk-1.0"
 
+#DEFINE WEBKIT_TYPE_WEB_VIEW (webkit_web_view_get_type())
+#DEFINE WEBKIT_WEB_VIEW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_WEB_VIEW, WebKitWebView))
+
 type WebKitWebView as any
 
 enum WebKitNavigationResponse
@@ -40,6 +43,7 @@ end enum
 
 extern "C"
 
+declare function webkit_web_view_get_type() as GType
 declare function webkit_web_view_can_copy_clipboard( byval as WebKitWebView ptr ) as gboolean
 declare function webkit_web_view_can_cut_clipboard( byval as WebKitWebView ptr ) as gboolean
 declare function webkit_web_view_can_go_back( byval as WebKitWebView ptr ) as gboolean
