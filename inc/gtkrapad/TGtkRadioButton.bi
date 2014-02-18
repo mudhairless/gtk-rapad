@@ -9,15 +9,14 @@ namespace GtkRapad
 
             declare operator cast() as GtkWidget pointer
 
-            declare function GetLabel( ) as string
-            declare function IsChecked() as gboolean
-
-            declare sub SetChecked( byval b as gboolean )
             declare sub SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
-            declare sub SetLabel( byref label as string )
 
             declare property group() as GSList ptr
             declare property group( byval g as GSList ptr )
+
+            DECLARE_BUTTON_COMMON()
+
+            DECLARE_TOGGLE_BUTTON_COMMON()
 
             DECLARE_COMMON_FUNCS()
 

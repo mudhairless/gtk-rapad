@@ -4,6 +4,10 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkRadioButton)
 
+    BUTTON_COMMON(TGtkRadioButton)
+
+    TOGGLE_BUTTON_COMMON(TGtkRadioButton)
+
     constructor TGtkRadioButton()
         id_ = gtk_radio_button_new_with_mnemonic( 0, "")
         gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), 0 )
@@ -30,18 +34,6 @@ namespace GtkRapad
         return id_
     end operator
 
-    sub TGtkRadioButton.SetLabel( byref label as string )
-        gtk_button_set_label( GTK_BUTTON( id_ ), label )
-    end sub
-
-    function TGtkRadioButton.GetLabel( ) as string
-        return *(gtk_button_get_label( GTK_BUTTON( id_ )))
-    end function
-
-    sub TGtkRadioButton.SetChecked( byval b as gboolean )
-        gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( id_ ), b )
-    end sub
-
     property TGtkRadioButton.group() as GSList ptr
         return gtk_radio_button_get_group( GTK_RADIO_BUTTON( id_ ) )
     end property
@@ -49,10 +41,6 @@ namespace GtkRapad
     property TGtkRadioButton.group( byval g as GSList ptr )
         gtk_radio_button_set_group(GTK_RADIO_BUTTON(id_),g)
     end property
-
-    function TGtkRadioButton.isChecked() as gboolean
-        return gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( id_ ) )
-    end function
 
     sub TGtkRadioButton.SetEvent( byval ev as TGtkEvents, byval aMethod as gtkGenericCallback )
 

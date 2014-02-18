@@ -225,9 +225,9 @@ end namespace
 
 'Buttons and Toggles
 #include once "gtkrapad/TGtkButton.bi"
+#include once "gtkrapad/TGtkToggleButton.bi"
 #include once "gtkrapad/TGtkCheckBox.bi"
 #include once "gtkrapad/TGtkRadioButton.bi"
-#include once "gtkrapad/TGtkToggleButton.bi"
 #include once "gtkrapad/TGtkLinkButton.bi"
 #include once "gtkrapad/TGtkScaleButton.bi"
 #include once "gtkrapad/TGtkVolumeButton.bi"
