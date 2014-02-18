@@ -4,6 +4,8 @@ namespace GtkRapad
 
     COMMON_FUNCS(TGtkAboutDialog)
 
+    DIALOG_COMMON(TGtkAboutDialog)
+
     constructor TGtkAboutDialog
         id_ = gtk_about_dialog_new()
         init()

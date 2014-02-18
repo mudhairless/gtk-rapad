@@ -47,6 +47,8 @@ type TGtkAboutDialog
     declare property logoIconName() as string
     declare property logoIconName( byref l as string )
 
+    DECLARE_DIALOG_COMMON()
+
     DECLARE_COMMON_FUNCS()
 
     COMMON_MEMBERS()

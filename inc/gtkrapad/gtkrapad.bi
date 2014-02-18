@@ -210,6 +210,7 @@ end namespace
 'Special
 #include once "gtkrapad/TGtkApplication.bi"
 #include once "gtkrapad/TGtkWindow.bi"
+#include once "gtkrapad/TGtkDialog.bi"
 #include once "gtkrapad/TGtkAssistant.bi"
 #include once "gtkrapad/TGtkAboutDialog.bi"
 #include once "gtkrapad/TGtkClipboard.bi"
