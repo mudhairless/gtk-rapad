@@ -54,6 +54,7 @@ namespace GtkRapad
 type TGtkDialog
 
     declare constructor
+    declare operator cast() as GtkWidget ptr
 
     DECLARE_DIALOG_COMMON()
 

@@ -24,6 +24,8 @@ declare CALLBACK(refreshClicked)
 declare CALLBACK(loadFinished)
 declare CALLBACK(uriBoxActivate)
 declare CALLBACK(iconloaded)
+
+declare function scriptAlert( byval wwv as any ptr, byval wwf as any ptr, byval msg as zstring ptr, byval ud__ as any ptr ) as gboolean
 declare function canNavigate( byval wwv as any ptr, byval wwf as any ptr, byval wnr as any ptr, byval wwna as any ptr, byval wwpd as any ptr, byval __ as any ptr ) as gboolean
 
 BackB = new TGtkToolButton(GTK_STOCK_GO_BACK)
@@ -68,6 +70,7 @@ WebView.setParent(ScrollWindow)
 WebView.connect("load-finished",@loadFinished)
 WebView.connect("navigation-requested",RAPAD_CALLBACK(canNavigate))
 WebView.connect("icon-loaded",@iconloaded)
+WebView.connect("script-alert",RAPAD_CALLBACK(scriptAlert))
 MainLayout.addChild(Toolbar,false,false,0)
 ScrollWindow.setParent(MainLayout)
 MainLayout.setParent(MainWindow)
@@ -128,4 +131,9 @@ ENDCALLBACK
 function canNavigate( byval wwv as any ptr, byval wwf as any ptr, byval wnr as any ptr, byval wwna as any ptr, byval wwpd as any ptr, byval __ as any ptr ) as gboolean
     workingSpinner.start()
     return FALSE
+end function
+
+function scriptAlert( byval wwv as any ptr, byval wwf as any ptr, byval msg as zstring ptr, byval ud__ as any ptr ) as gboolean
+    GtkApp.messageBox(,*msg)
+    return false
 end function

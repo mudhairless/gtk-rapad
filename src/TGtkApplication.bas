@@ -22,6 +22,60 @@ namespace GtkRapad
         gtk_main()
     end sub
 
+    private sub activate_prompt( byval entry as GtkEntry ptr, byval d_ as any ptr )
+        var d = cast(TGtkDialog ptr,d_)
+        d->response(true)
+    end sub
+
+    function TGtkApplication.prompt( byref title as string = "Input Requested", byref msg as string = "", byref default_ as string ) as string
+        dim dlgx as TGtkDialog
+        dim msgLbl as TGtkLabel
+        dim promptEntry as TGtkEntry
+        dim vlayout as TGtkVBox
+
+        msgLbl.text = msg
+        msgLbl.setParent(vlayout)
+        promptEntry.text = default_
+        promptEntry.connect("activate",RAPAD_CALLBACK(activate_prompt),@dlgx)
+        vlayout.addChild(promptEntry,true,true,0)
+        vlayout.showAll()
+        vlayout.setParent(dlgx.contentArea)
+
+        var cancb = dlgx.addButton(GTK_STOCK_CANCEL,false)
+        var okb_ = dlgx.addButton(GTK_STOCK_OK,true)
+        dlgx.default = true
+        gtk_window_set_title(GTK_WINDOW(cast(GtkWidget ptr,dlgx)),title)
+
+        var r = dlgx.run()
+
+        if r = true then
+            return promptEntry.text
+        else
+            return ""
+        end if
+    end function
+
+    function TGtkApplication.confirm( byref title as string = "Confirm", byref msg as string = "" ) as gboolean
+        dim dlgx as TGtkDialog
+        dim msgLbl as TGtkLabel
+        dim vlayout as TGtkVBox
+
+        with msgLbl
+            .text = msg
+            .setParent(vlayout)
+            .lineWrap = true
+        end with
+        vlayout.showAll()
+        vlayout.setParent(dlgx.contentArea)
+
+        var cancb = dlgx.addButton(GTK_STOCK_NO,false)
+        var okb_ = dlgx.addButton(GTK_STOCK_YES,true)
+        dlgx.default = true
+        gtk_window_set_title(GTK_WINDOW(cast(GtkWidget ptr,dlgx)),title)
+
+        return dlgx.run()
+    end function
+
     sub TGtkApplication.Quit()
         gtk_main_quit()
     end sub

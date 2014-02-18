@@ -11,4 +11,8 @@ namespace GtkRapad
         init()
     end constructor
 
+    operator TGtkDialog.cast() as GtkWidget ptr
+        return id_
+    end operator
+    
 end namespace

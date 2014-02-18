@@ -31,6 +31,8 @@ namespace GtkRapad
             declare sub removeIdle( byval tag as integer )
 
             declare sub MessageBox( byref title as string = "Message", byref text as string = "" )
+            declare function prompt( byref title as string = "Input Requested", byref msg as string = "", byref default_ as string ) as string
+            declare function confirm( byref title as string = "Confirm", byref msg as string = "" ) as gboolean
 
             declare function FileOpen( byref title_ as string = "Choose a file", byref dir_start as string = "" ) as string
             declare function FileSave( byref title_ as string = "Choose a filename", byref dir_start as string = "", byref default_name as string = "Untitled" ) as string
