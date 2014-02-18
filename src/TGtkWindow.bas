@@ -207,6 +207,10 @@ namespace GtkRapad
         gtk_window_resize(GTK_WINDOW(id_),myx,y_)
     end property
 
+    sub TGtkWindow.setIcon( byval x_ as GdkPixbuf ptr )
+        gtk_window_set_icon(GTK_WINDOW(id_),x_)
+    end sub
+
     sub TGtkWindow.SetSize( byval width_ as integer, byval height_ as integer )
         'gtk_window_set_default_size( GTK_WINDOW( id_ ), width_, height_ )
         gtk_window_resize( GTK_WINDOW( id_ ), width_, height_ )
