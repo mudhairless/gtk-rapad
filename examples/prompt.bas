@@ -3,6 +3,17 @@ using GtkRapad
 
 dim GtkApp as TGtkApplication
 
+if __FB_ARGC__ < 4 then
+    ? "FreeBASIC GTK Prompting Utility"
+    ? "Usage: prompt args"
+    ? "Recognized commands:"
+    ? "    prompt --message title message"
+    ? "    prompt --confirm title yes-or-no-question"
+    ? "    prompt title message default-value"
+    ?
+    end 43
+end if
+
 if command(1) = "--message" then
     GtkApp.messageBox(command(2),command(3))
     ? "Message Recieved"
