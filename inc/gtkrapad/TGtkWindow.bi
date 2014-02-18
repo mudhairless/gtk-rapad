@@ -1,29 +1,6 @@
 '
 '   TGtkWindow.bi
 '
-
-'---------------------------------------------------------------
-' Still to do
-'---------------------------------------------------------------
-'   gtk_window_add_accel_group
-'   gtk_window_remove_accel_group
-'   gtk_window_set_position
-'   gtk_window_activate_default
-'   gtk_window_set_modal
-'   gtk_window_set_default_size
-'   gtk_window_set_deletable
-'   gtk_window_move
-'   gtk_window_set_transient_for
-'   gtk_window_set_destroy_with_parent
-'   gtk_window_set_opacity
-'
-'---------------------------------------------------------------
-'the following will not be wrapped by design
-'---------------------------------------------------------------
-'   gtk_window_set_wmclass      per API document
-'   gtk_window_set_role         only works on X11
-'   gtk_window_set_policy       deprecated
-
 namespace GtkRapad
 
     type TGtkWindow
