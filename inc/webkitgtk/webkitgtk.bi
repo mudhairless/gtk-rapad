@@ -89,7 +89,7 @@ declare sub webkit_web_view_load_html_string( byval as WebKitWebView ptr, byval 
 declare sub webkit_web_view_load_string( byval as WebKitWebView ptr, byval as zstring ptr, byval as zstring ptr, byval as zstring ptr, byval as zstring ptr )
 declare sub webkit_web_view_load_uri( byval as WebKitWebView ptr, byval as zstring ptr )
 declare function webkit_web_view_mark_text_matches( byval as WebKitWebView ptr, byval as zstring ptr, byval as gboolean, byval as uinteger ) as uinteger
-declare sub webkit_web_view_move_cursor( byval as WebKitWebView ptr, byval as GtkMovement, byval as integer )
+'declare sub webkit_web_view_move_cursor( byval as WebKitWebView ptr, byval as GtkMovement, byval as integer )
 declare function webkit_web_view_new() as GtkWidget ptr
 declare sub webkit_web_view_paste_clipboard( byval as WebKitWebView ptr )
 declare sub webkit_web_view_redo( byval as WebKitWebView ptr )

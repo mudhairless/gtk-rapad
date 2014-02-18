@@ -12,6 +12,9 @@
 #include once "gtksourceview/gtksourcelanguagemanager.bi"
 #include once "gtksourceview/gtksourcestyleschememanager.bi"
 #endif
+#ifndef RAPAD_NO_WEBKIT
+#include once "webkitgtk/webkitgtk.bi"
+#endif
 namespace GtkRapad
 
     type GtkGenericCallback as sub cdecl( byval _data_ as any ptr )
@@ -314,6 +317,11 @@ end namespace
 #include once "gtkrapad/TGtkSourceView.bi"
 #include once "gtkrapad/TGtkSourceLanguageManager.bi"
 #include once "gtkrapad/TGtkSourceStyleSchemeManager.bi"
+#endif
+
+#ifndef RAPAD_NO_WEBKIT
+'WebKitGtk
+#include once "gtkrapad/TGtkWebView.bi"
 #endif
 
 #inclib "gtkrapad"
