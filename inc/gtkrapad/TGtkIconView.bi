@@ -3,7 +3,6 @@ namespace GtkRapad
 type TGtkIconView
     declare constructor()
     declare constructor( byval i as GtkTreeModel ptr )
-    declare constructor( byval i as GtkWidget ptr )
     declare operator cast() as GtkWidget ptr
 
     declare property model() as GtkTreeModel ptr

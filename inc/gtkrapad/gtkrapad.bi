@@ -44,6 +44,7 @@ end namespace
 #endmacro
 
 #macro DECLARE_COMMON_FUNCS()
+    declare constructor( byval i as GtkWidget ptr )
     declare sub Associate( byval p as GtkWidget pointer )
     declare sub Destroy()
     declare sub Hide()
@@ -74,6 +75,11 @@ end namespace
 #endmacro
 
 #macro COMMON_FUNCS(cname)
+
+    constructor cname( byval i as GtkWidget ptr )
+        id_ = i
+        init()
+    end constructor
 
     sub cname.changeParent( byval p as GtkWidget ptr )
         gtk_widget_reparent(id_,p)

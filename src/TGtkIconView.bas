@@ -19,11 +19,6 @@ namespace GtkRapad
         init()
     end constructor
 
-    constructor TGtkIconView( byval i as GtkWidget ptr )
-        id_ = i
-        init()
-    end constructor
-
     operator TGtkIconView.cast() as GtkWidget ptr
         return id_
     end operator
