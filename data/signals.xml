@@ -1,0 +1,319 @@
+<widgets>
+    <widget id="GtkWidget">
+        <signals>
+            <signal name="accel-closures-changed">
+                <signature type="sub">sub $name ( byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>null</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="button-press-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="button-release-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="can-activate-accel"></signal>
+            <signal name="child-notify"></signal>
+            <signal name="client-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="composited-changed"></signal>
+            <signal name="configure-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="damage-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="delete-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="destroy-devent">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="direction-changed"></signal>
+            <signal name="drag-begin"></signal>
+            <signal name="drag-data-delete"></signal>
+            <signal name="drag-data-get"></signal>
+            <signal name="drag-data-received"></signal>
+            <signal name="drag-drop"></signal>
+            <signal name="drag-end"></signal>
+            <signal name="drag-failed"></signal>
+            <signal name="drag-leave"></signal>
+            <signal name="drag-motion"></signal>
+            <signal name="enter-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="event-after">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="expose-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="focus"></signal>
+            <signal name="focus-in-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="focus-out-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="grab-broken-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="grab-focus"></signal>
+            <signal name="grab-notify"></signal>
+            <signal name="hide"></signal>
+            <signal name="hierarchy-changed"></signal>
+            <signal name="key-press-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="key-release-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="keynav-failed"></signal>
+            <signal name="leave-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="map"></signal>
+            <signal name="map-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="mnemonic-activate"></signal>
+            <signal name="motion-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="move-focus"></signal>
+            <signal name="no-expose-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="parent-set"></signal>
+            <signal name="popup-menu"></signal>
+            <signal name="property-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="proximity-in-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="proximity-out-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="query-tooltip"></signal>
+            <signal name="realize"></signal>
+            <signal name="screen-changed"></signal>
+            <signal name="scroll-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="selection-clear-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="selection-get"></signal>
+            <signal name="selection-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="selection-received"></signal>
+            <signal name="selection-request-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="show"></signal>
+            <signal name="show-help"></signal>
+            <signal name="size-allocate"></signal>
+            <signal name="size-request"></signal>
+            <signal name="state-changed"></signal>
+            <signal name="style-set"></signal>
+            <signal name="unmap"></signal>
+            <signal name="unmap-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="unrealize"></signal>
+            <signal name="visibility-notify-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="window-state-event">
+                <signature type="function">function $name ( byval wid as GtkWidget ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>null</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+        </signals>
+    </widget>
+    <widget id="GtkContainer" parents="GtkWidget;">
+        <signals>
+            <signal name="add">
+                <signature type="sub">sub $name ( byval container as GtkContainer ptr, byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>null</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="check-resize">
+                <signature type="sub">sub $name ( byval container as GtkContainer ptr, byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>null</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="remove">
+                <signature type="sub">sub $name ( byval container as GtkContainer ptr, byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>null</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="set-focus-child">
+                <signature type="sub">sub $name ( byval container as GtkContainer ptr, byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>null</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+        </signals>
+    </widget>
+    <widget id="GtkWindow" parents="GtkBin;GtkContainer;GtkWidget;" implemented-by="TGtkWindow">
+        <signals>
+            <signal name="activate-default">
+                <signature type="sub">sub $name ( byval w_ as GtkWindow ptr, byval ud_ as any ptr )</signature>
+                <header>var Window = TGtkWindow(w_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="activate-focus">
+                <signature type="sub">sub $name ( byval w_ as GtkWindow ptr, byval ud_ as any ptr )</signature>
+                <header>var Window = TGtkWindow(w_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="frame-event">
+                <signature type="function">function $name ( byval w_ as GtkWindow ptr, byval e as GdkEvent ptr, byval ud_ as any ptr ) as gboolean</signature>
+                <header>var Window = TGtkWindow(w_)</header>
+                <footer>end function</footer>
+                <default-value>return false</default-value>
+            </signal>
+            <signal name="keys-changed">
+                <signature type="sub">sub $name (byval w_ as GtkWindow ptr, byval ud_ as any ptr )</signature>
+                <header>var Window = TGtkWindow(w_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="set-focus">
+                <signature type="sub">sub $name (byval w_ as GtkWindow ptr, byval wid as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>var Window = TGtkWindow(w_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+        </signals>
+    </widget>
+    <widget id="GtkAssistant" parents="GtkWindow;GtkBin;GtkContainer;GtkWidget;" implemented-by="TGtkAssistant">
+        <signals>
+            <signal name="apply">
+                <signature type="sub">sub $name ( byval a_ as GtkAssistant ptr, byval ud_ as any ptr )</signature>
+                <header>var Assistant = TGtkAssistant(a_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="cancel">
+                <signature type="sub">sub $name ( byval a_ as GtkAssistant ptr, byval ud_ as any ptr )</signature>
+                <header>var Assistant = TGtkAssistant(a_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="close">
+                <signature type="sub">sub $name ( byval a_ as GtkAssistant ptr, byval ud_ as any ptr )</signature>
+                <header>var Assistant = TGtkAssistant(a_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+            <signal name="prepare">
+                <signature type="sub">sub $name ( byval a_ as GtkAssistant ptr, byval page as GtkWidget ptr, byval ud_ as any ptr )</signature>
+                <header>var Assistant = TGtkAssistant(a_)</header>
+                <footer>end sub</footer>
+                <default-value>null</default-value>
+            </signal>
+        </signals>
+    </widget>
+</widgets>
