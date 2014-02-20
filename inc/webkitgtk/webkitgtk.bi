@@ -6,6 +6,22 @@
 
 #inclib "webkitgtk-1.0"
 
+''WebKitWebSettings
+
+enum WebKitEditingBehavior
+    WEBKIT_EDITING_BEHAVIOR_MAC
+    WEBKIT_EDITING_BEHAVIOR_WINDOWS
+    WEBKIT_EDITING_BEHAVIOR_UNIX
+end enum
+
+type WebKitWebSettings as any
+
+declare function webkit_web_settings_copy( byval w as WebKitWebSettings ptr ) as WebKitWebSettings ptr
+declare function webkit_web_settings_new( ) as WebKitWebSettings ptr
+declare function webkit_web_settings_get_user_agent( byval as WebKitWebSettings ptr ) as zstring ptr
+
+''WebKitWebView
+
 #DEFINE WEBKIT_TYPE_WEB_VIEW (webkit_web_view_get_type())
 #DEFINE WEBKIT_WEB_VIEW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), WEBKIT_TYPE_WEB_VIEW, WebKitWebView))
 
