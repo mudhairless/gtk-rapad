@@ -62,16 +62,12 @@ end namespace
     declare sub changeParent( byval p as GtkWidget ptr )
     declare sub setParent( byval p as GtkWidget ptr )
     declare function GetParent() as GtkWidget pointer
-    declare sub setProperty overload( byref prop_name__ as string, byref value__ as string )
-    declare sub setProperty overload( byref prop_name__ as string, byval value__ as integer )
-    declare sub setProperty overload( byref prop_name__ as string, byval value__ as double )
-    declare function getPropertyString ( byref prop_name__ as string ) as string
-    declare function getPropertyInteger ( byref prop_name__ as string ) as integer
-    declare function getPropertyDouble ( byref prop_name__ as string ) as double
     declare sub SetName( byref newName as string )
     declare function GetName() as string
 
     declare function connect(byref signal as string,byval func as GtkGenericCallback, byval fd as any ptr = 0 ) as uinteger
+
+    DECLARE_OBJECT_FUNCS()
 #endmacro
 
 #macro COMMON_FUNCS(cname)
@@ -142,6 +138,41 @@ end namespace
         gtk_widget_destroy( GTK_WIDGET( id_ ) )
     end sub
 
+    sub cname.SetName( byref newName as string )
+        objname_ = newName
+        setProperty( "rapad.name", objname_ )
+    end sub
+
+    function cname.GetName() as string
+        return getPropertyString( "rapad.name" )
+    end function
+
+    sub cname.SetParent( byval p as GtkWidget Pointer )
+        parent_ = p
+        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
+    end sub
+
+    function cname.GetParent() as GtkWidget Pointer
+        return gtk_widget_get_parent(id_)
+    end function
+
+    OBJECT_FUNCS(cname)
+
+#endmacro
+
+#macro DECLARE_OBJECT_FUNCS()
+
+    declare sub setProperty overload( byref prop_name__ as string, byref value__ as string )
+    declare sub setProperty overload( byref prop_name__ as string, byval value__ as integer )
+    declare sub setProperty overload( byref prop_name__ as string, byval value__ as double )
+    declare function getPropertyString ( byref prop_name__ as string ) as string
+    declare function getPropertyInteger ( byref prop_name__ as string ) as integer
+    declare function getPropertyDouble ( byref prop_name__ as string ) as double
+
+#endmacro
+
+#macro OBJECT_FUNCS(cname)
+
     sub cname.setProperty overload( byref prop_name__ as string, byref value__ as string )
         g_object_set_data( G_OBJECT(id_), prop_name__, @value__[0] )
     end sub
@@ -176,24 +207,6 @@ end namespace
         retp = g_object_get_data( G_OBJECT(id_), prop_name__ )
         ret = *retp
         return ret
-    end function
-
-    sub cname.SetName( byref newName as string )
-        objname_ = newName
-        setProperty( "rapad.name", objname_ )
-    end sub
-
-    function cname.GetName() as string
-        return getPropertyString( "rapad.name" )
-    end function
-
-    sub cname.SetParent( byval p as GtkWidget Pointer )
-        parent_ = p
-        gtk_container_add( GTK_CONTAINER(parent_), GTK_WIDGET(id_) )
-    end sub
-
-    function cname.GetParent() as GtkWidget Pointer
-        return gtk_widget_get_parent(id_)
     end function
 
 
@@ -330,6 +343,7 @@ end namespace
 
 #ifndef RAPAD_NO_WEBKIT
 'WebKitGtk
+#include once "gtkrapad/TGtkWebSettings.bi"
 #include once "gtkrapad/TGtkWebView.bi"
 #endif
 

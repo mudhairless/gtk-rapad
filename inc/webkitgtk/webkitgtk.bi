@@ -91,7 +91,7 @@ declare function webkit_web_view_get_load_status( byval as WebKitWebView ptr ) a
 'get_main_frame
 'get_paste_target_list
 declare function webkit_web_view_get_progress( byval as WebKitWebView ptr ) as double
-'get_settings
+declare function webkit_web_view_get_settings( byval as WebKitWebView ptr ) as WebKitWebSettings ptr
 declare function webkit_web_view_get_title( byval as WebKitWebView ptr ) as zstring ptr
 declare function webkit_web_view_get_transparent( byval as WebKitWebView ptr ) as gboolean
 declare function webkit_web_view_get_uri( byval as WebKitWebView ptr ) as zstring ptr
@@ -122,7 +122,7 @@ declare sub webkit_web_view_set_editable( byval as WebKitWebView ptr, byval as g
 declare sub webkit_web_view_set_full_content_zoom( byval as WebKitWebView ptr, byval as gboolean )
 declare sub webkit_web_view_set_highlight_text_matches( byval as WebKitWebView ptr, byval as gboolean )
 declare sub webkit_web_view_set_maintains_back_forward_list( byval as WebKitWebView ptr, byval as gboolean )
-'set_settings
+declare sub webkit_web_view_set_settings( byval as WebKitWebView ptr, byval as WebKitWebSettings ptr )
 declare sub webkit_web_view_set_transparent( byval as WebKitWebView ptr, byval as gboolean )
 declare sub webkit_web_view_set_view_mode( byval as WebKitWebView ptr, byval as WebKitWebViewViewMode )
 declare sub webkit_web_view_set_view_source_mode( byval as WebKitWebView ptr, byval as gboolean )

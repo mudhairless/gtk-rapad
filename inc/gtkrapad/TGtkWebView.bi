@@ -37,6 +37,8 @@ type TGtkWebView
     declare property hasSelection() as gboolean
     declare property highlightTextMatches( byval t as gboolean )
     declare property maintainsBackForwardList( byval t as gboolean )
+    declare property settings() as TGtkWebSettings
+    declare property settings( byval x as TGtkWebSettings )
 
     declare sub loadHTML( byref h as string, byref base_uri as string )
     declare sub load( byref c as string, byref mime_type as string, byref encoding__ as string, byref base_uri as string )

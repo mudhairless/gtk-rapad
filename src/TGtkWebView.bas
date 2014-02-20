@@ -14,6 +14,14 @@ namespace GtkRapad
         return id_
     end operator
 
+    property TGtkWebView.settings() as TGtkWebSettings
+        return TGtkWebSettings(webkit_web_view_get_settings(WEBKIT_WEB_VIEW(id_)))
+    end property
+
+    property TGtkWebView.settings( byval x as TGtkWebSettings )
+        webkit_web_view_set_settings(WEBKIT_WEB_VIEW(id_),cast(WebKitWebSettings ptr,x))
+    end property
+
     property TGtkWebView.uri() as string
         return *webkit_web_view_get_uri(WEBKIT_WEB_VIEW(id_))
     end property
